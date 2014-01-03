@@ -201,7 +201,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     }
     
     [headerComment appendFormat:@"// Generated Automatically Using ImageNamer on %@\n", [self.shortDateFormatter stringFromDate:[NSDate date]]];
-    [headerComment appendFormat:@"// For more information, go to http://github.com/DesignatedNerd/ImageNamer\n"];
+    [headerComment appendFormat:@"// For more information, go to http://github.com/VokalInteractive/ImageNamer\n"];
     
     [headerComment appendString:@"//\n\n"];
     

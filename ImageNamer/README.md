@@ -7,7 +7,7 @@ With the advent of the Asset Catalog in Xcode 5, there was a huge step in the ri
 
 That nasty typo problem, however, still persisted. Until now. 
 
-Image namer goes through an AssetCatalog file and writes out its contents to a **UIImage+AssetCatalog\_YourCatalogName** category - each `.imageset` within an asset catalog will get its own method to call it, prefixed by ac_ to indicate the method is from the asset catalog and to help prevent any namespace collisions. 
+ImageNamer goes through an AssetCatalog file and writes out its contents to a **UIImage+AssetCatalog\_YourCatalogName** category - each `.imageset` within an asset catalog will get its own method to call it, prefixed by ac_ to indicate the method is from the asset catalog and to help prevent any namespace collisions. 
 
 After running ImageNamer and adding the category or categories it produces, instead of calling `[UIImage imageNamed:@"backgroundImage"]`, you can now call `[UIImage ac_backgroundImage]` ensuring that you're always going to get the image you think you're getting, and giving you the benefit of autocomplete when you're trying to remember what in the hell you named that icon.  
 
@@ -36,6 +36,10 @@ The first time you run this application, you will need to drag the category file
 ----
 * Asset catalogs cannot be combined into a single category yet.
 * Does not automatically detect potential name collisions with other asset catalogs (Name collisions within an asset catalog will show up as a warning about a redefinition of a method)
-* .appiconset and .launchimage folders are not supported at the moment - trying to definitively nail down whether they are supported by apple at all 
+* .appiconset and .launchimage folders are not supported at the moment - trying to definitively nail down whether they are supported by apple at all in the imageNamed scheme. 
 * Currently nukes the existing files entirely before creating the new files rather than just replacing changes.
 * Requires Xcode to run (though I suppose if you have need of this, you've most likely already got Xcode). 
+
+##Contributors
+----
+* [Ellen Shapiro](http://github.com/designatednerd)
