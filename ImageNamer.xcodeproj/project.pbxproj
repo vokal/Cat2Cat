@@ -10,6 +10,7 @@
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
 		338287C118773EC500070BE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 338287C018773EC500070BE8 /* main.m */; };
 		338287C518773EC500070BE8 /* ImageNamer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 338287C418773EC500070BE8 /* ImageNamer.1 */; };
+		338287EA187745EB00070BE8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 338287E9187745EB00070BE8 /* VICatalogWalker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,9 @@
 		338287C018773EC500070BE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		338287C318773EC500070BE8 /* ImageNamer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageNamer-Prefix.pch"; sourceTree = "<group>"; };
 		338287C418773EC500070BE8 /* ImageNamer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ImageNamer.1; sourceTree = "<group>"; };
+		338287E8187745EB00070BE8 /* VICatalogWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VICatalogWalker.h; sourceTree = "<group>"; };
+		338287E9187745EB00070BE8 /* VICatalogWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VICatalogWalker.m; sourceTree = "<group>"; };
+		338287EE187761BF00070BE8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				338287C018773EC500070BE8 /* main.m */,
+				338287EE187761BF00070BE8 /* README.md */,
+				338287E8187745EB00070BE8 /* VICatalogWalker.h */,
+				338287E9187745EB00070BE8 /* VICatalogWalker.m */,
 				338287C418773EC500070BE8 /* ImageNamer.1 */,
 				338287C218773EC500070BE8 /* Supporting Files */,
 			);
@@ -140,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				338287C118773EC500070BE8 /* main.m in Sources */,
+				338287EA187745EB00070BE8 /* VICatalogWalker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +259,7 @@
 				338287CA18773EC500070BE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
