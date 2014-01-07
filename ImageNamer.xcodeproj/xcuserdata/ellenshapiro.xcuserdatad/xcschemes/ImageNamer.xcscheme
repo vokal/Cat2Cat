@@ -63,7 +63,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "Cyfr-iOS/Images.xcassets"
+            argument = "Cyfr-iOS/Images.xcassets|Cyfr-iOS/Media.xcassets"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

@@ -10,6 +10,6 @@
 
 @interface VICatalogWalker : NSObject
 
-- (BOOL)walkCatalog:(NSString *)fullCatalogPath categoryOutputPath:(NSString *)categoryPath;
+- (BOOL)walkCatalogs:(NSArray *)fullCatalogPaths categoryOutputPath:(NSString *)categoryPath;
 
 @end

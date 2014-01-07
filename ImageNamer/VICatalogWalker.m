@@ -9,16 +9,15 @@
 #import "VICatalogWalker.h"
 
 @interface VICatalogWalker()
-@property (nonatomic, strong) NSString *fullCatalogPath;
 @property (nonatomic, strong) NSString *categoryOutputPath;
 @property (nonatomic, strong) NSFileManager *fileManager;
-@property (nonatomic, strong) NSString *catalogName;
 @property (nonatomic, strong) NSMutableString *hFileString;
 @property (nonatomic, strong) NSMutableString *mFileString;
 @property (nonatomic, strong) NSDateFormatter *shortDateFormatter;
 @end
 
-static NSString * const EXTENSION_ICON_SET = @".appiconset";
+static NSString * const EXTENSION_MAC_ICON_SET = @".iconset";
+static NSString * const EXTENSION_IOS_ICON_SET = @".appiconset";
 static NSString * const EXTENSION_LAUNCH_IMAGE = @".launchimage";
 static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
 static NSString * const EXTENSION_CATALOG = @".xcassets";
@@ -27,20 +26,16 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 
 @implementation VICatalogWalker
 
-- (BOOL)walkCatalog:(NSString *)fullCatalogPath categoryOutputPath:(NSString *)categoryPath
+- (BOOL)walkCatalogs:(NSArray *)fullCatalogPaths categoryOutputPath:(NSString *)categoryPath
 {
-    NSLog(@"Walking catalog %@", fullCatalogPath);
+    NSLog(@"Walking catalogs %@", fullCatalogPaths);
     
     //Setup instance variables.
-    self.fullCatalogPath = fullCatalogPath;
     self.categoryOutputPath = categoryPath;
     self.fileManager = [NSFileManager defaultManager];
     
     self.shortDateFormatter = [[NSDateFormatter alloc] init];
     self.shortDateFormatter.dateStyle = NSDateFormatterShortStyle;
-    
-    NSString *catalogName = [fullCatalogPath lastPathComponent];
-    self.catalogName = [catalogName stringByReplacingOccurrencesOfString:EXTENSION_CATALOG withString:@""];
     
     //Start the .h and .m files with comments
     self.hFileString = [NSMutableString stringWithString:[self headerCommentForFile:YES]];
@@ -49,16 +44,21 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     self.mFileString = [NSMutableString stringWithString:[self headerCommentForFile:NO]];
     [self.mFileString appendString:[self dotMFileStart]];
     
-    
-    NSArray *topLevelContents = [self contentsOfFolderAtPath:self.fullCatalogPath];
-    if (!topLevelContents) {
-        return NO;
-    }
-    
-    [self addPragmaMarkForFolderName:[self.catalogName uppercaseString]];
-    if (![self addImagesFromFolderContents:topLevelContents parentFolderPath:self.fullCatalogPath]) {
-        NSLog(@"One of the folder contents add methods failed!");
-        return NO;
+    for (NSString *fullCatalogPath in fullCatalogPaths) {
+        NSString *catalogName = [fullCatalogPath lastPathComponent];
+        catalogName = [catalogName stringByReplacingOccurrencesOfString:EXTENSION_CATALOG withString:@""];
+        
+        NSArray *topLevelContents = [self contentsOfFolderAtPath:fullCatalogPath];
+        if (!topLevelContents) {
+            NSLog(@"Couldn't get top level contents for catalog %@!", catalogName);
+            return NO;
+        }
+        
+        [self addPragmaMarkForFolderName:[catalogName uppercaseString]];
+        if (![self addImagesFromFolderContents:topLevelContents parentFolderPath:fullCatalogPath]) {
+            NSLog(@"One of the folder contents add methods failed!");
+            return NO;
+        }
     }
     
     return [self finishAndWriteHandMFiles];
@@ -81,7 +81,6 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     folderContents = [folderContents valueForKey:@"lastPathComponent"];
     
     if (!folderError) {
-        NSLog(@"Folder Contents %@", folderContents);
         return folderContents;
     } else {
         NSLog(@"Error getting contents of folder %@: %@", path, folderError);
@@ -142,7 +141,8 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 
 - (BOOL)folderIsIconOrLaunchImageFolder:(NSString *)folderFullName
 {
-    if ([self rangeOfIconSetExtensionInString:folderFullName].location != NSNotFound) {
+    if ([self rangeOfiOSIconSetExtensionInString:folderFullName].location != NSNotFound ||
+        [self rangeOfMacIconSetExtensionInString:folderFullName].location != NSNotFound) {
         //This is a set of icons.
         return YES;
     } else if ([self rangeofLaunchImageExtensionInString:folderFullName].location != NSNotFound) {
@@ -165,9 +165,14 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 }
 
 
-- (NSRange)rangeOfIconSetExtensionInString:(NSString *)string
+- (NSRange)rangeOfiOSIconSetExtensionInString:(NSString *)string
 {
-    return [string rangeOfString:EXTENSION_ICON_SET];
+    return [string rangeOfString:EXTENSION_IOS_ICON_SET];
+}
+
+- (NSRange)rangeOfMacIconSetExtensionInString:(NSString *)string
+{
+    return [string rangeOfString:EXTENSION_MAC_ICON_SET];
 }
 
 - (NSRange)rangeofLaunchImageExtensionInString:(NSString *)string
@@ -224,6 +229,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     }
     
     [headerComment appendFormat:@"// Generated Automatically Using ImageNamer on %@\n", [self.shortDateFormatter stringFromDate:[NSDate date]]];
+    [headerComment appendString:@"// NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.\n//\n"];
     [headerComment appendFormat:@"// For more information, go to http://github.com/VokalInteractive/ImageNamer\n"];
     
     [headerComment appendString:@"//\n\n"];
@@ -233,12 +239,12 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 
 - (NSString *)categoryName
 {
-    return [NSString stringWithFormat:@"UIImage+AssetCatalog_%@", self.catalogName];
+    return @"UIImage+AssetCatalog";
 }
 
 - (NSString *)categoryNameForFiles
 {
-    return [NSString stringWithFormat:@"UIImage (AssetCatalog_%@)", self.catalogName];
+    return @"UIImage (AssetCatalog)";
 }
 - (NSString *)dotHFileStart
 {
