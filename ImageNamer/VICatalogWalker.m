@@ -50,14 +50,10 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     [self.mFileString appendString:[self dotMFileStart]];
     
     
-    NSError *tlcError = nil;
-    NSArray *topLevelContents = [self.fileManager contentsOfDirectoryAtPath:self.fullCatalogPath error:&tlcError];
-    if (!tlcError) {
-        NSLog(@"Top level contents %@", topLevelContents);
-    } else {
-        NSLog(@"ERROR %@", tlcError);
+    NSArray *topLevelContents = [self contentsOfFolderAtPath:self.fullCatalogPath];
+    if (!topLevelContents) {
         return NO;
-    } 
+    }
     
     [self addPragmaMarkForFolderName:[self.catalogName uppercaseString]];
     if (![self addImagesFromFolderContents:topLevelContents parentFolderPath:self.fullCatalogPath]) {
@@ -66,6 +62,31 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     }
     
     return [self finishAndWriteHandMFiles];
+}
+
+- (NSArray *)contentsOfFolderAtPath:(NSString *)path
+{
+    NSError *folderError = nil;
+    
+    //Since we're converting to an NSURL, use percent-escape encoding or spaces will crash.
+    path = [path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    //Make sure to skip hidden files
+    NSArray *folderContents = [self.fileManager contentsOfDirectoryAtURL:[NSURL URLWithString:path]
+                                                includingPropertiesForKeys:@[NSURLNameKey]
+                                                                   options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                                     error:&folderError];
+    
+    //Get the last path component for each NSURL returned. 
+    folderContents = [folderContents valueForKey:@"lastPathComponent"];
+    
+    if (!folderError) {
+        NSLog(@"Folder Contents %@", folderContents);
+        return folderContents;
+    } else {
+        NSLog(@"Error getting contents of folder %@: %@", path, folderError);
+        return nil;
+    }
 }
 
 
@@ -92,13 +113,15 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     for (NSString *folderFolderName in foldersInFolder) {
         [self addPragmaMarkForFolderName:folderFolderName];
         NSString *folderPath = [parentFolderPath stringByAppendingPathComponent:folderFolderName];
-        NSError *folderError = nil;
-        NSArray *folderContents = [self.fileManager contentsOfDirectoryAtPath:folderPath error:&folderError];
-        if (folderError) {
-            NSLog(@"Error getting contents of folder %@: %@", folderFolderName, folderError);
+
+        NSArray *folderContents = [self contentsOfFolderAtPath:folderPath];
+        
+        if (!folderPath) {
             return NO;
         } else {
-            [self addImagesFromFolderContents:folderContents parentFolderPath:folderPath];
+            if (![self addImagesFromFolderContents:folderContents parentFolderPath:folderPath]) {
+                return NO;
+            }
         }
     }
     
