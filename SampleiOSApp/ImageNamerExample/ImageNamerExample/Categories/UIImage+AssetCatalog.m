@@ -13,6 +13,11 @@
 
 #pragma mark - ICONS
 
++ (UIImage *)ac_LaunchImage
+{
+    return [UIImage imageNamed:@"LaunchImage"];
+}
+
 #pragma mark - Public Domain Icons
 
 + (UIImage *)ac_No_C

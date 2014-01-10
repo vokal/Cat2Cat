@@ -34,7 +34,7 @@
 		338287C418773EC500070BE8 /* ImageNamer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ImageNamer.1; sourceTree = "<group>"; };
 		338287E8187745EB00070BE8 /* VICatalogWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VICatalogWalker.h; sourceTree = "<group>"; };
 		338287E9187745EB00070BE8 /* VICatalogWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VICatalogWalker.m; sourceTree = "<group>"; };
-		338287EE187761BF00070BE8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		33B0A501188089A20058939D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				338287C018773EC500070BE8 /* main.m */,
-				338287EE187761BF00070BE8 /* README.md */,
+				33B0A501188089A20058939D /* README.md */,
 				338287E8187745EB00070BE8 /* VICatalogWalker.h */,
 				338287E9187745EB00070BE8 /* VICatalogWalker.m */,
 				338287C418773EC500070BE8 /* ImageNamer.1 */,

@@ -23,7 +23,8 @@
     [super viewDidLoad];
 
     //Goodbye, imageNamed:!
-    self.images = @[[UIImage ac_No_C],
+    self.images = @[[UIImage ac_LaunchImage],
+                    [UIImage ac_No_C],
                     [UIImage ac_PD_Dark_Circle],
                     [UIImage ac_PD_in_circle],
                     [UIImage ac_SidewaysC],

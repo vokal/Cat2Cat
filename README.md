@@ -13,13 +13,13 @@ ImageNamer goes through provided Asset Catalog files and writes out their conten
 
 After running ImageNamer and adding the category or categories it produces, instead of calling `[UIImage imageNamed:@"backgroundImage"]`, you can now call `[UIImage ac_backgroundImage]` ensuring that you're always going to get the image you think you're getting, and giving you the benefit of autocomplete when you're trying to remember what in the hell you named that icon.  
 
-ImageNamer is compatible with Xcode 5 projects targeting iOS 7 and above.*
-
-\** - possibly also iOS 6, still need to investigate.*
+ImageNamer is compatible with Xcode 5 projects which can leverage Asset Catalogs (i.e., iOS 6 and above).
 
 ##Usage
 ----
-To use image namer, download the zip of this repo using the handy link at the right. Open the .xcodeproj, select the default build scheme, then select Edit Scheme...
+###Directly from Xcode
+
+Download the zip of this repo using the handy link at the right. Open the .xcodeproj, select the default build scheme, then select Edit Scheme...
 
 In the Arguments section, add three Arguments Passed On Launch to the build scheme, in this order:
 
@@ -29,25 +29,27 @@ In the Arguments section, add three Arguments Passed On Launch to the build sche
 
 After you've added your launch arguments, build and run the application. Your new category should be output to the file path you've provided.
 
+###Using a Pre-Compiled Binary And A Build Script
+The current compiled binary can be downloaded from [LINK TO COME].
+
+Please see the [iOS Example App](SampleiOSApp)'s `ImageNamer` aggregate build target for the appropriate run script. 
+
 ##Notes
 ----
 * Any image name containing spaces in the Asset Catalog will have those spaces replaced in the method signature with underscores. For example while "AssetName" would become `ac_AssetName`, "Asset Name" will become `ac_Asset_Name`. 
 
 * The first time you run this application, you will need to drag the category files into your project in order for your project to see the files. On subsequent runs, you will be able to see the changes immediately since Xcode already knows about them.
 
-* Any time after the first time you run ImageNamer, it completely replaces the contents of the files rather than only updating what's changed. Therefore, you should not make any manual changes to these files.
+* Any time after the first time you run `ImageNamer`, it completely replaces the contents of the files rather than only updating what's changed. Therefore, you should not make any manual changes to these files.
 
-* If you have more than one image with the same name, either in the same asset catalog or in different asset catalogs, you will get a "Duplicate Declaration of Method" warning from the compiler when you attempt to compile your main project. 
-
+* If you have more than one image with the same name, either in the same asset catalog or in different asset catalogs, you will get a "Duplicate Declaration of Method" warning from the compiler when you attempt to compile the project which is using `UIImage+AssetCatalog`. 
 
 
 ##Limitations
 ----
-* Does not automatically detect potential name collisions across asset catalogs (Name collisions within an asset catalog will show up as a warning about a redefinition of a method)
+* Does not bail out if it detects characters which are not acceptable in method names. These will cause a build error when you attempt to compile the project which is using UIImage+AssetCatalog.
 
-* .iconset, .appiconset, and .launchimage folders are not supported at the moment - trying to definitively nail down whether they are supported by apple at all in the imageNamed scheme. 
-
-* Requires Xcode to run (though I suppose if you have need of this, you've most likely already got Xcode). 
+* `.iconset` and `.appiconset` folders are not supported, since they are not supported by the `imageNamed:` scheme. If you need to use your app icon in your application, add it as a standard `.imageset`. 
 
 ##Contributors
 ----

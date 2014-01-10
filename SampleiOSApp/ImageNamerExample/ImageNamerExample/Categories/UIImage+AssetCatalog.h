@@ -13,6 +13,8 @@
 
 #pragma mark - ICONS
 
++ (UIImage *)ac_LaunchImage;
+
 #pragma mark - Public Domain Icons
 
 + (UIImage *)ac_No_C;

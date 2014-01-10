@@ -98,7 +98,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     [folderContents enumerateObjectsUsingBlock:^(NSString *folderName, NSUInteger idx, BOOL *stop) {
         if ([self folderIsImageFolder:folderName]) {
             [imagesInFolder addObject:folderContents[idx]];
-        } else if (![self folderIsIconOrLaunchImageFolder:folderName]) {
+        } else if (![self folderIsIconFolder:folderName]) {
             [foldersInFolder addObject:folderContents[idx]];
         } //else do nothing with icon or launch images as they won't load from the asset catalog.
     }];
@@ -130,23 +130,23 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 - (NSString *)folderNameStrippedOfExtension:(NSMutableString *)mutableFolderName;
 {
     NSRange standardImageRange = [self rangeOfStandardImagesetExtensionInString:mutableFolderName];
+    NSRange launchImageRange = [self rangeofLaunchImageExtensionInString:mutableFolderName];
     if (standardImageRange.location != NSNotFound) {
         [mutableFolderName replaceCharactersInRange:standardImageRange withString:@""];
+    } else if (launchImageRange.location != NSNotFound) {
+        [mutableFolderName replaceCharactersInRange:launchImageRange withString:@""];
     } else {
-        NSAssert(NO, @"This folder should only be a standard image.");
+        NSAssert(NO, @"This folder should only be a standard image or a launch image.");
     }
     
     return mutableFolderName;
 }
 
-- (BOOL)folderIsIconOrLaunchImageFolder:(NSString *)folderFullName
+- (BOOL)folderIsIconFolder:(NSString *)folderFullName
 {
     if ([self rangeOfiOSIconSetExtensionInString:folderFullName].location != NSNotFound ||
         [self rangeOfMacIconSetExtensionInString:folderFullName].location != NSNotFound) {
-        //This is a set of icons.
-        return YES;
-    } else if ([self rangeofLaunchImageExtensionInString:folderFullName].location != NSNotFound) {
-        //This is a launch image.
+        //This is a set of icons - these do not respond to imageNamed.
         return YES;
     } else {
         return NO;
@@ -157,6 +157,9 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 {
     if ([self rangeOfStandardImagesetExtensionInString:folderFullName].location != NSNotFound) {
         //This is a standard image set.
+        return YES;
+    } else if ([self rangeofLaunchImageExtensionInString:folderFullName].location != NSNotFound) {
+        //This is a launch image - these respond to imageNamed.
         return YES;
     } else {
         //This is a folder that contains other things.
