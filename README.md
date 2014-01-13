@@ -30,7 +30,7 @@ In the Arguments section, add three Arguments Passed On Launch to the build sche
 After you've added your launch arguments, build and run the application. Your new category should be output to the file path you've provided.
 
 ###Using a Pre-Compiled Binary And A Build Script
-The current compiled binary can be downloaded from [the releases page](releases).
+The current compiled binary can be downloaded from [the releases page](../../releases).
 
 Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build target for the appropriate run script. 
 
