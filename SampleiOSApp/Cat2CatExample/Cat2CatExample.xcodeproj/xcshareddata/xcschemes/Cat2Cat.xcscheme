@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "338287B918773EC500070BE8"
-               BuildableName = "ImageNamer"
+               BlueprintIdentifier = "33B0A4F1188061C00058939D"
+               BuildableName = "Cat2Cat"
                BlueprintName = "Cat2Cat"
-               ReferencedContainer = "container:Cat2Cat.xcodeproj">
+               ReferencedContainer = "container:Cat2CatExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "338287B918773EC500070BE8"
-            BuildableName = "ImageNamer"
-            BlueprintName = "Cat2Cat"
-            ReferencedContainer = "container:Cat2Cat.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -48,29 +39,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "338287B918773EC500070BE8"
-            BuildableName = "ImageNamer"
-            BlueprintName = "Cat2Cat"
-            ReferencedContainer = "container:Cat2Cat.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "/Users/ellenshapiro/Desktop/Cyfr-iOS"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "Cyfr-iOS/Images.xcassets|Cyfr-iOS/Media.xcassets"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "Cyfr-iOS/Categories"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,15 +48,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "338287B918773EC500070BE8"
-            BuildableName = "ImageNamer"
-            BlueprintName = "Cat2Cat"
-            ReferencedContainer = "container:Cat2Cat.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

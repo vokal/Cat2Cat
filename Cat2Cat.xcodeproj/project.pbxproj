@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		337C73DF188472F90078E5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DC188472F90078E5F8 /* main.m */; };
+		337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
-		338287C118773EC500070BE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 338287C018773EC500070BE8 /* main.m */; };
-		338287C518773EC500070BE8 /* Cat2Cat.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 338287C418773EC500070BE8 /* Cat2Cat.1 */; };
-		338287EA187745EB00070BE8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 338287E9187745EB00070BE8 /* VICatalogWalker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,20 +19,19 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				338287C518773EC500070BE8 /* Cat2Cat.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		337C73DA188472E30078E5F8 /* Cat2Cat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Cat2Cat-Prefix.pch"; path = "Cat2Cat/Cat2Cat-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		337C73DB188472F00078E5F8 /* Cat2Cat.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = Cat2Cat.1; path = Cat2Cat/Cat2Cat.1; sourceTree = SOURCE_ROOT; };
+		337C73DC188472F90078E5F8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Cat2Cat/main.m; sourceTree = SOURCE_ROOT; };
+		337C73DD188472F90078E5F8 /* VICatalogWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VICatalogWalker.h; path = Cat2Cat/VICatalogWalker.h; sourceTree = SOURCE_ROOT; };
+		337C73DE188472F90078E5F8 /* VICatalogWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VICatalogWalker.m; path = Cat2Cat/VICatalogWalker.m; sourceTree = SOURCE_ROOT; };
 		338287BA18773EC500070BE8 /* Cat2Cat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cat2Cat; sourceTree = BUILT_PRODUCTS_DIR; };
 		338287BD18773EC500070BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		338287C018773EC500070BE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		338287C318773EC500070BE8 /* Cat2Cat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cat2Cat-Prefix.pch"; sourceTree = "<group>"; };
-		338287C418773EC500070BE8 /* Cat2Cat.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Cat2Cat.1; sourceTree = "<group>"; };
-		338287E8187745EB00070BE8 /* VICatalogWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VICatalogWalker.h; sourceTree = "<group>"; };
-		338287E9187745EB00070BE8 /* VICatalogWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VICatalogWalker.m; sourceTree = "<group>"; };
 		33B0A501188089A20058939D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -77,11 +75,11 @@
 		338287BF18773EC500070BE8 /* ImageNamer */ = {
 			isa = PBXGroup;
 			children = (
-				338287C018773EC500070BE8 /* main.m */,
 				33B0A501188089A20058939D /* README.md */,
-				338287E8187745EB00070BE8 /* VICatalogWalker.h */,
-				338287E9187745EB00070BE8 /* VICatalogWalker.m */,
-				338287C418773EC500070BE8 /* Cat2Cat.1 */,
+				337C73DC188472F90078E5F8 /* main.m */,
+				337C73DD188472F90078E5F8 /* VICatalogWalker.h */,
+				337C73DE188472F90078E5F8 /* VICatalogWalker.m */,
+				337C73DB188472F00078E5F8 /* Cat2Cat.1 */,
 				338287C218773EC500070BE8 /* Supporting Files */,
 			);
 			path = ImageNamer;
@@ -90,7 +88,7 @@
 		338287C218773EC500070BE8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				338287C318773EC500070BE8 /* Cat2Cat-Prefix.pch */,
+				337C73DA188472E30078E5F8 /* Cat2Cat-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -146,8 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				338287C118773EC500070BE8 /* main.m in Sources */,
-				338287EA187745EB00070BE8 /* VICatalogWalker.m in Sources */,
+				337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */,
+				337C73DF188472F90078E5F8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +224,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ImageNamer/Cat2Cat-Prefix.pch";
+				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
 				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Debug;
@@ -235,7 +233,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ImageNamer/Cat2Cat-Prefix.pch";
+				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
 				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Release;
