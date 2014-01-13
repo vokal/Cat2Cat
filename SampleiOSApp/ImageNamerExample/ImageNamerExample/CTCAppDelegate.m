@@ -1,14 +1,14 @@
 //
-//  INEAppDelegate.m
-//  ImageNamerExample
+//  CTCAppDelegate.m
+//  Cat2CatExample
 //
 //  Created by Ellen Shapiro (Vokal) on 1/10/14.
 //  Copyright (c) 2014 Vokal. All rights reserved.
 //
 
-#import "INEAppDelegate.h"
+#import "CTCAppDelegate.h"
 
-@implementation INEAppDelegate
+@implementation CTCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

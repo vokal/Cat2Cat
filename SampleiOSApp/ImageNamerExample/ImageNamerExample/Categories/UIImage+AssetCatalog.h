@@ -1,10 +1,10 @@
 //
 // UIImage+AssetCatalog.h
 //
-// Generated Automatically Using ImageNamer on 1/10/14
+// Generated Automatically Using Cat2Cat on 1/13/14
 // NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.
 //
-// For more information, go to http://github.com/VokalInteractive/ImageNamer
+// For more information, go to http://github.com/VokalInteractive/Cat2Cat
 //
 
 #import <UIKit/UIKit.h>

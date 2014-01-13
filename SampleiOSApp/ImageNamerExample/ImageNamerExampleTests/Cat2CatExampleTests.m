@@ -1,6 +1,6 @@
 //
-//  ImageNamerExampleTests.m
-//  ImageNamerExampleTests
+//  Cat2CatExampleTests.m
+//  Cat2CatExampleTests
 //
 //  Created by Ellen Shapiro (Vokal) on 1/10/14.
 //  Copyright (c) 2014 Vokal. All rights reserved.
@@ -10,11 +10,11 @@
 
 #import "UIImage+AssetCatalog.h"
 
-@interface ImageNamerExampleTests : XCTestCase
+@interface Cat2CatExampleTests : XCTestCase
 
 @end
 
-@implementation ImageNamerExampleTests
+@implementation Cat2CatExampleTests
 
 - (void)setUp
 {

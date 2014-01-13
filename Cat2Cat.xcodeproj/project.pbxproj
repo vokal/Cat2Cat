@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
 		338287C118773EC500070BE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 338287C018773EC500070BE8 /* main.m */; };
-		338287C518773EC500070BE8 /* ImageNamer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 338287C418773EC500070BE8 /* ImageNamer.1 */; };
+		338287C518773EC500070BE8 /* Cat2Cat.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 338287C418773EC500070BE8 /* Cat2Cat.1 */; };
 		338287EA187745EB00070BE8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 338287E9187745EB00070BE8 /* VICatalogWalker.m */; };
 /* End PBXBuildFile section */
 
@@ -20,18 +20,18 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				338287C518773EC500070BE8 /* ImageNamer.1 in CopyFiles */,
+				338287C518773EC500070BE8 /* Cat2Cat.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		338287BA18773EC500070BE8 /* ImageNamer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ImageNamer; sourceTree = BUILT_PRODUCTS_DIR; };
+		338287BA18773EC500070BE8 /* Cat2Cat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cat2Cat; sourceTree = BUILT_PRODUCTS_DIR; };
 		338287BD18773EC500070BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		338287C018773EC500070BE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		338287C318773EC500070BE8 /* ImageNamer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageNamer-Prefix.pch"; sourceTree = "<group>"; };
-		338287C418773EC500070BE8 /* ImageNamer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ImageNamer.1; sourceTree = "<group>"; };
+		338287C318773EC500070BE8 /* Cat2Cat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cat2Cat-Prefix.pch"; sourceTree = "<group>"; };
+		338287C418773EC500070BE8 /* Cat2Cat.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Cat2Cat.1; sourceTree = "<group>"; };
 		338287E8187745EB00070BE8 /* VICatalogWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VICatalogWalker.h; sourceTree = "<group>"; };
 		338287E9187745EB00070BE8 /* VICatalogWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VICatalogWalker.m; sourceTree = "<group>"; };
 		33B0A501188089A20058939D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -61,7 +61,7 @@
 		338287BB18773EC500070BE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				338287BA18773EC500070BE8 /* ImageNamer */,
+				338287BA18773EC500070BE8 /* Cat2Cat */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,7 +81,7 @@
 				33B0A501188089A20058939D /* README.md */,
 				338287E8187745EB00070BE8 /* VICatalogWalker.h */,
 				338287E9187745EB00070BE8 /* VICatalogWalker.m */,
-				338287C418773EC500070BE8 /* ImageNamer.1 */,
+				338287C418773EC500070BE8 /* Cat2Cat.1 */,
 				338287C218773EC500070BE8 /* Supporting Files */,
 			);
 			path = ImageNamer;
@@ -90,7 +90,7 @@
 		338287C218773EC500070BE8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				338287C318773EC500070BE8 /* ImageNamer-Prefix.pch */,
+				338287C318773EC500070BE8 /* Cat2Cat-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -98,9 +98,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		338287B918773EC500070BE8 /* ImageNamer */ = {
+		338287B918773EC500070BE8 /* Cat2Cat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 338287C818773EC500070BE8 /* Build configuration list for PBXNativeTarget "ImageNamer" */;
+			buildConfigurationList = 338287C818773EC500070BE8 /* Build configuration list for PBXNativeTarget "Cat2Cat" */;
 			buildPhases = (
 				338287B618773EC500070BE8 /* Sources */,
 				338287B718773EC500070BE8 /* Frameworks */,
@@ -110,9 +110,9 @@
 			);
 			dependencies = (
 			);
-			name = ImageNamer;
+			name = Cat2Cat;
 			productName = ImageNamer;
-			productReference = 338287BA18773EC500070BE8 /* ImageNamer */;
+			productReference = 338287BA18773EC500070BE8 /* Cat2Cat */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +124,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Vokal;
 			};
-			buildConfigurationList = 338287B518773EC500070BE8 /* Build configuration list for PBXProject "ImageNamer" */;
+			buildConfigurationList = 338287B518773EC500070BE8 /* Build configuration list for PBXProject "Cat2Cat" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -136,7 +136,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				338287B918773EC500070BE8 /* ImageNamer */,
+				338287B918773EC500070BE8 /* Cat2Cat */,
 			);
 		};
 /* End PBXProject section */
@@ -226,8 +226,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ImageNamer/ImageNamer-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ImageNamer/Cat2Cat-Prefix.pch";
+				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Debug;
 		};
@@ -235,15 +235,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ImageNamer/ImageNamer-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ImageNamer/Cat2Cat-Prefix.pch";
+				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		338287B518773EC500070BE8 /* Build configuration list for PBXProject "ImageNamer" */ = {
+		338287B518773EC500070BE8 /* Build configuration list for PBXProject "Cat2Cat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				338287C618773EC500070BE8 /* Debug */,
@@ -252,7 +252,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		338287C818773EC500070BE8 /* Build configuration list for PBXNativeTarget "ImageNamer" */ = {
+		338287C818773EC500070BE8 /* Build configuration list for PBXNativeTarget "Cat2Cat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				338287C918773EC500070BE8 /* Debug */,

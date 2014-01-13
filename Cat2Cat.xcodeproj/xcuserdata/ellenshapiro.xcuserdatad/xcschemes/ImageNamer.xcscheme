@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "338287B918773EC500070BE8"
                BuildableName = "ImageNamer"
-               BlueprintName = "ImageNamer"
-               ReferencedContainer = "container:ImageNamer.xcodeproj">
+               BlueprintName = "Cat2Cat"
+               ReferencedContainer = "container:Cat2Cat.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "338287B918773EC500070BE8"
             BuildableName = "ImageNamer"
-            BlueprintName = "ImageNamer"
-            ReferencedContainer = "container:ImageNamer.xcodeproj">
+            BlueprintName = "Cat2Cat"
+            ReferencedContainer = "container:Cat2Cat.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,8 +53,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "338287B918773EC500070BE8"
             BuildableName = "ImageNamer"
-            BlueprintName = "ImageNamer"
-            ReferencedContainer = "container:ImageNamer.xcodeproj">
+            BlueprintName = "Cat2Cat"
+            ReferencedContainer = "container:Cat2Cat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -85,8 +85,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "338287B918773EC500070BE8"
             BuildableName = "ImageNamer"
-            BlueprintName = "ImageNamer"
-            ReferencedContainer = "container:ImageNamer.xcodeproj">
+            BlueprintName = "Cat2Cat"
+            ReferencedContainer = "container:Cat2Cat.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

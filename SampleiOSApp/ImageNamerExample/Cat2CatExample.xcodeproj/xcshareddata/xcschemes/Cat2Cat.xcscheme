@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "33B0A4F1188061C00058939D"
                BuildableName = "ImageNamer"
-               BlueprintName = "ImageNamer"
-               ReferencedContainer = "container:ImageNamerExample.xcodeproj">
+               BlueprintName = "Cat2Cat"
+               ReferencedContainer = "container:Cat2CatExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -231,9 +231,9 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
         [headerComment appendFormat:@"// %@.m\n//\n", [self categoryName]];
     }
     
-    [headerComment appendFormat:@"// Generated Automatically Using ImageNamer on %@\n", [self.shortDateFormatter stringFromDate:[NSDate date]]];
+    [headerComment appendFormat:@"// Generated Automatically Using Cat2Cat on %@\n", [self.shortDateFormatter stringFromDate:[NSDate date]]];
     [headerComment appendString:@"// NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.\n//\n"];
-    [headerComment appendFormat:@"// For more information, go to http://github.com/VokalInteractive/ImageNamer\n"];
+    [headerComment appendFormat:@"// For more information, go to http://github.com/VokalInteractive/Cat2Cat\n"];
     
     [headerComment appendString:@"//\n\n"];
     

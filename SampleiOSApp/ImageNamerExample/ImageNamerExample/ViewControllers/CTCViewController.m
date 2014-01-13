@@ -1,22 +1,22 @@
 //
-//  INEViewController.m
-//  ImageNamerExample
+//  CTCViewController.m
+//  Cat2CatExample
 //
 //  Created by Ellen Shapiro (Vokal) on 1/10/14.
 //  Copyright (c) 2014 Vokal. All rights reserved.
 //
 
-#import "INEViewController.h"
+#import "CTCViewController.h"
 
 //Import the asset catalog category to get access to your asset catalog methods.
 #import "UIImage+AssetCatalog.h"
 
-@interface INEViewController ()
+@interface CTCViewController ()
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) NSArray *images;
 @end
 
-@implementation INEViewController
+@implementation CTCViewController
 
 - (void)viewDidLoad
 {
