@@ -30,7 +30,7 @@ In the Arguments section, add three Arguments Passed On Launch to the build sche
 After you've added your launch arguments, build and run the application. Your new category should be output to the file path you've provided.
 
 ###Using a Pre-Compiled Binary And A Build Script
-The current compiled binary can be downloaded from [this link](SampleiOSApp/ImageNamerExample/ImageNamerExample/Utilities/Cat2Cat).
+The current compiled binary can be downloaded from [the releases page](releases).
 
 Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build target for the appropriate run script. 
 
@@ -47,7 +47,7 @@ Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build targe
 
 ##Limitations
 ----
-* Does not bail out if it detects characters which are not acceptable in method names. These will cause a build error when you attempt to compile the project which is using UIImage+AssetCatalog.
+* Does not bail out if it detects characters which are not acceptable in method names. These will cause a build error when you attempt to compile the project which is using `UIImage+AssetCatalog`.
 
 * `.iconset` and `.appiconset` folders are not supported, since they are not supported by the `imageNamed:` scheme. If you need to use your app icon in your application, add it as a standard `.imageset`. 
 
