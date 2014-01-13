@@ -282,7 +282,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
         [self.fileManager removeItemAtPath:mPath error:&mDeleteError];
     }
     
-    if (hDeleteError) {
+    if (hDeleteError || mDeleteError) {
         NSLog(@"Error deleting h or m file!\n\nH: %@\n\nM:%@", hDeleteError, mDeleteError);
         return NO;
     }
