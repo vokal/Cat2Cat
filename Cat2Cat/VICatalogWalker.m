@@ -93,16 +93,23 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 -(BOOL)addImagesFromFolderContents:(NSArray *)folderContents parentFolderPath:(NSString *)parentFolderPath
 {
     NSMutableArray *imagesInFolder = [NSMutableArray array];
+    NSMutableArray *launchImagesInFolder = [NSMutableArray array];
     NSMutableArray *foldersInFolder = [NSMutableArray array];
     
     [folderContents enumerateObjectsUsingBlock:^(NSString *folderName, NSUInteger idx, BOOL *stop) {
         if ([self folderIsImageFolder:folderName]) {
             [imagesInFolder addObject:folderContents[idx]];
+        } else if ([self folderIsLaunchImageFolder:folderName]) {
+            [launchImagesInFolder addObject:folderContents[idx]];
         } else if (![self folderIsIconFolder:folderName]) {
             [foldersInFolder addObject:folderContents[idx]];
-        } //else do nothing with icon or launch images as they won't load from the asset catalog.
+        } //else do nothing with icons as they won't load from the asset catalog.
     }];
     
+    for (NSString *launchImageFolderName in launchImagesInFolder) {
+        NSMutableString *mutableFolderName = [NSMutableString stringWithString:launchImageFolderName];
+        [self addLaunchImageNamed:[self folderNameStrippedOfExtension:mutableFolderName]];
+    }
     
     for (NSString *imageFolderName in imagesInFolder) {
         NSMutableString *mutableFolderName = [NSMutableString stringWithString:imageFolderName];
@@ -158,7 +165,15 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     if ([self rangeOfStandardImagesetExtensionInString:folderFullName].location != NSNotFound) {
         //This is a standard image set.
         return YES;
-    } else if ([self rangeofLaunchImageExtensionInString:folderFullName].location != NSNotFound) {
+    } else {
+        //This is a folder that contains other things.
+        return NO;
+    }
+}
+
+- (BOOL)folderIsLaunchImageFolder:(NSString *)folderFullName
+{
+    if ([self rangeofLaunchImageExtensionInString:folderFullName].location != NSNotFound) {
         //This is a launch image - these respond to imageNamed.
         return YES;
     } else {
@@ -166,7 +181,6 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
         return NO;
     }
 }
-
 
 - (NSRange)rangeOfiOSIconSetExtensionInString:(NSString *)string
 {
@@ -202,6 +216,12 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     [self.mFileString appendString:[self methodImplementationForImageName:imageName]];
 }
 
+- (void)addLaunchImageNamed:(NSString *)launchImageName
+{
+    [self.hFileString appendString:[self methodDeclarationForImageName:launchImageName]];
+    [self.mFileString appendString:[self methodImplementationForLaunchImageName:launchImageName]];
+}
+
 - (NSString *)validMethodNameForImageName:(NSString *)imageName
 {
     NSCharacterSet *validMethodCharacters = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"];
@@ -235,6 +255,31 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     return implementationString;
 }
 
+- (NSString *)methodImplementationForLaunchImageName:(NSString *)launchImageName
+{
+    //Launch image final names on device differ based on the target OS. Add handling for this.
+    NSString *methodNameImageName = [self validMethodNameForImageName:launchImageName];
+    NSMutableString *implementationString = [NSMutableString stringWithFormat:@"%@%@%@\n", METHOD_SIGNATURE, FRAMEWORK_PREFIX, methodNameImageName];
+    [implementationString appendString:@"{\n"];
+    [implementationString appendString:@"    //Handling of launch images by operating system version\n"];
+    [implementationString appendString:@"    if ([[[UIDevice currentDevice] systemVersion] integerValue] >= 7) {\n"];
+    [implementationString appendString:@"        if ([[UIScreen mainScreen] bounds].size.height == FOUR_INCH_HEIGHT_POINTS) {\n"];
+    [implementationString appendFormat:@"            return [UIImage imageNamed:@\"%@-700-568h\"];\n", launchImageName];
+    [implementationString appendString:@"        } else {\n"];
+    [implementationString appendFormat:@"            return [UIImage imageNamed:@\"%@-700\"];\n", launchImageName];
+    [implementationString appendString:@"        }\n"];
+    [implementationString appendString:@"    } else {\n"];
+    [implementationString appendString:@"        if ([[UIScreen mainScreen] bounds].size.height == FOUR_INCH_HEIGHT_POINTS) {\n"];
+    [implementationString appendFormat:@"            return [UIImage imageNamed:@\"%@-568h\"];\n", launchImageName];
+    [implementationString appendString:@"        } else {\n"];
+    [implementationString appendFormat:@"            return [UIImage imageNamed:@\"%@\"];\n", launchImageName];
+    [implementationString appendString:@"        }\n"];
+    [implementationString appendString:@"    }\n"];
+    [implementationString appendString:@"}\n\n"];
+    
+    return implementationString;
+}
+
 #pragma mark - Writing the headers of files
 - (NSString *)headerCommentForFile:(BOOL)isDotHFile
 {
@@ -254,6 +299,11 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     return headerComment;
 }
 
+- (NSString *)fourInchHeightDeclaration
+{
+    return @"NSInteger const FOUR_INCH_HEIGHT_POINTS = 568;";
+}
+
 - (NSString *)categoryName
 {
     return @"UIImage+AssetCatalog";
@@ -271,7 +321,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 
 - (NSString *)dotMFileStart
 {
-    return [NSString stringWithFormat:@"#import \"%@.h\"\n\n@implementation %@\n\n", [self categoryName], [self categoryNameForFiles]];
+    return [NSString stringWithFormat:@"#import \"%@.h\"\n\n%@\n\n@implementation %@\n\n", [self categoryName], [self fourInchHeightDeclaration], [self categoryNameForFiles]];
 }
 
 #pragma mark - Finishing the files and writing to file system.
