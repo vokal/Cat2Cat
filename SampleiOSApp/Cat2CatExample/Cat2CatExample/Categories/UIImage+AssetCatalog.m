@@ -1,7 +1,7 @@
 //
 // UIImage+AssetCatalog.m
 //
-// Generated Automatically Using Cat2Cat on 1/13/14
+// Generated Automatically Using Cat2Cat on 1/15/14
 // NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.
 //
 // For more information, go to http://github.com/VokalInteractive/Cat2Cat
@@ -22,17 +22,17 @@
 
 + (UIImage *)ac_No_C
 {
-    return [UIImage imageNamed:@"No C"];
-}
-
-+ (UIImage *)ac_PD_Dark_Circle
-{
-    return [UIImage imageNamed:@"PD Dark Circle"];
+    return [UIImage imageNamed:@"No@C"];
 }
 
 + (UIImage *)ac_PD_in_circle
 {
     return [UIImage imageNamed:@"PD in circle"];
+}
+
++ (UIImage *)ac_PDe_Darka_Circle
+{
+    return [UIImage imageNamed:@"PDéDarkåCircle"];
 }
 
 + (UIImage *)ac_SidewaysC

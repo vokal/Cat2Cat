@@ -36,7 +36,9 @@ Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build targe
 
 ##Notes
 ----
-* Any image name containing spaces in the Asset Catalog will have those spaces replaced in the method signature with underscores. For example while "AssetName" would become `ac_AssetName`, "Asset Name" will become `ac_Asset_Name`. 
+* Any image name containing invalid method name characters (anything other than a-z,A-Z,0-9, and an underscore) in the Asset Catalog will have those characters replaced in the method signature with underscores. For example while "AssetName" would become `ac_AssetName`, "Asset Name" will become `ac_Asset_Name`. 
+
+* Relatedly, characters in image names with accents or other decorations will generally have the letter without the accent then an underscore. For example , an image named "Fiancée Photo" in your asset catalog will be become `ac_Fiance_e_Photo`.
 
 * The first time you run this application, you will need to drag the category files into your project in order for your project to see the files. On subsequent runs, you will be able to see the changes immediately since Xcode already knows about them.
 

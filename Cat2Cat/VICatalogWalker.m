@@ -202,16 +202,30 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     [self.mFileString appendString:[self methodImplementationForImageName:imageName]];
 }
 
+- (NSString *)validMethodNameForImageName:(NSString *)imageName
+{
+    NSCharacterSet *validMethodCharacters = [NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"];
+    
+    NSCharacterSet *invalidMethodCharacters = [validMethodCharacters invertedSet];
+    
+    NSRange invalidCharacterRange = [imageName rangeOfCharacterFromSet:invalidMethodCharacters];
+    while (invalidCharacterRange.location != NSNotFound) {
+        imageName = [imageName stringByReplacingCharactersInRange:invalidCharacterRange withString:@"_"];
+        invalidCharacterRange = [imageName rangeOfCharacterFromSet:invalidMethodCharacters];
+    }
+    
+    return imageName;
+}
+
 - (NSString *)methodDeclarationForImageName:(NSString *)imageName
 {
-    imageName = [imageName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-    
+    imageName = [self validMethodNameForImageName:imageName];
     return [NSString stringWithFormat:@"%@%@%@;\n\n", METHOD_SIGNATURE, FRAMEWORK_PREFIX, imageName];
 }
 
 - (NSString *)methodImplementationForImageName:(NSString *)imageName
 {
-    NSString *methodNameImageName = [imageName stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSString *methodNameImageName = [self validMethodNameForImageName:imageName];
 
     NSMutableString *implementationString = [NSMutableString stringWithFormat:@"%@%@%@\n", METHOD_SIGNATURE, FRAMEWORK_PREFIX, methodNameImageName];
     [implementationString appendString:@"{\n"];
