@@ -73,9 +73,9 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     
     //Make sure to skip hidden files
     NSArray *folderContents = [self.fileManager contentsOfDirectoryAtURL:[NSURL URLWithString:path]
-                                                includingPropertiesForKeys:@[NSURLNameKey]
-                                                                   options:NSDirectoryEnumerationSkipsHiddenFiles
-                                                                     error:&folderError];
+                                              includingPropertiesForKeys:@[NSURLNameKey]
+                                                                 options:NSDirectoryEnumerationSkipsHiddenFiles
+                                                                   error:&folderError];
     
     //Get the last path component for each NSURL returned. 
     folderContents = [folderContents valueForKey:@"lastPathComponent"];
@@ -272,9 +272,9 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 {
     return @"UIImage (AssetCatalog)";
 }
+
 - (NSString *)dotHFileStart
 {
-
     return [NSString stringWithFormat:@"#import <UIKit/UIKit.h>\n\n@interface %@\n\n", [self categoryNameForFiles]];
 }
 
