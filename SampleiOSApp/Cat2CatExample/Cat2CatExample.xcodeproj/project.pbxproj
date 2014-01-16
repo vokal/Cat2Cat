@@ -164,6 +164,7 @@
 		33B0A4BB18805C480058939D /* Cat2CatExample */ = {
 			isa = PBXGroup;
 			children = (
+				33EBB6F7188746D600F876E1 /* iPad */,
 				337C73F31884748E0078E5F8 /* Icons.xcassets */,
 				337C73F41884748E0078E5F8 /* Photos.xcassets */,
 				337C73FA188474C30078E5F8 /* CTCAppDelegate.h */,
@@ -206,6 +207,13 @@
 				337C73E3188474020078E5F8 /* Cat2CatExampleTests-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		33EBB6F7188746D600F876E1 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,7 +466,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cat2CatExample/Cat2CatExample-Prefix.pch";
 				INFOPLIST_FILE = "Cat2CatExample/Cat2CatExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Cat2CatExample;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -471,7 +481,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cat2CatExample/Cat2CatExample-Prefix.pch";
 				INFOPLIST_FILE = "Cat2CatExample/Cat2CatExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Cat2CatExample;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -53,6 +53,8 @@ Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build targe
 
 * `.iconset` and `.appiconset` folders are not supported, since they are not supported by the `imageNamed:` scheme. If you need to use your app icon in your application, add it as a standard `.imageset`. 
 
+* `.launchimage` handling is a bit fragile due to the way Apple renames the images as they are dumped into the final bundle by adding an additional "700" to the file name as it is created. Right now the workaround is to do version checks around this, but if anyone's got a better solution (other than "Just put your launch images into a normal image set"), I'd love to hear it. 
+
 ##Contributors
 ----
 * [Ellen Shapiro](https://github.com/designatednerd)

@@ -1,14 +1,20 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x",
       "filename" : "icon_8233@1x.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "2x",
       "filename" : "icon_8233@2x.png"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "icon_8233@2xred.png",
+      "subtype" : "retina4",
+      "scale" : "2x"
     }
   ],
   "info" : {

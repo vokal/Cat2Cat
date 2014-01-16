@@ -93,4 +93,22 @@
     XCTAssertNotNil([UIImage ac_PDe_Darka_Circle], @"PD in dark circle was nil");
 }
 
+
+/**
+ * Tests that the launch image is the appropriate size and scale for the device or simulator
+ * currently being tested. 
+ *
+ * TODO: Figure out how to mock pulling different devices in a single test.
+ */
+- (void)testLaunchImageIsAppropriateSizeAndScaleForCurrentDevice
+{
+    UIImage *launchImage = [UIImage ac_LaunchImage];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    
+    XCTAssertEqual(launchImage.size.width, screenBounds.size.width, @"Launch Image not equal width to screen!");
+    XCTAssertEqual(launchImage.size.height, screenBounds.size.height, @"Launch Image not equal height to screen!");
+    XCTAssertEqual(launchImage.scale, screenScale, @"Launch image not equal scale to screen!");
+}
+
 @end
