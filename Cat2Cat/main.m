@@ -15,13 +15,20 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         
+        if (argc < 5) {
+            NSLog(@"FAIL! Missing at least one argument!");
+            return 1;
+        }
+        
         const char * projectPath = argv[1];
         const char * catalogPaths = argv[2];
         const char * categoryPath = argv[3];
+        const char * outputType = argv[4];
         
         NSLog(@"Project path: %s", projectPath);
         NSLog(@"Catalog paths %s", catalogPaths);
         NSLog(@"Category path %s", categoryPath);
+        NSLog(@"Output type %s", outputType);
         
         NSString *catalogPathsString = [NSString stringWithFormat:@"%s", catalogPaths];
         NSArray *paths = [catalogPathsString componentsSeparatedByString:@"|"];
@@ -31,11 +38,14 @@ int main(int argc, const char * argv[])
             NSString *fullCatalogPath = [NSString stringWithFormat:@"%s/%@", projectPath, catalogPath];
             [fullCatalogPaths addObject:fullCatalogPath];
         }
+        
+        NSString *outputTypeString = [NSString stringWithFormat:@"%s", outputType];
+        NSInteger outputTypeValue = [outputTypeString integerValue];
 
         VICatalogWalker *walkerTexasRanger = [[VICatalogWalker alloc] init];
         
         NSString *categoryOutputPath = [NSString stringWithFormat:@"%s/%s", projectPath, categoryPath];
-        if (![walkerTexasRanger walkCatalogs:fullCatalogPaths categoryOutputPath:categoryOutputPath]) {
+        if (![walkerTexasRanger walkCatalogs:fullCatalogPaths categoryOutputPath:categoryOutputPath outputType:outputTypeValue]) {
             NSLog(@"\n\n\n!!!!ERROR CREATING YOUR FILES - PLEASE CHECK THE CONSOLE FOR OUTPUT!!!\n\n\n");
             return 1;
         } else {

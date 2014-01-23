@@ -21,12 +21,14 @@ static NSString * const EXTENSION_IOS_ICON_SET = @".appiconset";
 static NSString * const EXTENSION_LAUNCH_IMAGE = @".launchimage";
 static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
 static NSString * const EXTENSION_CATALOG = @".xcassets";
-static NSString * const METHOD_SIGNATURE = @"+ (UIImage *)";
+static NSString * const METHOD_SIGNATURE_FORMAT = @"+ (%@ *)";
 static NSString * const FRAMEWORK_PREFIX = @"ac_";
+static NSString * const CLASS_NAME_IOS = @"UIImage";
+static NSString * const CLASS_NAME_MAC = @"NSImage";
 
 @implementation VICatalogWalker
 
-- (BOOL)walkCatalogs:(NSArray *)fullCatalogPaths categoryOutputPath:(NSString *)categoryPath
+- (BOOL)walkCatalogs:(NSArray *)fullCatalogPaths categoryOutputPath:(NSString *)categoryPath outputType:(VICatalogWalkerOutputType)outputType
 {
     NSLog(@"Walking catalogs %@", fullCatalogPaths);
     
@@ -37,12 +39,38 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     self.shortDateFormatter = [[NSDateFormatter alloc] init];
     self.shortDateFormatter.dateStyle = NSDateFormatterShortStyle;
     
-    //Start the .h and .m files with comments
-    self.hFileString = [NSMutableString stringWithString:[self headerCommentForFile:YES]];
-    [self.hFileString appendString:[self dotHFileStart]];
+    BOOL success = NO;
     
-    self.mFileString = [NSMutableString stringWithString:[self headerCommentForFile:NO]];
-    [self.mFileString appendString:[self dotMFileStart]];
+    switch (outputType) {
+        case VICatalogWalkerOutputTypeiOSOnly:
+            success = [self writeHandMFilesForClass:CLASS_NAME_IOS fullCatalogPaths:fullCatalogPaths];
+            break;
+        case VICatalogWalkerOutputTypeMacOnly:
+            success = [self writeHandMFilesForClass:CLASS_NAME_MAC fullCatalogPaths:fullCatalogPaths];
+            break;
+        case VICatalogWalkerOutputTypeiOSAndMac:
+            success = [self writeHandMFilesForClass:CLASS_NAME_IOS fullCatalogPaths:fullCatalogPaths] &&
+                [self writeHandMFilesForClass:CLASS_NAME_MAC fullCatalogPaths:fullCatalogPaths];
+            break;
+        default:
+            NSLog(@"Unhandled output type %ld in catalog walker!!", outputType);
+            break;
+    }
+    
+
+    return success;
+}
+
+- (BOOL)writeHandMFilesForClass:(NSString *)className fullCatalogPaths:(NSArray *)fullCatalogPaths
+{
+    NSLog(@"Creating category on %@", className);
+    
+    //Start the .h and .m files with comments
+    self.hFileString = [NSMutableString stringWithString:[self headerCommentForFile:YES className:className]];
+    [self.hFileString appendString:[self dotHFileStartForClass:className]];
+    
+    self.mFileString = [NSMutableString stringWithString:[self headerCommentForFile:NO className:className]];
+    [self.mFileString appendString:[self dotMFileStartForClass:className]];
     
     for (NSString *fullCatalogPath in fullCatalogPaths) {
         NSString *catalogName = [fullCatalogPath lastPathComponent];
@@ -55,14 +83,15 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
         }
         
         [self addPragmaMarkForFolderName:[catalogName uppercaseString]];
-        if (![self addImagesFromFolderContents:topLevelContents parentFolderPath:fullCatalogPath]) {
+        if (![self addImagesFromFolderContents:topLevelContents parentFolderPath:fullCatalogPath className:className]) {
             NSLog(@"One of the folder contents add methods failed!");
             return NO;
         }
     }
     
-    return [self finishAndWriteHandMFiles];
+    return [self finishAndWriteHandMFilesForClass:className];
 }
+
 
 - (NSArray *)contentsOfFolderAtPath:(NSString *)path
 {
@@ -90,7 +119,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
 
 
 #pragma mark - Looping through folders
--(BOOL)addImagesFromFolderContents:(NSArray *)folderContents parentFolderPath:(NSString *)parentFolderPath
+-(BOOL)addImagesFromFolderContents:(NSArray *)folderContents parentFolderPath:(NSString *)parentFolderPath className:(NSString *)className
 {
     NSMutableArray *imagesInFolder = [NSMutableArray array];
     NSMutableArray *foldersInFolder = [NSMutableArray array];
@@ -106,7 +135,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     
     for (NSString *imageFolderName in imagesInFolder) {
         NSMutableString *mutableFolderName = [NSMutableString stringWithString:imageFolderName];
-        [self addImageNamed:[self folderNameStrippedOfExtension:mutableFolderName]];
+        [self addImageNamed:[self folderNameStrippedOfExtension:mutableFolderName] className:className];
     }
     
     for (NSString *folderFolderName in foldersInFolder) {
@@ -118,7 +147,7 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
         if (!folderPath) {
             return NO;
         } else {
-            if (![self addImagesFromFolderContents:folderContents parentFolderPath:folderPath]) {
+            if (![self addImagesFromFolderContents:folderContents parentFolderPath:folderPath className:className]) {
                 return NO;
             }
         }
@@ -200,10 +229,10 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     [self.mFileString appendString:pragmaMark];
 }
 
-- (void)addImageNamed:(NSString *)imageName
+- (void)addImageNamed:(NSString *)imageName className:(NSString *)className
 {
-    [self.hFileString appendString:[self methodDeclarationForImageName:imageName]];
-    [self.mFileString appendString:[self methodImplementationForImageName:imageName]];
+    [self.hFileString appendString:[self methodDeclarationForImageName:imageName className:className]];
+    [self.mFileString appendString:[self methodImplementationForImageName:imageName className:className]];
 }
 
 - (NSString *)validMethodNameForImageName:(NSString *)imageName
@@ -221,32 +250,37 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     return imageName;
 }
 
-- (NSString *)methodDeclarationForImageName:(NSString *)imageName
+- (NSString *)methodSignatureForClassName:(NSString *)className
 {
-    imageName = [self validMethodNameForImageName:imageName];
-    return [NSString stringWithFormat:@"%@%@%@;\n\n", METHOD_SIGNATURE, FRAMEWORK_PREFIX, imageName];
+    return [NSString stringWithFormat:METHOD_SIGNATURE_FORMAT, className];
 }
 
-- (NSString *)methodImplementationForImageName:(NSString *)imageName
+- (NSString *)methodDeclarationForImageName:(NSString *)imageName className:(NSString *)className
+{
+    imageName = [self validMethodNameForImageName:imageName];
+    return [NSString stringWithFormat:@"%@%@%@;\n\n", [self methodSignatureForClassName:className], FRAMEWORK_PREFIX, imageName];
+}
+
+- (NSString *)methodImplementationForImageName:(NSString *)imageName className:(NSString *)className
 {
     NSString *methodNameImageName = [self validMethodNameForImageName:imageName];
 
-    NSMutableString *implementationString = [NSMutableString stringWithFormat:@"%@%@%@\n", METHOD_SIGNATURE, FRAMEWORK_PREFIX, methodNameImageName];
+    NSMutableString *implementationString = [NSMutableString stringWithFormat:@"%@%@%@\n", [self methodSignatureForClassName:className], FRAMEWORK_PREFIX, methodNameImageName];
     [implementationString appendString:@"{\n"];
-    [implementationString appendFormat:@"    return [UIImage imageNamed:@\"%@\"];\n", imageName];
+    [implementationString appendFormat:@"    return [%@ imageNamed:@\"%@\"];\n", className, imageName];
     [implementationString appendString:@"}\n\n"];
     
     return implementationString;
 }
 
 #pragma mark - Writing the headers of files
-- (NSString *)headerCommentForFile:(BOOL)isDotHFile
+- (NSString *)headerCommentForFile:(BOOL)isDotHFile className:(NSString *)className
 {
     NSMutableString *headerComment = [NSMutableString stringWithString:@"//\n"];
     if (isDotHFile) {
-        [headerComment appendFormat:@"// %@.h\n//\n", [self categoryName]];
+        [headerComment appendFormat:@"// %@.h\n//\n", [self categoryNameForClass:className]];
     } else {
-        [headerComment appendFormat:@"// %@.m\n//\n", [self categoryName]];
+        [headerComment appendFormat:@"// %@.m\n//\n", [self categoryNameForClass:className]];
     }
     
     [headerComment appendFormat:@"// Generated Automatically Using Cat2Cat on %@\n", [self.shortDateFormatter stringFromDate:[NSDate date]]];
@@ -263,36 +297,36 @@ static NSString * const FRAMEWORK_PREFIX = @"ac_";
     return @"NSInteger const FOUR_INCH_HEIGHT_POINTS = 568;";
 }
 
-- (NSString *)categoryName
+- (NSString *)categoryNameForClass:(NSString *)className
 {
-    return @"UIImage+AssetCatalog";
+    return [NSString stringWithFormat:@"%@+AssetCatalog", className];
 }
 
-- (NSString *)categoryNameForFiles
+- (NSString *)categoryNameForFilesForClass:(NSString *)className
 {
-    return @"UIImage (AssetCatalog)";
+    return [NSString stringWithFormat:@"%@ (AssetCatalog)", className];;
 }
 
-- (NSString *)dotHFileStart
+- (NSString *)dotHFileStartForClass:(NSString *)className
 {
-    return [NSString stringWithFormat:@"#import <UIKit/UIKit.h>\n\n@interface %@\n\n", [self categoryNameForFiles]];
+    return [NSString stringWithFormat:@"#import <UIKit/UIKit.h>\n\n@interface %@\n\n", [self categoryNameForFilesForClass:className]];
 }
 
-- (NSString *)dotMFileStart
+- (NSString *)dotMFileStartForClass:(NSString *)className
 {
-    return [NSString stringWithFormat:@"#import \"%@.h\"\n\n%@\n\n@implementation %@\n\n", [self categoryName], [self fourInchHeightDeclaration], [self categoryNameForFiles]];
+    return [NSString stringWithFormat:@"#import \"%@.h\"\n\n%@\n\n@implementation %@\n\n", [self categoryNameForClass:className], [self fourInchHeightDeclaration], [self categoryNameForFilesForClass:className]];
 }
 
 #pragma mark - Finishing the files and writing to file system.
 
--(BOOL)finishAndWriteHandMFiles
+-(BOOL)finishAndWriteHandMFilesForClass:(NSString *)className
 {
     NSString *end = @"\n@end\n";
     [self.hFileString appendString:end];
     [self.mFileString appendString:end];
     
-    NSString *hPath = [self.categoryOutputPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.h", [self categoryName]]];
-    NSString *mPath = [self.categoryOutputPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.m", [self categoryName]]];
+    NSString *hPath = [self.categoryOutputPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.h", [self categoryNameForClass:className]]];
+    NSString *mPath = [self.categoryOutputPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.m", [self categoryNameForClass:className]]];
     
     //Delete old files
     NSError *hDeleteError = nil;
