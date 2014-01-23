@@ -52,7 +52,9 @@ Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build targe
 ----
 * Does not bail out if it detects characters which are not acceptable in method names. These will cause a build error when you attempt to compile the project which is using `UIImage+AssetCatalog` or `NSImage+AssetCatalog`.
 
-* `.launchimage`, `.iconset` and `.appiconset` folders are not supported, since they are not directly supported by the `imageNamed:` scheme. If you need to use your app icon or launch image in your application, please add it as a standard `.imageset`. 
+* `.launchimage`, `.iconset` and `.appiconset` folders are not supported on iOS, since they are not directly supported by `UIImage`'s `imageNamed:` scheme. If you need to use your app icon or launch image in your application, please add it as a standard `.imageset`. 
+
+* `.iconset` and `.appiconset` *do* return images on OS X, but they appear to be of a single size. Would love to hear more from Mac developers about whether this would be the expected behavior if you wanted to access your App Icon. Support has been added for what does get returned for now. 
 
 
 ##Contributors

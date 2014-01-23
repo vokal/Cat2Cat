@@ -3,7 +3,7 @@ Cat2CatExample - iOS
 =======================
 ----
 
-Here is an example of how `Cat2Cat` can be used to make getting UIImages out of an asset catalog far less painful.
+Here is an example of how `Cat2Cat` can be used to make getting `UIImages` out of an asset catalog far less painful.
 
 Included are:
  
