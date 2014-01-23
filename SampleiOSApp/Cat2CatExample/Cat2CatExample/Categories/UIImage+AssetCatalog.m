@@ -9,8 +9,6 @@
 
 #import "UIImage+AssetCatalog.h"
 
-NSInteger const FOUR_INCH_HEIGHT_POINTS = 568;
-
 @implementation UIImage (AssetCatalog)
 
 #pragma mark - ICONS

@@ -33,7 +33,7 @@
  */
 - (void)testIconsDoNotReturnImages
 {
-    XCTAssertNil([UIImage imageNamed:@"AppIcon"], @"Icon is not nil!");
+    XCTAssertNil([UIImage imageNamed:@"AppIcon"], @"AppIcon is not nil!");
 }
 
 /**
