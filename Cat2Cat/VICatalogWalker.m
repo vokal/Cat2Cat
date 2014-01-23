@@ -16,8 +16,8 @@
 @property (nonatomic, strong) NSDateFormatter *shortDateFormatter;
 @end
 
-static NSString * const EXTENSION_MAC_ICON_SET = @".iconset";
-static NSString * const EXTENSION_IOS_ICON_SET = @".appiconset";
+static NSString * const EXTENSION_OLD_MAC_ICON_SET = @".iconset";
+static NSString * const EXTENSION_IOS_AND_NEW_MAC_ICON_SET = @".appiconset";
 static NSString * const EXTENSION_LAUNCH_IMAGE = @".launchimage";
 static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
 static NSString * const EXTENSION_CATALOG = @".xcassets";
@@ -25,6 +25,8 @@ static NSString * const METHOD_SIGNATURE_FORMAT = @"+ (%@ *)";
 static NSString * const FRAMEWORK_PREFIX = @"ac_";
 static NSString * const CLASS_NAME_IOS = @"UIImage";
 static NSString * const CLASS_NAME_MAC = @"NSImage";
+static NSString * const KIT_NAME_IOS = @"UIKit/UIKit.h";
+static NSString * const KIT_NAME_MAC = @"AppKit/AppKit.h";
 
 @implementation VICatalogWalker
 
@@ -123,21 +125,36 @@ static NSString * const CLASS_NAME_MAC = @"NSImage";
 {
     NSMutableArray *imagesInFolder = [NSMutableArray array];
     NSMutableArray *foldersInFolder = [NSMutableArray array];
+    NSMutableArray *iconsInFolder = [NSMutableArray array];
     
     [folderContents enumerateObjectsUsingBlock:^(NSString *folderName, NSUInteger idx, BOOL *stop) {
-        if ([self folderIsImageFolder:folderName]) {
+        if ([self folderIsImageFolder:folderName]) { //is an .imageset
             [imagesInFolder addObject:folderContents[idx]];
-        }else if (![self folderIsIconFolder:folderName] && //Not an icon folder and
+        } else if ([self folderIsOldMacIconFolder:folderName] || //is an old Mac .iconset
+                   [self folderIsIconFolder:folderName]) { //is a new Mac or iOS .appiconset
+            [iconsInFolder addObject:folderName];
+        } else if (![self folderIsIconFolder:folderName] && //Not an iOS icon folder and
                    ![self folderIsLaunchImageFolder:folderName]) { //Not a launch image folder.
             [foldersInFolder addObject:folderContents[idx]];
-        } //else do nothing with icons or launch images as they won't load properly from the asset catalog.
+        } //else do nothing with iOS icons or launch images as they won't load properly from the asset catalog.
     }];
     
+    
+    //Add icons only to NSImage.
+    if ([className isEqualToString:CLASS_NAME_MAC]) {
+        for (NSString *macIconFolderName in iconsInFolder) {
+            NSMutableString *mutableFolderName = [NSMutableString stringWithString:macIconFolderName];
+            [self addImageNamed:[self folderNameStrippedOfExtension:mutableFolderName] className:className];
+        }
+    }
+    
+    //Add .imagesets
     for (NSString *imageFolderName in imagesInFolder) {
         NSMutableString *mutableFolderName = [NSMutableString stringWithString:imageFolderName];
         [self addImageNamed:[self folderNameStrippedOfExtension:mutableFolderName] className:className];
     }
     
+    //Loop through folders. 
     for (NSString *folderFolderName in foldersInFolder) {
         [self addPragmaMarkForFolderName:folderFolderName];
         NSString *folderPath = [parentFolderPath stringByAppendingPathComponent:folderFolderName];
@@ -159,10 +176,16 @@ static NSString * const CLASS_NAME_MAC = @"NSImage";
 - (NSString *)folderNameStrippedOfExtension:(NSMutableString *)mutableFolderName;
 {
     NSRange standardImageRange = [self rangeOfStandardImagesetExtensionInString:mutableFolderName];
+    NSRange macIconRange = [self rangeOfMacIconSetExtensionInString:mutableFolderName];
+    NSRange iconRange = [self rangeOfIconSetExtensionInString:mutableFolderName];
     if (standardImageRange.location != NSNotFound) {
         [mutableFolderName replaceCharactersInRange:standardImageRange withString:@""];
+    } else if (macIconRange.location != NSNotFound) {
+        [mutableFolderName replaceCharactersInRange:macIconRange withString:@""];
+    } else if (iconRange.location != NSNotFound) {
+        [mutableFolderName replaceCharactersInRange:iconRange withString:@""];
     } else {
-        NSAssert(NO, @"This folder should only be a standard image.");
+        NSAssert(NO, @"This folder should only be a standard image or a Mac icon.");
     }
     
     return mutableFolderName;
@@ -170,9 +193,17 @@ static NSString * const CLASS_NAME_MAC = @"NSImage";
 
 - (BOOL)folderIsIconFolder:(NSString *)folderFullName
 {
-    if ([self rangeOfiOSIconSetExtensionInString:folderFullName].location != NSNotFound ||
-        [self rangeOfMacIconSetExtensionInString:folderFullName].location != NSNotFound) {
-        //This is a set of icons - these do not respond to imageNamed.
+    if ([self rangeOfIconSetExtensionInString:folderFullName].location != NSNotFound) {
+        //This is a set of icons - these do not respond to imageNamed on iOS, but do on Mac.
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)folderIsOldMacIconFolder:(NSString *)folderFullName
+{
+    if ([self rangeOfMacIconSetExtensionInString:folderFullName].location != NSNotFound) {
         return YES;
     } else {
         return NO;
@@ -201,14 +232,14 @@ static NSString * const CLASS_NAME_MAC = @"NSImage";
     }
 }
 
-- (NSRange)rangeOfiOSIconSetExtensionInString:(NSString *)string
+- (NSRange)rangeOfIconSetExtensionInString:(NSString *)string
 {
-    return [string rangeOfString:EXTENSION_IOS_ICON_SET];
+    return [string rangeOfString:EXTENSION_IOS_AND_NEW_MAC_ICON_SET];
 }
 
 - (NSRange)rangeOfMacIconSetExtensionInString:(NSString *)string
 {
-    return [string rangeOfString:EXTENSION_MAC_ICON_SET];
+    return [string rangeOfString:EXTENSION_OLD_MAC_ICON_SET];
 }
 
 - (NSRange)rangeofLaunchImageExtensionInString:(NSString *)string
@@ -292,11 +323,6 @@ static NSString * const CLASS_NAME_MAC = @"NSImage";
     return headerComment;
 }
 
-- (NSString *)fourInchHeightDeclaration
-{
-    return @"NSInteger const FOUR_INCH_HEIGHT_POINTS = 568;";
-}
-
 - (NSString *)categoryNameForClass:(NSString *)className
 {
     return [NSString stringWithFormat:@"%@+AssetCatalog", className];
@@ -307,14 +333,25 @@ static NSString * const CLASS_NAME_MAC = @"NSImage";
     return [NSString stringWithFormat:@"%@ (AssetCatalog)", className];;
 }
 
+- (NSString *)kitNameForClass:(NSString *)className
+{
+    if ([className isEqualToString:CLASS_NAME_IOS]) {
+        return KIT_NAME_IOS;
+    } else if ([className isEqualToString:CLASS_NAME_MAC]) {
+        return KIT_NAME_MAC;
+    } else {
+        return nil;
+    }
+}
+
 - (NSString *)dotHFileStartForClass:(NSString *)className
 {
-    return [NSString stringWithFormat:@"#import <UIKit/UIKit.h>\n\n@interface %@\n\n", [self categoryNameForFilesForClass:className]];
+    return [NSString stringWithFormat:@"#import <%@>\n\n@interface %@\n\n", [self kitNameForClass:className], [self categoryNameForFilesForClass:className]];
 }
 
 - (NSString *)dotMFileStartForClass:(NSString *)className
 {
-    return [NSString stringWithFormat:@"#import \"%@.h\"\n\n%@\n\n@implementation %@\n\n", [self categoryNameForClass:className], [self fourInchHeightDeclaration], [self categoryNameForFilesForClass:className]];
+    return [NSString stringWithFormat:@"#import \"%@.h\"\n\n@implementation %@\n\n", [self categoryNameForClass:className], [self categoryNameForFilesForClass:className]];
 }
 
 #pragma mark - Finishing the files and writing to file system.
