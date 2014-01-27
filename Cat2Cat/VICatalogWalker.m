@@ -358,7 +358,7 @@ static NSString * const KIT_NAME_MAC = @"AppKit/AppKit.h";
 
 -(BOOL)finishAndWriteHandMFilesForClass:(NSString *)className
 {
-    NSString *end = @"\n@end\n";
+    NSString *end = @"@end\n";
     [self.hFileString appendString:end];
     [self.mFileString appendString:end];
     
