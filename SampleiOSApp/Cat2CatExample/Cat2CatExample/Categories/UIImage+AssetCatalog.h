@@ -1,7 +1,7 @@
 //
 // UIImage+AssetCatalog.h
 //
-// Generated Automatically Using Cat2Cat on 1/16/14
+// Generated Automatically Using Cat2Cat on 1/27/14
 // NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.
 //
 // For more information, go to http://github.com/VokalInteractive/Cat2Cat
@@ -32,6 +32,5 @@
 + (UIImage *)ac_Venice_Beach;
 
 + (UIImage *)ac_Wrigley_Field;
-
 
 @end

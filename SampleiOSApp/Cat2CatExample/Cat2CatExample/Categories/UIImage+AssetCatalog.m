@@ -1,15 +1,13 @@
 //
 // UIImage+AssetCatalog.m
 //
-// Generated Automatically Using Cat2Cat on 1/16/14
+// Generated Automatically Using Cat2Cat on 1/27/14
 // NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.
 //
 // For more information, go to http://github.com/VokalInteractive/Cat2Cat
 //
 
 #import "UIImage+AssetCatalog.h"
-
-NSInteger const FOUR_INCH_HEIGHT_POINTS = 568;
 
 @implementation UIImage (AssetCatalog)
 
@@ -58,6 +56,5 @@ NSInteger const FOUR_INCH_HEIGHT_POINTS = 568;
 {
     return [UIImage imageNamed:@"Wrigley Field"];
 }
-
 
 @end
