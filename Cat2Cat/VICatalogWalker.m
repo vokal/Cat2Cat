@@ -314,7 +314,7 @@ static NSString * const KIT_NAME_MAC = @"AppKit/AppKit.h";
         [headerComment appendFormat:@"// %@.m\n//\n", [self categoryNameForClass:className]];
     }
     
-    [headerComment appendString:@"// Generated Automatically Using Cat2Cat"];
+    [headerComment appendString:@"// Generated Automatically Using Cat2Cat\n"];
     [headerComment appendString:@"// NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.\n//\n"];
     [headerComment appendFormat:@"// For more information, go to http://github.com/VokalInteractive/Cat2Cat\n"];
     
