@@ -10,6 +10,9 @@
 		337C73DF188472F90078E5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DC188472F90078E5F8 /* main.m */; };
 		337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
+		71FF00E11A003B4200B3F38D /* VOKTemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */; };
+		71FF00E41A003B5600B3F38D /* VOKAssetCatalogFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */; };
+		71FF00E71A003B6000B3F38D /* VOKAssetCatalogImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E61A003B6000B3F38D /* VOKAssetCatalogImageModel.m */; };
 		EE0247AB4CA61B20873E6415 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1E1AA0184C17C96B870929 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,12 @@
 		338287BA18773EC500070BE8 /* Cat2Cat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cat2Cat; sourceTree = BUILT_PRODUCTS_DIR; };
 		338287BD18773EC500070BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33B0A501188089A20058939D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		71FF00DF1A003B3E00B3F38D /* VOKTemplateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VOKTemplateModel.h; sourceTree = "<group>"; };
+		71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VOKTemplateModel.m; sourceTree = "<group>"; };
+		71FF00E21A003B5600B3F38D /* VOKAssetCatalogFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKAssetCatalogFolderModel.h; sourceTree = "<group>"; };
+		71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKAssetCatalogFolderModel.m; sourceTree = "<group>"; };
+		71FF00E51A003B6000B3F38D /* VOKAssetCatalogImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKAssetCatalogImageModel.h; sourceTree = "<group>"; };
+		71FF00E61A003B6000B3F38D /* VOKAssetCatalogImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKAssetCatalogImageModel.m; sourceTree = "<group>"; };
 		D92AAE9B5CFD31F7884B4371 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DA441151F5E8154C5647C333 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +95,7 @@
 				337C73DC188472F90078E5F8 /* main.m */,
 				337C73DD188472F90078E5F8 /* VICatalogWalker.h */,
 				337C73DE188472F90078E5F8 /* VICatalogWalker.m */,
+				71FF00DE1A003B3E00B3F38D /* Templating */,
 				337C73DB188472F00078E5F8 /* Cat2Cat.1 */,
 				338287C218773EC500070BE8 /* Supporting Files */,
 			);
@@ -99,6 +109,19 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		71FF00DE1A003B3E00B3F38D /* Templating */ = {
+			isa = PBXGroup;
+			children = (
+				71FF00E21A003B5600B3F38D /* VOKAssetCatalogFolderModel.h */,
+				71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */,
+				71FF00E51A003B6000B3F38D /* VOKAssetCatalogImageModel.h */,
+				71FF00E61A003B6000B3F38D /* VOKAssetCatalogImageModel.m */,
+				71FF00DF1A003B3E00B3F38D /* VOKTemplateModel.h */,
+				71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */,
+			);
+			path = Templating;
+			sourceTree = SOURCE_ROOT;
 		};
 		EB0EBE335A298BE14F0158BF /* Pods */ = {
 			isa = PBXGroup;
@@ -195,8 +218,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71FF00E71A003B6000B3F38D /* VOKAssetCatalogImageModel.m in Sources */,
 				337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */,
 				337C73DF188472F90078E5F8 /* main.m in Sources */,
+				71FF00E11A003B4200B3F38D /* VOKTemplateModel.m in Sources */,
+				71FF00E41A003B5600B3F38D /* VOKAssetCatalogFolderModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
