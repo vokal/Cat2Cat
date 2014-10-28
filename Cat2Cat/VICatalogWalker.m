@@ -15,7 +15,6 @@
 @interface VICatalogWalker()
 @property (nonatomic, strong) NSString *categoryOutputPath;
 @property (nonatomic, strong) NSFileManager *fileManager;
-@property (nonatomic, strong) NSDateFormatter *shortDateFormatter;
 @end
 
 static NSString * const EXTENSION_OLD_MAC_ICON_SET = @".iconset";
@@ -33,21 +32,20 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
     self.categoryOutputPath = categoryPath;
     self.fileManager = [NSFileManager defaultManager];
     
-    self.shortDateFormatter = [[NSDateFormatter alloc] init];
-    self.shortDateFormatter.dateStyle = NSDateFormatterShortStyle;
-    
     BOOL success = NO;
+    
+    VOKTemplateModel *model = [self modelForFullCatalogPaths:fullCatalogPaths];
     
     switch (outputType) {
         case VICatalogWalkerOutputTypeiOSOnly:
-            success = [self writeHandMFilesForClass:VOKTemplatingClassNameIOS fullCatalogPaths:fullCatalogPaths];
+            success = [self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model];
             break;
         case VICatalogWalkerOutputTypeMacOnly:
-            success = [self writeHandMFilesForClass:VOKTemplatingClassNameMac fullCatalogPaths:fullCatalogPaths];
+            success = [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model];
             break;
         case VICatalogWalkerOutputTypeiOSAndMac:
-            success = [self writeHandMFilesForClass:VOKTemplatingClassNameIOS fullCatalogPaths:fullCatalogPaths] &&
-                [self writeHandMFilesForClass:VOKTemplatingClassNameMac fullCatalogPaths:fullCatalogPaths];
+            success = [self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model] &&
+                [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model];
             break;
         default:
             NSLog(@"Unhandled output type %ld in catalog walker!!", outputType);
@@ -58,10 +56,8 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
     return success;
 }
 
-- (BOOL)writeHandMFilesForClass:(NSString *)className fullCatalogPaths:(NSArray *)fullCatalogPaths
+- (VOKTemplateModel *)modelForFullCatalogPaths:(NSArray *)fullCatalogPaths
 {
-    NSLog(@"Creating category on %@", className);
-    
     NSMutableArray *topLevelFolders = [NSMutableArray arrayWithCapacity:fullCatalogPaths.count];
     
     for (NSString *fullCatalogPath in fullCatalogPaths) {
@@ -76,15 +72,11 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
         
         [topLevelFolders addObject:[self folderModelFromFolderContents:topLevelContents
                                                       parentFolderPath:fullCatalogPath
-                                                                  name:[catalogName uppercaseString]
-                                                             className:className]];
+                                                                  name:[catalogName uppercaseString]]];
     }
     
-    return [self writeHandMFilesForClass:className
-                                   model:[VOKTemplateModel templateModelWithFolders:topLevelFolders
-                                                                          className:className]];
+    return [VOKTemplateModel templateModelWithFolders:topLevelFolders];
 }
-
 
 - (NSArray *)contentsOfFolderAtPath:(NSString *)path
 {
@@ -116,38 +108,30 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
 - (VOKAssetCatalogFolderModel *)folderModelFromFolderContents:(NSArray *)folderContents
                                              parentFolderPath:(NSString *)parentFolderPath
                                                          name:(NSString *)name
-                                                    className:(NSString *)className
 {
     NSMutableArray *imagesInFolder = [NSMutableArray array];
     NSMutableArray *foldersInFolder = [NSMutableArray array];
     NSMutableArray *iconsInFolder = [NSMutableArray array];
     
-    [folderContents enumerateObjectsUsingBlock:^(NSString *folderName, NSUInteger idx, BOOL *stop) {
+    for (NSString *folderName in folderContents) {
         if ([self folderIsImageFolder:folderName]) { //is an .imageset
-            [imagesInFolder addObject:[VOKAssetCatalogImageModel imageModelNamed:[folderContents[idx] stringByDeletingPathExtension]]];
+            [imagesInFolder addObject:[VOKAssetCatalogImageModel imageModelNamed:[folderName stringByDeletingPathExtension]]];
         } else if ([self folderIsOldMacIconFolder:folderName] || //is an old Mac .iconset
                    [self folderIsIconFolder:folderName]) { //is a new Mac or iOS .appiconset
             [iconsInFolder addObject:[VOKAssetCatalogImageModel imageModelNamed:[folderName stringByDeletingPathExtension]]];
         } else if (![self folderIsIconFolder:folderName] && //Not an iOS icon folder and
                    ![self folderIsLaunchImageFolder:folderName]) { //Not a launch image folder.
-            NSString *folderPath = [parentFolderPath stringByAppendingPathComponent:folderContents[idx]];
+            NSString *folderPath = [parentFolderPath stringByAppendingPathComponent:folderName];
             NSArray *innerFolderContents = [self contentsOfFolderAtPath:folderPath];
             [foldersInFolder addObject:[self folderModelFromFolderContents:innerFolderContents
                                                           parentFolderPath:folderPath
-                                                                      name:folderContents[idx]
-                                                                 className:className]];
+                                                                      name:folderName]];
         } //else do nothing with iOS icons or launch images as they won't load properly from the asset catalog.
-    }];
-    
-    
-    //Add icons only to NSImage.
-    if ([className isEqualToString:VOKTemplatingClassNameMac]) {
-        [iconsInFolder addObjectsFromArray:imagesInFolder];
-        imagesInFolder = iconsInFolder;
     }
     
     VOKAssetCatalogFolderModel *model = [[VOKAssetCatalogFolderModel alloc] init];
     model.name = name;
+    model.icons = iconsInFolder;
     model.images = imagesInFolder;
     model.subfolders = foldersInFolder;
     return model;
@@ -231,16 +215,16 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
     
     //Write new files
     NSError *hWritingError = nil;
-    [[model renderH] writeToFile:hPath
-                      atomically:YES
-                        encoding:NSUTF8StringEncoding
-                           error:&hWritingError];
+    [[model renderHWithClassName:className] writeToFile:hPath
+                                             atomically:YES
+                                               encoding:NSUTF8StringEncoding
+                                                  error:&hWritingError];
     
     NSError *mWritingError = nil;
-    [[model renderM] writeToFile:mPath
-                      atomically:YES
-                        encoding:NSUTF8StringEncoding
-                           error:&mWritingError];
+    [[model renderMWithClassName:className] writeToFile:mPath
+                                             atomically:YES
+                                               encoding:NSUTF8StringEncoding
+                                                  error:&mWritingError];
     
     if (hWritingError || mWritingError) {
         NSLog(@"WRITING ERROR! \n\nH: %@, \n\nM: %@", hWritingError, mWritingError);

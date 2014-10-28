@@ -8,8 +8,6 @@
 
 #import "VOKAssetCatalogImageModel.h"
 
-#import "VOKTemplateModel.h"
-
 @implementation VOKAssetCatalogImageModel
 
 + (instancetype)imageModelNamed:(NSString *)imageName
@@ -33,11 +31,6 @@
     }
     
     return imageName;
-}
-
-- (NSString *)prefix
-{
-    return VOKTemplatingFrameworkPrefix;
 }
 
 @end

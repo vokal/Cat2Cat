@@ -13,6 +13,7 @@
 @interface VOKAssetCatalogFolderModel : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSArray *icons;
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSArray *subfolders;
 

@@ -12,7 +12,6 @@
 
 @property (nonatomic, strong) NSString *method;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, readonly) NSString *prefix;
 
 + (instancetype)imageModelNamed:(NSString *)imageName;
 

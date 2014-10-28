@@ -15,10 +15,11 @@
 @property (nonatomic, strong) NSArray *folders;
 @property (nonatomic, strong) NSString *imageClass;
 @property (nonatomic, strong) NSString *kitHeader;
+@property (nonatomic, assign) BOOL isMac;
 
 @end
 
-NSString *const VOKTemplatingFrameworkPrefix = @"ac_";
+#define FRAMEWORK_PREFIX @"ac_"
 
 NSString *const VOKTemplatingClassNameIOS = @"UIImage";
 NSString *const VOKTemplatingClassNameMac = @"NSImage";
@@ -43,7 +44,8 @@ static NSString *const MUSTACHE_FILE_H = (@"{{% CONTENT_TYPE:TEXT }}"
 NSString *const VOKTemplatingFolderContentHMustache = (@"{{% CONTENT_TYPE:TEXT }}"
                                                        @"#pragma mark - {{ name }}\n"
                                                        @"\n"
-                                                       @"{{# images }}+ ({{ imageClass }} *){{ prefix }}{{ method }};\n\n{{/ images }}"
+                                                       @"{{# isMac }}{{# icons }}+ ({{ imageClass }} *)" FRAMEWORK_PREFIX @"{{ method }};\n\n{{/ icons }}{{/ isMac }}"
+                                                       @"{{# images }}+ ({{ imageClass }} *)" FRAMEWORK_PREFIX @"{{ method }};\n\n{{/ images }}"
                                                        @"{{# subfolders }}{{ h_content }}{{/ subfolders }}"
                                                        );
 static NSString *const MUSTACHE_FILE_M = (@"{{% CONTENT_TYPE:TEXT }}"
@@ -66,7 +68,12 @@ static NSString *const MUSTACHE_FILE_M = (@"{{% CONTENT_TYPE:TEXT }}"
 NSString *const VOKTemplatingFolderContentMMustache = (@"{{% CONTENT_TYPE:TEXT }}"
                                                        @"#pragma mark - {{ name }}\n"
                                                        @"\n"
-                                                       @"{{# images }}+ ({{ imageClass }} *){{ prefix }}{{ method }}\n"
+                                                       @"{{# isMac }}{{# icons }}+ ({{ imageClass }} *)" FRAMEWORK_PREFIX @"{{ method }}\n"
+                                                       @"{\n"
+                                                       @"    return [{{ imageClass }} imageNamed:@\"{{ name }}\"];\n"
+                                                       @"}\n"
+                                                       @"\n{{/ icons }}{{/ isMac }}"
+                                                       @"{{# images }}+ ({{ imageClass }} *)" FRAMEWORK_PREFIX @"{{ method }}\n"
                                                        @"{\n"
                                                        @"    return [{{ imageClass }} imageNamed:@\"{{ name }}\"];\n"
                                                        @"}\n"
@@ -80,34 +87,40 @@ static NSString *const KIT_NAME_MAC = @"AppKit/AppKit.h";
 @implementation VOKTemplateModel
 
 + (instancetype)templateModelWithFolders:(NSArray *)folders
-                               className:(NSString *)className
 {
     VOKTemplateModel *model = [[self alloc] init];
     model.folders = folders;
-    model.imageClass = className;
-    if ([className isEqualToString:VOKTemplatingClassNameIOS]) {
-        model.kitHeader = KIT_NAME_IOS;
-    } else if ([className isEqualToString:VOKTemplatingClassNameMac]) {
-        model.kitHeader = KIT_NAME_MAC;
-    }
     return model;
 }
 
-- (NSString *)renderWithTemplateString:(NSString *)templateString
+- (NSString *)renderWithClassName:(NSString *)className
+                   templateString:(NSString *)templateString
 {
-    return [GRMustacheTemplate renderObject:self
-                                 fromString:templateString
-                                      error:NULL];
+    self.imageClass = className;
+    if ([className isEqualToString:VOKTemplatingClassNameIOS]) {
+        self.kitHeader = KIT_NAME_IOS;
+        self.isMac = NO;
+    } else if ([className isEqualToString:VOKTemplatingClassNameMac]) {
+        self.kitHeader = KIT_NAME_MAC;
+        self.isMac = YES;
+    }
+    NSString *result = [GRMustacheTemplate renderObject:self
+                                             fromString:templateString
+                                                  error:NULL];
+    self.imageClass = nil;
+    self.kitHeader = nil;
+    self.isMac = NO;
+    return result;
 }
 
-- (NSString *)renderH
+- (NSString *)renderHWithClassName:(NSString *)className
 {
-    return [self renderWithTemplateString:MUSTACHE_FILE_H];
+    return [self renderWithClassName:className templateString:MUSTACHE_FILE_H];
 }
 
-- (NSString *)renderM
+- (NSString *)renderMWithClassName:(NSString *)className
 {
-    return [self renderWithTemplateString:MUSTACHE_FILE_M];
+    return [self renderWithClassName:className templateString:MUSTACHE_FILE_M];
 }
 
 @end

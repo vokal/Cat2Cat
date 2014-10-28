@@ -10,16 +10,14 @@
 
 FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentHMustache;
 FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentMMustache;
-FOUNDATION_EXPORT NSString *const VOKTemplatingFrameworkPrefix;
 FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameIOS;
 FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameMac;
 
 @interface VOKTemplateModel : NSObject
 
-+ (instancetype)templateModelWithFolders:(NSArray *)folders
-                               className:(NSString *)className;
++ (instancetype)templateModelWithFolders:(NSArray *)folders;
 
-- (NSString *)renderH;
-- (NSString *)renderM;
+- (NSString *)renderHWithClassName:(NSString *)className;
+- (NSString *)renderMWithClassName:(NSString *)className;
 
 @end
