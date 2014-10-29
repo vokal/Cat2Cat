@@ -44,8 +44,18 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
             success = [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model];
             break;
         case VICatalogWalkerOutputTypeiOSAndMac:
-            success = [self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model] &&
-                [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model];
+            success = ([self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model]
+                       && [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model]);
+            break;
+        case VICatalogWalkerOutputTypeSwiftiOSOnly:
+            success = [self writeSwiftFileForClass:VOKTemplatingClassNameIOS model:model];
+            break;
+        case VICatalogWalkerOutputTypeSwiftMacOnly:
+            success = [self writeSwiftFileForClass:VOKTemplatingClassNameMac model:model];
+            break;
+        case VICatalogWalkerOutputTypeSwiftiOSAndMac:
+            success = ([self writeSwiftFileForClass:VOKTemplatingClassNameIOS model:model]
+                       && [self writeSwiftFileForClass:VOKTemplatingClassNameMac model:model]);
             break;
         default:
             NSLog(@"Unhandled output type %ld in catalog walker!!", outputType);
@@ -205,6 +215,11 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
     return [NSString stringWithFormat:@"%@+AssetCatalog", className];
 }
 
+- (NSString *)extensionFileNameForClass:(NSString *)className
+{
+    return [NSString stringWithFormat:@"Cat2Cat%@.swift", className];
+}
+
 #pragma mark - Finishing the files and writing to file system.
 
 - (BOOL)writeHandMFilesForClass:(NSString *)className model:(VOKTemplateModel *)model
@@ -228,6 +243,22 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
     
     if (hWritingError || mWritingError) {
         NSLog(@"WRITING ERROR! \n\nH: %@, \n\nM: %@", hWritingError, mWritingError);
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)writeSwiftFileForClass:(NSString *)className model:(VOKTemplateModel *)model
+{
+    NSString *swiftPath = [self.categoryOutputPath stringByAppendingPathComponent:[self extensionFileNameForClass:className]];
+    NSError *swiftWritingError = nil;
+    [[model renderSwiftWithClassName:className] writeToFile:swiftPath
+                                                 atomically:YES
+                                                   encoding:NSUTF8StringEncoding
+                                                      error:&swiftWritingError];
+    if (swiftWritingError) {
+        NSLog(@"WRITING ERROR: %@", swiftWritingError);
         return NO;
     }
     

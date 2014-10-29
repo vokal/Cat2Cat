@@ -19,5 +19,6 @@
 
 @property (nonatomic, readonly) GRMustacheTemplate *h_content;
 @property (nonatomic, readonly) GRMustacheTemplate *m_content;
+@property (nonatomic, readonly) GRMustacheTemplate *swift_content;
 
 @end

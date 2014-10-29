@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) NSArray *folders;
 @property (nonatomic, strong) NSString *imageClass;
-@property (nonatomic, strong) NSString *kitHeader;
+@property (nonatomic, strong) NSString *kitName;
 @property (nonatomic, assign) BOOL isMac;
 
 @end
@@ -24,6 +24,9 @@
 NSString *const VOKTemplatingClassNameIOS = @"UIImage";
 NSString *const VOKTemplatingClassNameMac = @"NSImage";
 
+/**
+ *  Mustache template for Objective-C .h file
+ */
 static NSString *const MUSTACHE_FILE_H = (@"{{% CONTENT_TYPE:TEXT }}"
                                           @"//\n"
                                           @"// {{ imageClass }}+AssetCatalog.h\n"
@@ -34,13 +37,14 @@ static NSString *const MUSTACHE_FILE_H = (@"{{% CONTENT_TYPE:TEXT }}"
                                           @"// For more information, go to http://github.com/VokalInteractive/Cat2Cat\n"
                                           @"//\n"
                                           @"\n"
-                                          @"#import <{{ kitHeader }}>\n"
+                                          @"#import <{{ kitName }}/{{ kitName }}.h>\n"
                                           @"\n"
                                           @"@interface {{ imageClass }} (AssetCatalog)\n"
                                           @"\n"
                                           @"{{# folders }}{{ h_content }}{{/ folders }}"
                                           @"@end\n"
                                           );
+/// Mustache template for recursing into folders for Objective-C .h file
 NSString *const VOKTemplatingFolderContentHMustache = (@"{{% CONTENT_TYPE:TEXT }}"
                                                        @"#pragma mark - {{ name }}\n"
                                                        @"\n"
@@ -48,6 +52,10 @@ NSString *const VOKTemplatingFolderContentHMustache = (@"{{% CONTENT_TYPE:TEXT }
                                                        @"{{# images }}+ ({{ imageClass }} *)" FRAMEWORK_PREFIX @"{{ method }};\n\n{{/ images }}"
                                                        @"{{# subfolders }}{{ h_content }}{{/ subfolders }}"
                                                        );
+
+/**
+ *  Mustache template for Objective-C .m file
+ */
 static NSString *const MUSTACHE_FILE_M = (@"{{% CONTENT_TYPE:TEXT }}"
                                           @"//\n"
                                           @"// {{ imageClass }}+AssetCatalog.m\n"
@@ -65,6 +73,7 @@ static NSString *const MUSTACHE_FILE_M = (@"{{% CONTENT_TYPE:TEXT }}"
                                           @"{{# folders }}{{ m_content }}{{/ folders }}"
                                           @"@end\n"
                                           );
+/// Mustache template for recursing into folders for Objective-C .m file
 NSString *const VOKTemplatingFolderContentMMustache = (@"{{% CONTENT_TYPE:TEXT }}"
                                                        @"#pragma mark - {{ name }}\n"
                                                        @"\n"
@@ -81,8 +90,43 @@ NSString *const VOKTemplatingFolderContentMMustache = (@"{{% CONTENT_TYPE:TEXT }
                                                        @"{{# subfolders }}{{ m_content }}{{/ subfolders }}"
                                                        );
 
-static NSString *const KIT_NAME_IOS = @"UIKit/UIKit.h";
-static NSString *const KIT_NAME_MAC = @"AppKit/AppKit.h";
+/**
+ *  Mustache template for .swift file
+ */
+static NSString *const MUSTACHE_FILE_SWIFT = (@"{{% CONTENT_TYPE:TEXT }}"
+                                              @"//\n"
+                                              @"// Cat2Cat{{ imageClass }}.swift\n"
+                                              @"//\n"
+                                              @"// Generated Automatically Using Cat2Cat\n"
+                                              @"// NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.\n"
+                                              @"//\n"
+                                              @"// For more information, go to http://github.com/VokalInteractive/Cat2Cat\n"
+                                              @"//\n"
+                                              @"\n"
+                                              @"import {{ kitName }}\n"
+                                              @"\n"
+                                              @"extension {{ imageClass }} {\n"
+                                              @"\n"
+                                              @"{{# folders }}{{ swift_content }}{{/ folders }}"
+                                              @"}\n"
+                                              );
+/// Mustache template for recursing into folders for .swift file
+NSString *const VOKTemplatingFolderContentSwiftMustache = (@"{{% CONTENT_TYPE:TEXT }}"
+                                                           @"    // MARK: - {{ name }}\n"
+                                                           @"    \n"
+                                                           @"{{# isMac }}{{# icons }}    class func " FRAMEWORK_PREFIX @"{{ method }}() -> UIImage {\n"
+                                                           @"        return {{ imageClass }}(named:\"{{ name }}\")\n"
+                                                           @"    }\n"
+                                                           @"    \n{{/ icons }}{{/ isMac }}"
+                                                           @"{{# images }}    class func " FRAMEWORK_PREFIX @"{{ method }}() -> UIImage {\n"
+                                                           @"        return {{ imageClass }}(named:\"{{ name }}\")\n"
+                                                           @"    }\n"
+                                                           @"    \n{{/ images }}"
+                                                           @"{{# subfolders }}{{ swift_content }}{{/ subfolders }}"
+                                                           );
+
+static NSString *const KIT_NAME_IOS = @"UIKit";
+static NSString *const KIT_NAME_MAC = @"AppKit";
 
 @implementation VOKTemplateModel
 
@@ -98,17 +142,17 @@ static NSString *const KIT_NAME_MAC = @"AppKit/AppKit.h";
 {
     self.imageClass = className;
     if ([className isEqualToString:VOKTemplatingClassNameIOS]) {
-        self.kitHeader = KIT_NAME_IOS;
+        self.kitName = KIT_NAME_IOS;
         self.isMac = NO;
     } else if ([className isEqualToString:VOKTemplatingClassNameMac]) {
-        self.kitHeader = KIT_NAME_MAC;
+        self.kitName = KIT_NAME_MAC;
         self.isMac = YES;
     }
     NSString *result = [GRMustacheTemplate renderObject:self
                                              fromString:templateString
                                                   error:NULL];
     self.imageClass = nil;
-    self.kitHeader = nil;
+    self.kitName = nil;
     self.isMac = NO;
     return result;
 }
@@ -121,6 +165,11 @@ static NSString *const KIT_NAME_MAC = @"AppKit/AppKit.h";
 - (NSString *)renderObjCMWithClassName:(NSString *)className
 {
     return [self renderWithClassName:className templateString:MUSTACHE_FILE_M];
+}
+
+- (NSString *)renderSwiftWithClassName:(NSString *)className
+{
+    return [self renderWithClassName:className templateString:MUSTACHE_FILE_SWIFT];
 }
 
 @end

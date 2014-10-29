@@ -11,7 +11,10 @@
 typedef NS_ENUM(NSInteger, VICatalogWalkerOutputType) {
     VICatalogWalkerOutputTypeiOSAndMac = 0,
     VICatalogWalkerOutputTypeiOSOnly = 1,
-    VICatalogWalkerOutputTypeMacOnly = 2
+    VICatalogWalkerOutputTypeMacOnly = 2,
+    VICatalogWalkerOutputTypeSwiftiOSAndMac = 3,
+    VICatalogWalkerOutputTypeSwiftiOSOnly = 4,
+    VICatalogWalkerOutputTypeSwiftMacOnly = 5,
 };
 
 @interface VICatalogWalker : NSObject

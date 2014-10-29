@@ -32,4 +32,13 @@
     return m_content;
 }
 
+- (GRMustacheTemplate *)swift_content
+{
+    static GRMustacheTemplate *swift_content;
+    if (!swift_content) {
+        swift_content = [GRMustacheTemplate templateFromString:VOKTemplatingFolderContentSwiftMustache error:NULL];
+    }
+    return swift_content;
+}
+
 @end

@@ -10,6 +10,7 @@
 
 FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentHMustache;
 FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentMMustache;
+FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentSwiftMustache;
 FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameIOS;
 FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameMac;
 
@@ -19,5 +20,6 @@ FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameMac;
 
 - (NSString *)renderObjCHWithClassName:(NSString *)className;
 - (NSString *)renderObjCMWithClassName:(NSString *)className;
+- (NSString *)renderSwiftWithClassName:(NSString *)className;
 
 @end
