@@ -17,10 +17,10 @@
 @property (nonatomic, strong) NSFileManager *fileManager;
 @end
 
-static NSString * const EXTENSION_OLD_MAC_ICON_SET = @".iconset";
-static NSString * const EXTENSION_IOS_AND_NEW_MAC_ICON_SET = @".appiconset";
-static NSString * const EXTENSION_LAUNCH_IMAGE = @".launchimage";
-static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
+static NSString *const ExtensionOldMacIconSet = @".iconset";
+static NSString *const ExtensionIOSAndNewMacIconSet = @".appiconset";
+static NSString *const ExtensionLaunchImage = @".launchimage";
+static NSString *const ExtensionStandardImageset = @".imageset";
 
 @implementation VICatalogWalker
 
@@ -190,22 +190,22 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
 
 - (NSRange)rangeOfIconSetExtensionInString:(NSString *)string
 {
-    return [string rangeOfString:EXTENSION_IOS_AND_NEW_MAC_ICON_SET];
+    return [string rangeOfString:ExtensionIOSAndNewMacIconSet];
 }
 
 - (NSRange)rangeOfMacIconSetExtensionInString:(NSString *)string
 {
-    return [string rangeOfString:EXTENSION_OLD_MAC_ICON_SET];
+    return [string rangeOfString:ExtensionOldMacIconSet];
 }
 
 - (NSRange)rangeofLaunchImageExtensionInString:(NSString *)string
 {
-    return [string rangeOfString:EXTENSION_LAUNCH_IMAGE];
+    return [string rangeOfString:ExtensionLaunchImage];
 }
 
 - (NSRange)rangeOfStandardImagesetExtensionInString:(NSString *)string
 {
-    return [string rangeOfString:EXTENSION_STANDARD_IMAGESET];
+    return [string rangeOfString:ExtensionStandardImageset];
 }
 
 #pragma mark - Writing the headers of files
