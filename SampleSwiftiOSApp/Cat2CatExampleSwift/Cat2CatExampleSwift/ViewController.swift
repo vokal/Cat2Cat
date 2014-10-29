@@ -29,11 +29,6 @@ class ViewController: UIViewController {
         setRandomImage(nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func setRandomImage(sender: UIButton?) {
         let randomIndex = Int(arc4random_uniform(UInt32(images.count)))
         imageView?.image = images[randomIndex]
