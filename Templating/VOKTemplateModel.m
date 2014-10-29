@@ -113,12 +113,12 @@ static NSString *const KIT_NAME_MAC = @"AppKit/AppKit.h";
     return result;
 }
 
-- (NSString *)renderHWithClassName:(NSString *)className
+- (NSString *)renderObjCHWithClassName:(NSString *)className
 {
     return [self renderWithClassName:className templateString:MUSTACHE_FILE_H];
 }
 
-- (NSString *)renderMWithClassName:(NSString *)className
+- (NSString *)renderObjCMWithClassName:(NSString *)className
 {
     return [self renderWithClassName:className templateString:MUSTACHE_FILE_M];
 }

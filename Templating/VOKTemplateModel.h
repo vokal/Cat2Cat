@@ -17,7 +17,7 @@ FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameMac;
 
 + (instancetype)templateModelWithFolders:(NSArray *)folders;
 
-- (NSString *)renderHWithClassName:(NSString *)className;
-- (NSString *)renderMWithClassName:(NSString *)className;
+- (NSString *)renderObjCHWithClassName:(NSString *)className;
+- (NSString *)renderObjCMWithClassName:(NSString *)className;
 
 @end

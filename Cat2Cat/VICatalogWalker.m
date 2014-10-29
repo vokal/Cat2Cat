@@ -215,16 +215,16 @@ static NSString * const EXTENSION_STANDARD_IMAGESET = @".imageset";
     
     //Write new files
     NSError *hWritingError = nil;
-    [[model renderHWithClassName:className] writeToFile:hPath
-                                             atomically:YES
-                                               encoding:NSUTF8StringEncoding
-                                                  error:&hWritingError];
+    [[model renderObjCHWithClassName:className] writeToFile:hPath
+                                                 atomically:YES
+                                                   encoding:NSUTF8StringEncoding
+                                                      error:&hWritingError];
     
     NSError *mWritingError = nil;
-    [[model renderMWithClassName:className] writeToFile:mPath
-                                             atomically:YES
-                                               encoding:NSUTF8StringEncoding
-                                                  error:&mWritingError];
+    [[model renderObjCMWithClassName:className] writeToFile:mPath
+                                                 atomically:YES
+                                                   encoding:NSUTF8StringEncoding
+                                                      error:&mWritingError];
     
     if (hWritingError || mWritingError) {
         NSLog(@"WRITING ERROR! \n\nH: %@, \n\nM: %@", hWritingError, mWritingError);
