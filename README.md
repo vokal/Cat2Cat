@@ -26,7 +26,15 @@ In the Arguments section, add four Arguments Passed On Launch to the build schem
 1. The path to your project. (e.g. /Users/YourName/Desktop/YourProjectFolder)
 2. The paths within your project to your asset catalog, without a preceding slash, separated by a pipe if there's more than one. (e.g. Resources/Images.xcassets|Resources/Media.xcassets).
 3. The path within your project where you wish to have your Category written out to, without a preceding slash. (e.g. Categories).
-4. A single digit indicating whether you would like a `UIImage` category, an `NSImage` category, or both. Enter `0` for both, `1` for iOS only, and `2` for Mac only. Other strings which would create an integer value will cause an error; other strings which would not create an integer value will default to creating both categories. 
+4. A single digit indicating whether you would like a `UIImage` category, an `NSImage` category, or both. Enter:
+    - `0` for both, in Objective-C
+    - `1` for iOS only, in Objective-C
+    - `2` for Mac only, in Objective-C
+    - `3` for both, in Swift
+    - `4` for iOS only, in Swift
+    - `5` for Mac only, in Swift
+
+    Other strings which would create an integer value will cause an error; other strings which would not create an integer value will default to creating both categories in Objective-C. 
 
 After you've added your launch arguments, build and run the application. Your new category or categories should be output to the file path you've provided.
 

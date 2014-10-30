@@ -35,12 +35,6 @@
     [self setRandomImage:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - IBActions
 - (IBAction)setRandomImage:(id)sender
 {
