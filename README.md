@@ -17,31 +17,77 @@ After running `Cat2Cat` and adding the category or categories it produces, inste
 
 ##Usage
 ----
-###Directly from Xcode
-
-Download the zip of this repo using the handy link at the right. Open the .xcodeproj, select the default build scheme, then select Edit Scheme...
-
-In the Arguments section, add four Arguments Passed On Launch to the build scheme, in this order:
-
-1. The path to your project. (e.g. /Users/YourName/Desktop/YourProjectFolder)
-2. The paths within your project to your asset catalog, without a preceding slash, separated by a pipe if there's more than one. (e.g. Resources/Images.xcassets|Resources/Media.xcassets).
-3. The path within your project where you wish to have your Category written out to, without a preceding slash. (e.g. Categories).
-4. A single digit indicating whether you would like a `UIImage` category, an `NSImage` category, or both. Enter:
-    - `0` for both, in Objective-C
-    - `1` for iOS only, in Objective-C
-    - `2` for Mac only, in Objective-C
-    - `3` for both, in Swift
-    - `4` for iOS only, in Swift
-    - `5` for Mac only, in Swift
-
-    Other strings which would create an integer value will cause an error; other strings which would not create an integer value will default to creating both categories in Objective-C. 
-
-After you've added your launch arguments, build and run the application. Your new category or categories should be output to the file path you've provided.
 
 ###Using a Pre-Compiled Binary And A Build Script
 The current compiled binary can be downloaded from [the releases page](../../releases).
 
+```
+usage: Cat2Cat [options]
+    -p, --base-path        Base path used for interpreting the asset catalogs and output directory
+    -a, --asset-catalog    Asset catalog(s)
+    -o, --output-dir       Output directory
+
+        --objc             Output Objective-C category or categories
+        --swift            Output Swift class extension(s)
+
+        --ios              Output for iOS (UIImage)
+        --osx              Output for OS X (NSImage)
+
+    -h, --help             Show this message
+```
+
+Examples:
+
+```
+Cat2Cat --base-path="/Users/YourName/Desktop/YourProjectFolder" --asset-catalog="Resources/Images.xcassets" --asset-catalog="Resources/Media.xcassets" --output-dir="Categories" --objc --ios --osx
+```
+
+```
+Cat2Cat --swift --ios \
+	--base-path="/Users/YourName/Desktop/YourProjectFolder" \
+	--asset-catalog="Resources/*.xcassets" \
+	--output-dir="Categories"
+```
+
 Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build target for the appropriate run script for iOS only, and the [Mac Example App](SampleMacApp)'s `Cat2Cat` aggregate build target for the appropriate run script for Mac only. 
+
+###Directly from Xcode
+
+Download the zip of this repo using the handy link at the right. Open the .xcodeproj, select the default build scheme, then select Edit Scheme...
+
+In the Arguments section, add five (or more) Arguments Passed On Launch to the build scheme:
+
+- The base directory for both asset catalogs and the generated categories/extensions (e.g., the path to your project):  
+  ```
+  --base-path="/Users/YourName/Desktop/YourProjectFolder"
+  ```
+- The path within your project to your asset catalog, without a preceding slash (add multiple times if you have multiple asset catalogs:  
+  ```
+  --asset-catalog="Resources/Images.xcassets"
+  ```  
+  ```
+  --asset-catalog="Resources/Media.xcassets"
+  ```
+- The path within your project where you wish to have your Category written out to, without a preceding slash:  
+  ```
+  --output-dir="Categories"
+  ```
+- A flag(s) indicating whether to generate Objective-C category/categories or Swift class extensions or both:  
+  ```
+  --objc
+  ```  
+  ```
+  --swift
+  ```
+- A flag(s) indicating whether to generate for iOS (`UIImage`) or OS X (`NSImage`) or both:  
+  ```
+  --ios
+  ```  
+  ```
+  --osx
+  ```
+
+After you've added your launch arguments, build and run the application. Your new category or categories should be output to the file path you've provided.
 
 ##Notes
 ----
@@ -55,11 +101,10 @@ Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build targe
 
 * If you have more than one image with the same name, either in the same asset catalog or in different asset catalogs, you will get a "Duplicate Declaration of Method" warning from the compiler when you attempt to compile the project which is using `UIImage+AssetCatalog` or `NSImage+AssetCatalog`. 
 
+* [XcodeAutoBasher](https://github.com/vokalinteractive/XcodeAutoBasher) can be used to automatically run a script to use Cat2Cat whenever you change anything within an asset catalog.
 
 ##Limitations
 ----
-* Does not bail out if it detects characters which are not acceptable in method names. These will cause a build error when you attempt to compile the project which is using `UIImage+AssetCatalog` or `NSImage+AssetCatalog`.
-
 * `.launchimage`, `.iconset` and `.appiconset` folders are not supported on iOS, since they are not directly supported by `UIImage`'s `imageNamed:` scheme. If you need to use your app icon or launch image in your application, please add it as a standard `.imageset`. 
 
 * `.iconset` and `.appiconset` *do* return images on OS X, but they appear to be of a single size. Would love to hear more from Mac developers about whether this would be the expected behavior if you wanted to access your App Icon. Support has been added for what does get returned for now. 
@@ -69,3 +114,4 @@ Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build targe
 ----
 * [Ellen Shapiro](https://github.com/designatednerd)
 * [Bryan Luby](https://github.com/bryanluby)
+* [Isaac Greenspan](https://github.com/vokal-isaac)
