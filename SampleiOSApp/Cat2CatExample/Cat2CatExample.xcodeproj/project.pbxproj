@@ -324,7 +324,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#Make this path the path to the folder where you're keeping the Cat2Cat executable.\nCAT2CAT_DIR=\"${PROJECT_DIR}/Cat2CatExample/Utilities\"\n\necho \"Cat2Cat dir: ${CAT2CAT_DIR}\"\n\n#The full path to the Cat2Cat executable, which will start the script - Note that if you rename the executable, you will need to adjust the name here.\nCAT2CAT_EXECUTABLE=\"${CAT2CAT_DIR}/Cat2Cat\"\n\n#A pipe-seperated list of your asset catalog files, including the .xcassets extension, relative to the PROJECT_DIR.\nASSET_CATALOGS=\"Cat2CatExample/Icons.xcassets|Cat2CatExample/Photos.xcassets\"\n\n#The output directory for your category file, relative to the PROJECT_DIR.\nCATEGORY_OUTPUT_DIRECTORY=\"Cat2CatExample/Categories\"\n\n#The type of category - 0 for iOS + Mac, 1 for iOS only, 2 for Mac only\nCATEGORY_TYPE=\"1\"\n\n#The actual script!\n\"${CAT2CAT_EXECUTABLE}\" \"${PROJECT_DIR}\" \"${ASSET_CATALOGS}\" \"${CATEGORY_OUTPUT_DIRECTORY}\" \"${CATEGORY_TYPE}\"";
+			shellScript = "\"${PROJECT_DIR}/Cat2CatExample/Utilities/Cat2Cat\" \\\n--base-path=\"${PROJECT_DIR}\" \\\n--asset-catalog=\"Cat2CatExample/Icons.xcassets\" \\\n--asset-catalog=\"Cat2CatExample/Photos.xcassets\" \\\n--output-dir=\"Cat2CatExample/Categories\" \\\n--ios --objc";
 		};
 /* End PBXShellScriptBuildPhase section */
 
