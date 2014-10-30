@@ -22,46 +22,35 @@ static NSString *const ExtensionIOSAndNewMacIconSet = @".appiconset";
 static NSString *const ExtensionLaunchImage = @".launchimage";
 static NSString *const ExtensionStandardImageset = @".imageset";
 
+@implementation VICatalogWalkerParameters
+@end
+
 @implementation VICatalogWalker
 
-- (BOOL)walkCatalogs:(NSArray *)fullCatalogPaths categoryOutputPath:(NSString *)categoryPath outputType:(VICatalogWalkerOutputType)outputType
+- (BOOL)walkCatalogsBasedOnParameters:(VICatalogWalkerParameters *)parameters
 {
-    NSLog(@"Walking catalogs %@", fullCatalogPaths);
+    NSLog(@"Walking catalogs %@", parameters.assetCatalogPaths);
         
     //Setup instance variables.
-    self.categoryOutputPath = categoryPath;
+    self.categoryOutputPath = parameters.outputDirectory;
     self.fileManager = [NSFileManager defaultManager];
     
-    BOOL success = NO;
+    BOOL success = YES;
     
-    VOKTemplateModel *model = [self modelForFullCatalogPaths:fullCatalogPaths];
+    VOKTemplateModel *model = [self modelForFullCatalogPaths:parameters.assetCatalogPaths];
     
-    switch (outputType) {
-        case VICatalogWalkerOutputTypeiOSOnly:
-            success = [self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model];
-            break;
-        case VICatalogWalkerOutputTypeMacOnly:
-            success = [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model];
-            break;
-        case VICatalogWalkerOutputTypeiOSAndMac:
-            success = ([self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model]
-                       && [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model]);
-            break;
-        case VICatalogWalkerOutputTypeSwiftiOSOnly:
-            success = [self writeSwiftFileForClass:VOKTemplatingClassNameIOS model:model];
-            break;
-        case VICatalogWalkerOutputTypeSwiftMacOnly:
-            success = [self writeSwiftFileForClass:VOKTemplatingClassNameMac model:model];
-            break;
-        case VICatalogWalkerOutputTypeSwiftiOSAndMac:
-            success = ([self writeSwiftFileForClass:VOKTemplatingClassNameIOS model:model]
-                       && [self writeSwiftFileForClass:VOKTemplatingClassNameMac model:model]);
-            break;
-        default:
-            NSLog(@"Unhandled output type %ld in catalog walker!!", outputType);
-            break;
+    if (parameters.outputTypes & VICatalogWalkerOutputObjCIOS) {
+        success = success && [self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model];
     }
-    
+    if (parameters.outputTypes & VICatalogWalkerOutputObjCOSX) {
+        success = success && [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model];
+    }
+    if (parameters.outputTypes & VICatalogWalkerOutputSwiftIOS) {
+        success = success && [self writeSwiftFileForClass:VOKTemplatingClassNameIOS model:model];
+    }
+    if (parameters.outputTypes & VICatalogWalkerOutputSwiftOSX) {
+        success = success && [self writeSwiftFileForClass:VOKTemplatingClassNameMac model:model];
+    }
 
     return success;
 }
