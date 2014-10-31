@@ -32,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		710C436A1A04394B003A0026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71FF00F21A017C9400B3F38D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71FF011F1A017CA700B3F38D;
+			remoteInfo = Cat2Cat;
+		};
 		71FF01101A017C9400B3F38D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71FF00F21A017C9400B3F38D /* Project object */;
@@ -144,6 +151,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				710C436B1A04394B003A0026 /* PBXTargetDependency */,
 			);
 			name = Cat2CatExampleSwift;
 			productName = Cat2CatExampleSwift;
@@ -268,6 +276,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		710C436B1A04394B003A0026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 71FF011F1A017CA700B3F38D /* Cat2Cat */;
+			targetProxy = 710C436A1A04394B003A0026 /* PBXContainerItemProxy */;
+		};
 		71FF01111A017C9400B3F38D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 71FF00F91A017C9400B3F38D /* Cat2CatExampleSwift */;
@@ -455,6 +468,7 @@
 				71FF011B1A017C9400B3F38D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71FF011C1A017C9400B3F38D /* Build configuration list for PBXNativeTarget "Cat2CatExampleSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +477,7 @@
 				71FF011E1A017C9400B3F38D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71FF01201A017CA700B3F38D /* Build configuration list for PBXAggregateTarget "Cat2Cat" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +486,7 @@
 				71FF01221A017CA700B3F38D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
