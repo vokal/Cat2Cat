@@ -1,13 +1,13 @@
 language: objective-c
 matrix:
     include:
-        - xcode_workspace: SampleiOSApp/Cat2CatExample/Cat2CatExample.xcworkspace
+        - xcode_project: SampleiOSApp/Cat2CatExample/Cat2CatExample.xcodeproj
           xcode_scheme: Cat2CatExample
           xcode_sdk: iphonesimulator8.0
-        - xcode_workspace: SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac.xcworkspace
+        - xcode_project: SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac.xcodeproj
           xcode_scheme: Cat2CatExampleMac
           xcode_sdk: macosx10.9
-        - xcode_workspace: SampleSwiftiOSApp/Cat2CatExampleSwift/Cat2CatExampleSwift.xcworkspace
+        - xcode_project: SampleSwiftiOSApp/Cat2CatExampleSwift/Cat2CatExampleSwift.xcodeproj
           xcode_scheme: Cat2CatExampleSwift
           xcode_sdk: iphonesimulator8.0
 before_install:
