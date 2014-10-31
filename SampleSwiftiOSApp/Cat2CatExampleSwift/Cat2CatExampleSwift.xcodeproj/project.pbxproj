@@ -32,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		710C436A1A04394B003A0026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71FF00F21A017C9400B3F38D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71FF011F1A017CA700B3F38D;
+			remoteInfo = Cat2Cat;
+		};
 		71FF01101A017C9400B3F38D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71FF00F21A017C9400B3F38D /* Project object */;
@@ -144,6 +151,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				710C436B1A04394B003A0026 /* PBXTargetDependency */,
 			);
 			name = Cat2CatExampleSwift;
 			productName = Cat2CatExampleSwift;
@@ -241,7 +249,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#Make this path the path to the folder where you're keeping the Cat2Cat executable.\nCAT2CAT_DIR=\"${PROJECT_DIR}/Cat2CatExampleSwift/Utilities\"\n\necho \"Cat2Cat dir: ${CAT2CAT_DIR}\"\n\n#The full path to the Cat2Cat executable, which will start the script - Note that if you rename the executable, you will need to adjust the name here.\nCAT2CAT_EXECUTABLE=\"${CAT2CAT_DIR}/Cat2Cat\"\n\n#A pipe-seperated list of your asset catalog files, including the .xcassets extension, relative to the PROJECT_DIR.\nASSET_CATALOGS=\"Cat2CatExampleSwift/Icons.xcassets|Cat2CatExampleSwift/Photos.xcassets\"\n\n#The output directory for your category file, relative to the PROJECT_DIR.\nCATEGORY_OUTPUT_DIRECTORY=\"Cat2CatExampleSwift\"\n\n#The type of category - 3 for iOS + Mac, 4 for iOS only, 5 for Mac only\nCATEGORY_TYPE=\"4\"\n\n#The actual script!\n\"${CAT2CAT_EXECUTABLE}\" \"${PROJECT_DIR}\" \"${ASSET_CATALOGS}\" \"${CATEGORY_OUTPUT_DIRECTORY}\" \"${CATEGORY_TYPE}\"";
+			shellScript = "\"${PROJECT_DIR}/Cat2CatExampleSwift/Utilities/Cat2Cat\" \\\n--base-path=\"${PROJECT_DIR}\" \\\n--asset-catalog=\"Cat2CatExampleSwift/Icons.xcassets\" \\\n--asset-catalog=\"Cat2CatExampleSwift/Photos.xcassets\" \\\n--output-dir=\"Cat2CatExampleSwift\" \\\n--ios --swift";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -268,6 +276,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		710C436B1A04394B003A0026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 71FF011F1A017CA700B3F38D /* Cat2Cat */;
+			targetProxy = 710C436A1A04394B003A0026 /* PBXContainerItemProxy */;
+		};
 		71FF01111A017C9400B3F38D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 71FF00F91A017C9400B3F38D /* Cat2CatExampleSwift */;
@@ -455,6 +468,7 @@
 				71FF011B1A017C9400B3F38D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71FF011C1A017C9400B3F38D /* Build configuration list for PBXNativeTarget "Cat2CatExampleSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +477,7 @@
 				71FF011E1A017C9400B3F38D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		71FF01201A017CA700B3F38D /* Build configuration list for PBXAggregateTarget "Cat2Cat" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +486,7 @@
 				71FF01221A017CA700B3F38D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -46,6 +46,13 @@
 			remoteGlobalIDString = 33B50D9B1891BABE00307D66;
 			remoteInfo = Cat2CatExampleMac;
 		};
+		710C436C1A04395A003A0026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 33B50D941891BABE00307D66 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 33B50DD41891BB7500307D66;
+			remoteInfo = Cat2Cat;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -224,6 +231,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				710C436D1A04395A003A0026 /* PBXTargetDependency */,
 			);
 			name = Cat2CatExampleMac;
 			productName = Cat2CatExampleMac;
@@ -319,7 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#Make this path the path to the folder where you're keeping the Cat2Cat executable.\nCAT2CAT_DIR=\"${PROJECT_DIR}/Cat2CatExampleMac/Utilities\"\n\necho \"Cat2Cat dir: ${CAT2CAT_DIR}\"\n\n#The full path to the Cat2Cat executable, which will start the script - Note that if you rename the executable, you will need to adjust the name here.\nCAT2CAT_EXECUTABLE=\"${CAT2CAT_DIR}/Cat2Cat\"\n\n#A pipe-seperated list of your asset catalog files, including the .xcassets extension, relative to the PROJECT_DIR.\nASSET_CATALOGS=\"Cat2CatExampleMac/Icons.xcassets|Cat2CatExampleMac/Photos.xcassets\"\n\n#The output directory for your category file, relative to the PROJECT_DIR.\nCATEGORY_OUTPUT_DIRECTORY=\"Cat2CatExampleMac/Categories\"\n\n#The type of category - 0 for iOS + Mac, 1 for iOS only, 2 for Mac only\nCATEGORY_TYPE=\"2\"\n\n#The actual script!\n\"${CAT2CAT_EXECUTABLE}\" \"${PROJECT_DIR}\" \"${ASSET_CATALOGS}\" \"${CATEGORY_OUTPUT_DIRECTORY}\" \"${CATEGORY_TYPE}\"";
+			shellScript = "\"${PROJECT_DIR}/Cat2CatExampleMac/Utilities/Cat2Cat\" \\\n--base-path=\"${PROJECT_DIR}\" \\\n--asset-catalog=\"Cat2CatExampleMac/Icons.xcassets\" \\\n--asset-catalog=\"Cat2CatExampleMac/Photos.xcassets\" \\\n--output-dir=\"Cat2CatExampleMac/Categories\" \\\n--osx --objc";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -350,6 +358,11 @@
 			isa = PBXTargetDependency;
 			target = 33B50D9B1891BABE00307D66 /* Cat2CatExampleMac */;
 			targetProxy = 33B50DC11891BABF00307D66 /* PBXContainerItemProxy */;
+		};
+		710C436D1A04395A003A0026 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 33B50DD41891BB7500307D66 /* Cat2Cat */;
+			targetProxy = 710C436C1A04395A003A0026 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

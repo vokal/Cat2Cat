@@ -6,6 +6,12 @@
 // project.
 
 
+// BRLOptionParser
+#define COCOAPODS_POD_AVAILABLE_BRLOptionParser
+#define COCOAPODS_VERSION_MAJOR_BRLOptionParser 0
+#define COCOAPODS_VERSION_MINOR_BRLOptionParser 3
+#define COCOAPODS_VERSION_PATCH_BRLOptionParser 0
+
 // GRMustache
 #define COCOAPODS_POD_AVAILABLE_GRMustache
 #define COCOAPODS_VERSION_MAJOR_GRMustache 7
