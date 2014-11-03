@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Cat2Cat"
-  s.version      = '1.3.0'
+  s.version      = '1.3.1'
   s.summary      = "Cat2Cat - Asset Catalog -> Image Category"
   s.description  = <<-DESC
                     A utility to take AssetCatalogs and turn them into UIImage or NSImage categories.
