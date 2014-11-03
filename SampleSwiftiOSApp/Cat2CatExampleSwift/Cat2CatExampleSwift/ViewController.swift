@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var images: [UIImage] = []
+    var images: [UIImage?] = []
     @IBOutlet weak var imageView: UIImageView?
 
     override func viewDidLoad() {
