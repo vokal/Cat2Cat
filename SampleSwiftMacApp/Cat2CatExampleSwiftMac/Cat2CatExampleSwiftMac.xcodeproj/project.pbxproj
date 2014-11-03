@@ -29,6 +29,7 @@
 		7154C8161A08039300862522 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C8141A08039300862522 /* WindowController.swift */; };
 		7154C8171A08039300862522 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7154C8151A08039300862522 /* WindowController.xib */; };
 		7154C81E1A0803E000862522 /* Cat2CatNSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C81D1A0803E000862522 /* Cat2CatNSImage.swift */; };
+		7154C8211A080AA500862522 /* Cat2CatNSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C81D1A0803E000862522 /* Cat2CatNSImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7154C8071A08024F00862522 /* Cat2CatExampleSwiftMacTests.swift in Sources */,
+				7154C8211A080AA500862522 /* Cat2CatNSImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
