@@ -22,4 +22,4 @@ matrix:
           xcode_sdk: iphonesimulator8.1
         - xcode_project: SampleSwiftMacApp/Cat2CatExampleSwiftMac/Cat2CatExampleSwiftMac.xcodeproj
           xcode_scheme: Cat2CatExampleSwiftMac
-          xcode_sdk: macosx10.9
+          xcode_sdk: macosx10.10
