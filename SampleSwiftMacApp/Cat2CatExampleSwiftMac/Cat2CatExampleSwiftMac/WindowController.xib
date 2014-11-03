@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="WindowController" customModule="Cat2CatExampleSwiftMac" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="jQi-vQ-jDq" id="2Fi-lY-Eh0"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Cat2Cat Swift Example" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="Cat2CatWindowAutosaveName" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jQi-vQ-jDq">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="SM9-8Q-KQM"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qmj-Du-eyi">
+                        <rect key="frame" x="192" y="13" width="96" height="32"/>
+                        <buttonCell key="cell" type="push" title="Random!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KN1-Qz-GKK">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="setRandomImage:" target="-2" id="Ykg-Qt-4rs"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jQi-vQ-jDq" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="7Yu-ab-vaX"/>
+                    <constraint firstItem="jQi-vQ-jDq" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="AVT-ug-ch2"/>
+                    <constraint firstAttribute="centerX" secondItem="Qmj-Du-eyi" secondAttribute="centerX" id="Wmm-QR-Krg"/>
+                    <constraint firstAttribute="bottom" secondItem="jQi-vQ-jDq" secondAttribute="bottom" id="gab-xK-TIt"/>
+                    <constraint firstAttribute="trailing" secondItem="jQi-vQ-jDq" secondAttribute="trailing" id="m0e-aY-gTS"/>
+                    <constraint firstAttribute="bottom" secondItem="Qmj-Du-eyi" secondAttribute="bottom" constant="20" id="uze-mo-jsM"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+    </objects>
+</document>
