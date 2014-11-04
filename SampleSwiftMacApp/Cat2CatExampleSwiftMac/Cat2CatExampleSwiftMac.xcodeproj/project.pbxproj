@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		7154C8181A08039E00862522 /* Cat2Cat */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7154C8191A08039E00862522 /* Build configuration list for PBXAggregateTarget "Cat2Cat" */;
+			buildPhases = (
+				7154C81C1A0803A400862522 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Cat2Cat;
+			productName = Cat2Cat;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		7154C7F61A08024F00862522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C7F51A08024F00862522 /* AppDelegate.swift */; };
+		7154C7FB1A08024F00862522 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7154C7F91A08024F00862522 /* MainMenu.xib */; };
+		7154C8071A08024F00862522 /* Cat2CatExampleSwiftMacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C8061A08024F00862522 /* Cat2CatExampleSwiftMacTests.swift */; };
+		7154C8121A08030E00862522 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7154C8101A08030E00862522 /* Icons.xcassets */; };
+		7154C8131A08030E00862522 /* Photos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7154C8111A08030E00862522 /* Photos.xcassets */; };
+		7154C8161A08039300862522 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C8141A08039300862522 /* WindowController.swift */; };
+		7154C8171A08039300862522 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7154C8151A08039300862522 /* WindowController.xib */; };
+		7154C81E1A0803E000862522 /* Cat2CatNSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C81D1A0803E000862522 /* Cat2CatNSImage.swift */; };
+		7154C8211A080AA500862522 /* Cat2CatNSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C81D1A0803E000862522 /* Cat2CatNSImage.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7154C8011A08024F00862522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7154C7E81A08024F00862522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7154C7EF1A08024F00862522;
+			remoteInfo = Cat2CatExampleSwiftMac;
+		};
+		7154C81F1A0803EB00862522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7154C7E81A08024F00862522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7154C8181A08039E00862522;
+			remoteInfo = Cat2Cat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7154C7F01A08024F00862522 /* Cat2CatExampleSwiftMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cat2CatExampleSwiftMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7154C7F41A08024F00862522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7154C7F51A08024F00862522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7154C7FA1A08024F00862522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		7154C8001A08024F00862522 /* Cat2CatExampleSwiftMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cat2CatExampleSwiftMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7154C8051A08024F00862522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7154C8061A08024F00862522 /* Cat2CatExampleSwiftMacTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat2CatExampleSwiftMacTests.swift; sourceTree = "<group>"; };
+		7154C8101A08030E00862522 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
+		7154C8111A08030E00862522 /* Photos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Photos.xcassets; sourceTree = "<group>"; };
+		7154C8141A08039300862522 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		7154C8151A08039300862522 /* WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindowController.xib; sourceTree = "<group>"; };
+		7154C81D1A0803E000862522 /* Cat2CatNSImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cat2CatNSImage.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7154C7ED1A08024F00862522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7154C7FD1A08024F00862522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7154C7E71A08024F00862522 = {
+			isa = PBXGroup;
+			children = (
+				7154C7F21A08024F00862522 /* Cat2CatExampleSwiftMac */,
+				7154C8031A08024F00862522 /* Cat2CatExampleSwiftMacTests */,
+				7154C7F11A08024F00862522 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7154C7F11A08024F00862522 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7154C7F01A08024F00862522 /* Cat2CatExampleSwiftMac.app */,
+				7154C8001A08024F00862522 /* Cat2CatExampleSwiftMacTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7154C7F21A08024F00862522 /* Cat2CatExampleSwiftMac */ = {
+			isa = PBXGroup;
+			children = (
+				7154C7F51A08024F00862522 /* AppDelegate.swift */,
+				7154C81D1A0803E000862522 /* Cat2CatNSImage.swift */,
+				7154C8101A08030E00862522 /* Icons.xcassets */,
+				7154C8111A08030E00862522 /* Photos.xcassets */,
+				7154C7F91A08024F00862522 /* MainMenu.xib */,
+				7154C7F31A08024F00862522 /* Supporting Files */,
+				7154C8141A08039300862522 /* WindowController.swift */,
+				7154C8151A08039300862522 /* WindowController.xib */,
+			);
+			path = Cat2CatExampleSwiftMac;
+			sourceTree = "<group>";
+		};
+		7154C7F31A08024F00862522 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7154C7F41A08024F00862522 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7154C8031A08024F00862522 /* Cat2CatExampleSwiftMacTests */ = {
+			isa = PBXGroup;
+			children = (
+				7154C8061A08024F00862522 /* Cat2CatExampleSwiftMacTests.swift */,
+				7154C8041A08024F00862522 /* Supporting Files */,
+			);
+			path = Cat2CatExampleSwiftMacTests;
+			sourceTree = "<group>";
+		};
+		7154C8041A08024F00862522 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7154C8051A08024F00862522 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7154C7EF1A08024F00862522 /* Cat2CatExampleSwiftMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7154C80A1A08024F00862522 /* Build configuration list for PBXNativeTarget "Cat2CatExampleSwiftMac" */;
+			buildPhases = (
+				7154C7EC1A08024F00862522 /* Sources */,
+				7154C7ED1A08024F00862522 /* Frameworks */,
+				7154C7EE1A08024F00862522 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7154C8201A0803EB00862522 /* PBXTargetDependency */,
+			);
+			name = Cat2CatExampleSwiftMac;
+			productName = Cat2CatExampleSwiftMac;
+			productReference = 7154C7F01A08024F00862522 /* Cat2CatExampleSwiftMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7154C7FF1A08024F00862522 /* Cat2CatExampleSwiftMacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7154C80D1A08024F00862522 /* Build configuration list for PBXNativeTarget "Cat2CatExampleSwiftMacTests" */;
+			buildPhases = (
+				7154C7FC1A08024F00862522 /* Sources */,
+				7154C7FD1A08024F00862522 /* Frameworks */,
+				7154C7FE1A08024F00862522 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7154C8021A08024F00862522 /* PBXTargetDependency */,
+			);
+			name = Cat2CatExampleSwiftMacTests;
+			productName = Cat2CatExampleSwiftMacTests;
+			productReference = 7154C8001A08024F00862522 /* Cat2CatExampleSwiftMacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7154C7E81A08024F00862522 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Vokal;
+				TargetAttributes = {
+					7154C7EF1A08024F00862522 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					7154C7FF1A08024F00862522 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 7154C7EF1A08024F00862522;
+					};
+					7154C8181A08039E00862522 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 7154C7EB1A08024F00862522 /* Build configuration list for PBXProject "Cat2CatExampleSwiftMac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7154C7E71A08024F00862522;
+			productRefGroup = 7154C7F11A08024F00862522 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7154C7EF1A08024F00862522 /* Cat2CatExampleSwiftMac */,
+				7154C7FF1A08024F00862522 /* Cat2CatExampleSwiftMacTests */,
+				7154C8181A08039E00862522 /* Cat2Cat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7154C7EE1A08024F00862522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7154C8131A08030E00862522 /* Photos.xcassets in Resources */,
+				7154C8121A08030E00862522 /* Icons.xcassets in Resources */,
+				7154C8171A08039300862522 /* WindowController.xib in Resources */,
+				7154C7FB1A08024F00862522 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7154C7FE1A08024F00862522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7154C81C1A0803A400862522 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Cat2CatExampleSwiftMac/Utilities/Cat2Cat\" \\\n    --base-path=\"${PROJECT_DIR}\" \\\n    --asset-catalog=\"Cat2CatExampleSwiftMac/Icons.xcassets\" \\\n    --asset-catalog=\"Cat2CatExampleSwiftMac/Photos.xcassets\" \\\n    --output-dir=\"Cat2CatExampleSwiftMac\" \\\n    --osx --swift";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7154C7EC1A08024F00862522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7154C81E1A0803E000862522 /* Cat2CatNSImage.swift in Sources */,
+				7154C8161A08039300862522 /* WindowController.swift in Sources */,
+				7154C7F61A08024F00862522 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7154C7FC1A08024F00862522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7154C8071A08024F00862522 /* Cat2CatExampleSwiftMacTests.swift in Sources */,
+				7154C8211A080AA500862522 /* Cat2CatNSImage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7154C8021A08024F00862522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7154C7EF1A08024F00862522 /* Cat2CatExampleSwiftMac */;
+			targetProxy = 7154C8011A08024F00862522 /* PBXContainerItemProxy */;
+		};
+		7154C8201A0803EB00862522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7154C8181A08039E00862522 /* Cat2Cat */;
+			targetProxy = 7154C81F1A0803EB00862522 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7154C7F91A08024F00862522 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7154C7FA1A08024F00862522 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7154C8081A08024F00862522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7154C8091A08024F00862522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7154C80B1A08024F00862522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Cat2CatExampleSwiftMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7154C80C1A08024F00862522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Cat2CatExampleSwiftMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7154C80E1A08024F00862522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Cat2CatExampleSwiftMacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cat2CatExampleSwiftMac.app/Contents/MacOS/Cat2CatExampleSwiftMac";
+			};
+			name = Debug;
+		};
+		7154C80F1A08024F00862522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Cat2CatExampleSwiftMacTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cat2CatExampleSwiftMac.app/Contents/MacOS/Cat2CatExampleSwiftMac";
+			};
+			name = Release;
+		};
+		7154C81A1A08039E00862522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7154C81B1A08039E00862522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7154C7EB1A08024F00862522 /* Build configuration list for PBXProject "Cat2CatExampleSwiftMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7154C8081A08024F00862522 /* Debug */,
+				7154C8091A08024F00862522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7154C80A1A08024F00862522 /* Build configuration list for PBXNativeTarget "Cat2CatExampleSwiftMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7154C80B1A08024F00862522 /* Debug */,
+				7154C80C1A08024F00862522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7154C80D1A08024F00862522 /* Build configuration list for PBXNativeTarget "Cat2CatExampleSwiftMacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7154C80E1A08024F00862522 /* Debug */,
+				7154C80F1A08024F00862522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7154C8191A08039E00862522 /* Build configuration list for PBXAggregateTarget "Cat2Cat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7154C81A1A08039E00862522 /* Debug */,
+				7154C81B1A08039E00862522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7154C7E81A08024F00862522 /* Project object */;
+}
