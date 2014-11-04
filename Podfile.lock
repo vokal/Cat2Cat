@@ -1,15 +1,19 @@
 PODS:
-  - BRLOptionParser (0.3.0)
+  - BRLOptionParser (0.3.1)
   - GRMustache (7.3.0):
     - JRSwizzle (~> 1.0)
   - JRSwizzle (1.0)
 
 DEPENDENCIES:
-  - BRLOptionParser (~> 0.3.0)
+  - BRLOptionParser (from `https://github.com/vokal-isaac/BRLOptionParser.git`)
   - GRMustache (~> 7.3.0)
 
+EXTERNAL SOURCES:
+  BRLOptionParser:
+    :git: https://github.com/vokal-isaac/BRLOptionParser.git
+
 SPEC CHECKSUMS:
-  BRLOptionParser: 896de9a82696b19f7dbb012b3830f365c45dc599
+  BRLOptionParser: e1980e471df24a8cc50700d8156a60cc81ef5712
   GRMustache: efecd3b603f0a7a99cf6bdf3998782ee0c465726
   JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
 
