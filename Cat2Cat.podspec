@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Cat2Cat"
-  s.version      = '1.3.1'
+  s.version      = '1.3.2'
   s.summary      = "Cat2Cat - Asset Catalog -> Image Category"
   s.description  = <<-DESC
                     A utility to take AssetCatalogs and turn them into UIImage or NSImage categories.
@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.9'
   s.requires_arc = true
 
-  s.source_files = 'CocoaPod/*'
+  s.preserve_paths = 'CocoaPod/*'
 end
