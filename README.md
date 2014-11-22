@@ -18,6 +18,8 @@ After running `Cat2Cat` and adding the category or categories it produces, inste
 ##Usage
 ----
 
+*Note: You should not use Cat2Cat as a Git Submodule due to issues with how submodules handle the test filenames which include accents. If you wish to keep an eye on versions through dependency management instead of manually, please use our CocoaPod, which does not contain any of the test projects.*
+
 ###Using a Pre-Compiled Binary And A Build Script
 The current compiled binary can be downloaded from [the releases page](../../releases).
 
