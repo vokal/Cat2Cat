@@ -9,6 +9,8 @@ before_script:
     - rm SampleiOSApp/Cat2CatExample/Cat2CatExample/Categories/UIImage+AssetCatalog.?
     - rm SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac/Categories/NSImage+AssetCatalog.?
     - rm SampleSwiftiOSApp/Cat2CatExampleSwift/Cat2CatExampleSwift/Cat2CatUIImage.swift
+    - rm SampleSwiftMacApp/Cat2CatExampleSwiftMac/Cat2CatExampleSwiftMac/Cat2CatNSImage.swift
+
 matrix:
     include:
         - xcode_project: SampleiOSApp/Cat2CatExample/Cat2CatExample.xcodeproj
