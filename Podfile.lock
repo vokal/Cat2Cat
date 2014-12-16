@@ -12,9 +12,14 @@ EXTERNAL SOURCES:
   BRLOptionParser:
     :git: https://github.com/vokal-isaac/BRLOptionParser.git
 
+CHECKOUT OPTIONS:
+  BRLOptionParser:
+    :commit: 74754df6a0ccfa72c0ac562c900ab8671436b4ed
+    :git: https://github.com/vokal-isaac/BRLOptionParser.git
+
 SPEC CHECKSUMS:
   BRLOptionParser: e1980e471df24a8cc50700d8156a60cc81ef5712
   GRMustache: efecd3b603f0a7a99cf6bdf3998782ee0c465726
   JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0
