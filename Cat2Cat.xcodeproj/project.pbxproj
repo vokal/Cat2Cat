@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011744291A40EA3600CDE276 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A926551A40E6DE0001E5B7 /* AppKit.framework */; };
+		0117442A1A40EA3600CDE276 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
+		01A4DD1E1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */; };
+		01A4DD1F1A40EC6500F6EAFE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01A4DD1D1A40EC6500F6EAFE /* Info.plist */; };
 		337C73DF188472F90078E5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DC188472F90078E5F8 /* main.m */; };
 		337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
@@ -29,6 +33,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		011744281A40EA3600CDE276 /* Cat2CatXcodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cat2CatXcodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		01A4DD1B1A40EC6500F6EAFE /* Cat2CatXcodePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat2CatXcodePlugin.h; sourceTree = "<group>"; };
+		01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat2CatXcodePlugin.m; sourceTree = "<group>"; };
+		01A4DD1D1A40EC6500F6EAFE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01A926551A40E6DE0001E5B7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		0D1E1AA0184C17C96B870929 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		337C73DA188472E30078E5F8 /* Cat2Cat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Cat2Cat-Prefix.pch"; path = "Cat2Cat/Cat2Cat-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		337C73DB188472F00078E5F8 /* Cat2Cat.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = Cat2Cat.1; path = Cat2Cat/Cat2Cat.1; sourceTree = SOURCE_ROOT; };
@@ -49,6 +58,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		011744261A40EA3600CDE276 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				011744291A40EA3600CDE276 /* AppKit.framework in Frameworks */,
+				0117442A1A40EA3600CDE276 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		338287B718773EC500070BE8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,9 +79,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01A4DD1A1A40EC6500F6EAFE /* Cat2CatXcodePlugin */ = {
+			isa = PBXGroup;
+			children = (
+				01A4DD1B1A40EC6500F6EAFE /* Cat2CatXcodePlugin.h */,
+				01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */,
+				01A4DD1D1A40EC6500F6EAFE /* Info.plist */,
+			);
+			path = Cat2CatXcodePlugin;
+			sourceTree = "<group>";
+		};
 		338287B118773EC500070BE8 = {
 			isa = PBXGroup;
 			children = (
+				01A4DD1A1A40EC6500F6EAFE /* Cat2CatXcodePlugin */,
 				338287BF18773EC500070BE8 /* ImageNamer */,
 				338287BC18773EC500070BE8 /* Frameworks */,
 				338287BB18773EC500070BE8 /* Products */,
@@ -75,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				338287BA18773EC500070BE8 /* Cat2Cat */,
+				011744281A40EA3600CDE276 /* Cat2CatXcodePlugin.xcplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +114,7 @@
 			children = (
 				338287BD18773EC500070BE8 /* Foundation.framework */,
 				0D1E1AA0184C17C96B870929 /* libPods.a */,
+				01A926551A40E6DE0001E5B7 /* AppKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,6 +166,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		011744271A40EA3600CDE276 /* Cat2CatXcodePlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 011744351A40EA3600CDE276 /* Build configuration list for PBXNativeTarget "Cat2CatXcodePlugin" */;
+			buildPhases = (
+				011744241A40EA3600CDE276 /* Sources */,
+				011744251A40EA3600CDE276 /* Resources */,
+				011744261A40EA3600CDE276 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cat2CatXcodePlugin;
+			productName = XcodePlugin;
+			productReference = 011744281A40EA3600CDE276 /* Cat2CatXcodePlugin.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
 		338287B918773EC500070BE8 /* Cat2Cat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 338287C818773EC500070BE8 /* Build configuration list for PBXNativeTarget "Cat2Cat" */;
@@ -162,6 +210,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Vokal;
+				TargetAttributes = {
+					011744271A40EA3600CDE276 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
 			};
 			buildConfigurationList = 338287B518773EC500070BE8 /* Build configuration list for PBXProject "Cat2Cat" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -176,9 +229,21 @@
 			projectRoot = "";
 			targets = (
 				338287B918773EC500070BE8 /* Cat2Cat */,
+				011744271A40EA3600CDE276 /* Cat2CatXcodePlugin */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		011744251A40EA3600CDE276 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01A4DD1F1A40EC6500F6EAFE /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1464D5E34813F8ECCF73ABC8 /* Copy Pods Resources */ = {
@@ -214,6 +279,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		011744241A40EA3600CDE276 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01A4DD1E1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		338287B618773EC500070BE8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,6 +302,48 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		011744331A40EA3600CDE276 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Cat2CatXcodePlugin/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		011744341A40EA3600CDE276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Cat2CatXcodePlugin/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
 		338287C618773EC500070BE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -320,6 +435,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		011744351A40EA3600CDE276 /* Build configuration list for PBXNativeTarget "Cat2CatXcodePlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				011744331A40EA3600CDE276 /* Debug */,
+				011744341A40EA3600CDE276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		338287B518773EC500070BE8 /* Build configuration list for PBXProject "Cat2Cat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
