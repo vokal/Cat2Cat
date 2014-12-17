@@ -10,13 +10,13 @@
 		011744291A40EA3600CDE276 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A926551A40E6DE0001E5B7 /* AppKit.framework */; };
 		0117442A1A40EA3600CDE276 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
 		013DB4881A40ED89005578F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
-		013DB48A1A40EDA6005578F8 /* PluginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013DB4891A40EDA6005578F8 /* PluginWindow.xib */; };
+		013DB48A1A40EDA6005578F8 /* PluginWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013DB4891A40EDA6005578F8 /* PluginWindowController.xib */; };
 		013DB48B1A40EDFB005578F8 /* VOKAssetCatalogFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */; };
 		013DB48C1A40EDFB005578F8 /* VOKAssetCatalogImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E61A003B6000B3F38D /* VOKAssetCatalogImageModel.m */; };
 		013DB48D1A40EDFB005578F8 /* VOKTemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */; };
 		013DB48E1A40F024005578F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1E1AA0184C17C96B870929 /* libPods.a */; };
 		01A4DD1E1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */; };
-		01A6A0A21A40F14700F58C44 /* PluginWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6A0A11A40F14700F58C44 /* PluginWindow.m */; };
+		01A6A0A21A40F14700F58C44 /* PluginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6A0A11A40F14700F58C44 /* PluginWindowController.m */; };
 		337C73DF188472F90078E5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DC188472F90078E5F8 /* main.m */; };
 		337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
@@ -40,12 +40,12 @@
 
 /* Begin PBXFileReference section */
 		011744281A40EA3600CDE276 /* Cat2CatXcodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cat2CatXcodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
-		013DB4891A40EDA6005578F8 /* PluginWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PluginWindow.xib; sourceTree = "<group>"; };
+		013DB4891A40EDA6005578F8 /* PluginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PluginWindowController.xib; sourceTree = "<group>"; };
 		01A4DD1B1A40EC6500F6EAFE /* Cat2CatXcodePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat2CatXcodePlugin.h; sourceTree = "<group>"; };
 		01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat2CatXcodePlugin.m; sourceTree = "<group>"; };
 		01A4DD1D1A40EC6500F6EAFE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01A6A0A01A40F14100F58C44 /* PluginWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginWindow.h; sourceTree = "<group>"; };
-		01A6A0A11A40F14700F58C44 /* PluginWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginWindow.m; sourceTree = "<group>"; };
+		01A6A0A01A40F14100F58C44 /* PluginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginWindowController.h; sourceTree = "<group>"; };
+		01A6A0A11A40F14700F58C44 /* PluginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginWindowController.m; sourceTree = "<group>"; };
 		01A926551A40E6DE0001E5B7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		0D1E1AA0184C17C96B870929 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		337C73DA188472E30078E5F8 /* Cat2Cat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Cat2Cat-Prefix.pch"; path = "Cat2Cat/Cat2Cat-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -94,9 +94,9 @@
 			children = (
 				01A4DD1B1A40EC6500F6EAFE /* Cat2CatXcodePlugin.h */,
 				01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */,
-				013DB4891A40EDA6005578F8 /* PluginWindow.xib */,
-				01A6A0A11A40F14700F58C44 /* PluginWindow.m */,
-				01A6A0A01A40F14100F58C44 /* PluginWindow.h */,
+				013DB4891A40EDA6005578F8 /* PluginWindowController.xib */,
+				01A6A0A11A40F14700F58C44 /* PluginWindowController.m */,
+				01A6A0A01A40F14100F58C44 /* PluginWindowController.h */,
 				01A4DD1D1A40EC6500F6EAFE /* Info.plist */,
 			);
 			path = Cat2CatXcodePlugin;
@@ -254,7 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				013DB48A1A40EDA6005578F8 /* PluginWindow.xib in Resources */,
+				013DB48A1A40EDA6005578F8 /* PluginWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +330,7 @@
 			files = (
 				013DB4881A40ED89005578F8 /* VICatalogWalker.m in Sources */,
 				013DB48C1A40EDFB005578F8 /* VOKAssetCatalogImageModel.m in Sources */,
-				01A6A0A21A40F14700F58C44 /* PluginWindow.m in Sources */,
+				01A6A0A21A40F14700F58C44 /* PluginWindowController.m in Sources */,
 				01A4DD1E1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m in Sources */,
 				013DB48B1A40EDFB005578F8 /* VOKAssetCatalogFolderModel.m in Sources */,
 				013DB48D1A40EDFB005578F8 /* VOKTemplateModel.m in Sources */,

@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PluginWindow : NSWindow<NSTableViewDataSource>
+#import "VICatalogWalker.h"
+
+@interface PluginWindowController : NSWindowController<NSTableViewDataSource>
 @property (weak) IBOutlet NSButton *addButton;
 @property (weak) IBOutlet NSButton *removeButton;
 @property (weak) IBOutlet NSTextField *categoryTextField;
@@ -17,4 +19,5 @@
 @property (weak) IBOutlet NSButton *generateButton;
 
 @property (strong) NSMutableArray* catalogPaths;
+@property (strong) VICatalogWalkerParameters* params;
 @end

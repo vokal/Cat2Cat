@@ -9,7 +9,7 @@
 #import "Cat2CatXcodePlugin.h"
 
 #import "VICatalogWalker.h"
-#import "PluginWindow.h"
+#import "PluginWindowController.h"
 
 static Cat2CatXcodePlugin *sharedPlugin;
 typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
 @interface Cat2CatXcodePlugin()<NSWindowDelegate>
 @property(nonatomic, strong) NSBundle *bundle;
 @property(nonatomic, strong) NSWindowController *windowController;
-@property(nonatomic, strong) PluginWindow* pluginWindow;
+@property(nonatomic, strong) PluginWindowController* pluginWindow;
 
 @property(nonatomic, strong) NSArray* fullCatalogPaths;
 @property(nonatomic, strong) NSString* categoryPath;
@@ -55,7 +55,7 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
             [[menuItem submenu] addItem:pluginMenuItem];
             
             NSMenu* pluginMenu = [[NSMenu alloc] initWithTitle:@"Cat2Cat"];
-
+            [pluginMenuItem setSubmenu:pluginMenu];
             
             NSMenuItem *settingsItem = [[NSMenuItem alloc] initWithTitle:@"Settings" action:@selector(showSettings:) keyEquivalent:@""];
             [settingsItem setTarget:self];
@@ -65,7 +65,7 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
             [pluginMenu addItem:generateItem];
 
             
-            [pluginMenuItem setSubmenu:pluginMenu];
+
         }
     }
     return self;
@@ -77,31 +77,9 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
 
     NSLog(@"%s", __PRETTY_FUNCTION__);
     if (!self.pluginWindow) {
-        self.pluginWindow = [[PluginWindow alloc] init];
+        self.pluginWindow = [[PluginWindowController alloc] initWithWindowNibName:@"PluginWindowController"];
     }
-    // Get the frame and origin of the control of the current event
-    // (= our NSStatusItem)
-    CGRect eventFrame = [[[NSApp currentEvent] window] frame];
-    CGPoint eventOrigin = eventFrame.origin;
-    CGSize eventSize = eventFrame.size;
-    if(self.windowController == nil){
-        self.windowController = [[NSWindowController alloc] initWithWindowNibName:@"PluginWindow" owner:self.pluginWindow];
-    }
-    NSWindow *window = [self.windowController window];
-    window.delegate = self;
-
-    // Calculate the position of the window to
-    // place it centered below of the status item
-    CGRect windowFrame = window.frame;
-    CGSize windowSize = windowFrame.size;
-    CGPoint windowTopLeftPosition = CGPointMake(eventOrigin.x + eventSize.width/2.f - windowSize.width/2.f, eventOrigin.y - 20);
-    
-    // Set position of the window and display it
-    [window setFrameTopLeftPoint:windowTopLeftPosition];
-    [window makeKeyAndOrderFront:self];
-    
-    // Show your window in front of all other apps
-    [NSApp activateIgnoringOtherApps:YES];
+    [self.pluginWindow showWindow:self.pluginWindow];
 }
 
 - (void)generate:(id)sender
@@ -116,24 +94,10 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - File Chooser
-+ (NSArray *)selectAssetsFolder
-{
-    NSOpenPanel *panel = [NSOpenPanel openPanel];
-    panel.title = @"Select your Assets Catalog";
-    [panel setAllowedFileTypes:@[@".xcassets"]];
-    [panel setAllowsMultipleSelection:YES];
-    [panel setCanChooseDirectories:YES];
-    [panel setCanChooseFiles:NO];
-    if ([panel runModal] != NSFileHandlingPanelOKButton) return nil;
-    return [panel URLs];
-}
-
 #pragma mark - NSWindowDelegate
 - (void)windowWillClose:(NSNotification *)notification
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    
 }
 
 @end
