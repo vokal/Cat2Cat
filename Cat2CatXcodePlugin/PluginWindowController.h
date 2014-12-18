@@ -18,6 +18,7 @@
 @property (weak) IBOutlet NSTableView* tableView;
 @property (weak) IBOutlet NSButton *generateButton;
 
-@property (strong) NSMutableArray* catalogPaths;
-@property (strong) VICatalogWalkerParameters* params;
+@property (nonatomic, strong) NSMutableArray* catalogPaths;
+@property (nonatomic, strong) VICatalogWalkerParameters* params;
+@property (nonatomic, copy) NSString* currentWorkspaceDirectoryPath;
 @end

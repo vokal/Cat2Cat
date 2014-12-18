@@ -85,6 +85,7 @@
     [panel setCanChooseFiles:NO];
     [panel setCanChooseDirectories:YES];
     [panel setAllowsMultipleSelection:YES];
+    [panel setDirectoryURL:[NSURL URLWithString:self.currentWorkspaceDirectoryPath]];
     [panel setAllowedFileTypes:@[@".xcassets"]];
     
     NSInteger clicked = [panel runModal];
@@ -106,7 +107,7 @@
     [panel setCanChooseFiles:NO];
     [panel setCanChooseDirectories:YES];
     [panel setAllowsMultipleSelection:NO];
-    
+    [panel setDirectoryURL:[NSURL URLWithString:self.currentWorkspaceDirectoryPath]];
     NSInteger clicked = [panel runModal];
     
     if (clicked == NSFileHandlingPanelOKButton) {

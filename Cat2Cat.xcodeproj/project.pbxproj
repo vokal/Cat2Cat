@@ -17,6 +17,11 @@
 		013DB48E1A40F024005578F8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D1E1AA0184C17C96B870929 /* libPods.a */; };
 		01A4DD1E1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */; };
 		01A6A0A21A40F14700F58C44 /* PluginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6A0A11A40F14700F58C44 /* PluginWindowController.m */; };
+		01C2CB5E1A42F1A6000DAE3A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C2CB5D1A42F1A6000DAE3A /* Cocoa.framework */; };
+		01C2CB601A42F246000DAE3A /* IDEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C2CB5F1A42F246000DAE3A /* IDEFoundation.framework */; };
+		01C2CB621A42F283000DAE3A /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C2CB611A42F283000DAE3A /* IDEKit.framework */; };
+		01C2CB641A42F2D4000DAE3A /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C2CB631A42F2D4000DAE3A /* DVTKit.framework */; };
+		01C2CB661A42F2DA000DAE3A /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01C2CB651A42F2DA000DAE3A /* DVTFoundation.framework */; };
 		337C73DF188472F90078E5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DC188472F90078E5F8 /* main.m */; };
 		337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
@@ -41,12 +46,21 @@
 /* Begin PBXFileReference section */
 		011744281A40EA3600CDE276 /* Cat2CatXcodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cat2CatXcodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		013DB4891A40EDA6005578F8 /* PluginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PluginWindowController.xib; sourceTree = "<group>"; };
+		0140EB601A42E5DF00A96BEE /* IDEWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDEWorkspace.h; sourceTree = "<group>"; };
+		0140EB611A42E60D00A96BEE /* IDEWorkspaceWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDEWorkspaceWindow.h; sourceTree = "<group>"; };
+		0140EB621A42E67B00A96BEE /* DVTFilePath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DVTFilePath.h; sourceTree = "<group>"; };
+		0140EB631A42EAF900A96BEE /* DVTDualProxyWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DVTDualProxyWindow.h; sourceTree = "<group>"; };
 		01A4DD1B1A40EC6500F6EAFE /* Cat2CatXcodePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat2CatXcodePlugin.h; sourceTree = "<group>"; };
 		01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat2CatXcodePlugin.m; sourceTree = "<group>"; };
 		01A4DD1D1A40EC6500F6EAFE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01A6A0A01A40F14100F58C44 /* PluginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginWindowController.h; sourceTree = "<group>"; };
 		01A6A0A11A40F14700F58C44 /* PluginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginWindowController.m; sourceTree = "<group>"; };
 		01A926551A40E6DE0001E5B7 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		01C2CB5D1A42F1A6000DAE3A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		01C2CB5F1A42F246000DAE3A /* IDEFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEFoundation.framework; sourceTree = "<group>"; };
+		01C2CB611A42F283000DAE3A /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
+		01C2CB631A42F2D4000DAE3A /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework; sourceTree = "<group>"; };
+		01C2CB651A42F2DA000DAE3A /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
 		0D1E1AA0184C17C96B870929 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		337C73DA188472E30078E5F8 /* Cat2Cat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Cat2Cat-Prefix.pch"; path = "Cat2Cat/Cat2Cat-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		337C73DB188472F00078E5F8 /* Cat2Cat.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = Cat2Cat.1; path = Cat2Cat/Cat2Cat.1; sourceTree = SOURCE_ROOT; };
@@ -71,7 +85,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01C2CB601A42F246000DAE3A /* IDEFoundation.framework in Frameworks */,
+				01C2CB5E1A42F1A6000DAE3A /* Cocoa.framework in Frameworks */,
 				013DB48E1A40F024005578F8 /* libPods.a in Frameworks */,
+				01C2CB641A42F2D4000DAE3A /* DVTKit.framework in Frameworks */,
+				01C2CB661A42F2DA000DAE3A /* DVTFoundation.framework in Frameworks */,
+				01C2CB621A42F283000DAE3A /* IDEKit.framework in Frameworks */,
 				011744291A40EA3600CDE276 /* AppKit.framework in Frameworks */,
 				0117442A1A40EA3600CDE276 /* Foundation.framework in Frameworks */,
 			);
@@ -89,9 +108,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0140EB5F1A42E5C800A96BEE /* Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				0140EB601A42E5DF00A96BEE /* IDEWorkspace.h */,
+				0140EB611A42E60D00A96BEE /* IDEWorkspaceWindow.h */,
+				0140EB621A42E67B00A96BEE /* DVTFilePath.h */,
+				0140EB631A42EAF900A96BEE /* DVTDualProxyWindow.h */,
+			);
+			name = Xcode;
+			sourceTree = "<group>";
+		};
 		01A4DD1A1A40EC6500F6EAFE /* Cat2CatXcodePlugin */ = {
 			isa = PBXGroup;
 			children = (
+				0140EB5F1A42E5C800A96BEE /* Xcode */,
 				01A4DD1B1A40EC6500F6EAFE /* Cat2CatXcodePlugin.h */,
 				01A4DD1C1A40EC6500F6EAFE /* Cat2CatXcodePlugin.m */,
 				013DB4891A40EDA6005578F8 /* PluginWindowController.xib */,
@@ -125,6 +156,11 @@
 		338287BC18773EC500070BE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01C2CB651A42F2DA000DAE3A /* DVTFoundation.framework */,
+				01C2CB631A42F2D4000DAE3A /* DVTKit.framework */,
+				01C2CB611A42F283000DAE3A /* IDEKit.framework */,
+				01C2CB5F1A42F246000DAE3A /* IDEFoundation.framework */,
+				01C2CB5D1A42F1A6000DAE3A /* Cocoa.framework */,
 				338287BD18773EC500070BE8 /* Foundation.framework */,
 				0D1E1AA0184C17C96B870929 /* libPods.a */,
 				01A926551A40E6DE0001E5B7 /* AppKit.framework */,
@@ -362,6 +398,11 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -386,6 +427,11 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+				);
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = Cat2CatXcodePlugin/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";

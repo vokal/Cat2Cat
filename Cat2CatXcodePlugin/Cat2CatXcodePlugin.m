@@ -11,6 +11,12 @@
 #import "VICatalogWalker.h"
 #import "PluginWindowController.h"
 
+// Xcode (see https://github.com/questbeat/Lin-Xcode5 or class dump from https://github.com/luisobo/Xcode-RuntimeHeaders)
+#import "IDEWorkspace.h"
+#import "DVTFilePath.h"
+#import "IDEWorkspaceWindow.h"
+
+
 static Cat2CatXcodePlugin *sharedPlugin;
 typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
     Cat2CatTypeiOS,
@@ -23,8 +29,10 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
 @property(nonatomic, strong) PluginWindowController* pluginWindow;
 
 @property(nonatomic, strong) NSArray* fullCatalogPaths;
-@property(nonatomic, strong) NSString* categoryPath;
+@property(nonatomic, copy) NSString* categoryPath;
 @property(nonatomic, assign) VICatalogWalkerOutputType outputType;
+
+@property(nonatomic, copy) NSString* currentWorkspaceFilePath;
 @end
 
 @implementation Cat2CatXcodePlugin
@@ -46,6 +54,12 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
         // reference to plugin's bundle, for resource acccess
         self.bundle = plugin;
         
+        // Register to notification center
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(workspaceWindowDidBecomeMain:)
+                                                     name:NSWindowDidBecomeMainNotification
+                                                   object:nil];
+        
         // Create menu items, initialize UI, etc.
         NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"File"];
         if (menuItem) {
@@ -63,41 +77,53 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
             NSMenuItem *generateItem = [[NSMenuItem alloc] initWithTitle:@"Generate" action:@selector(generate:) keyEquivalent:@""];
             [generateItem setTarget:self];
             [pluginMenu addItem:generateItem];
-
-            
-
         }
     }
     return self;
 }
 
-// Actions for menu item:
+- (void)dealloc
+{
+    // Remove from notification center
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:NSWindowDidBecomeMainNotification
+                                                  object:nil];
+}
+
+#pragma mark - Notifications
+
+- (void)workspaceWindowDidBecomeMain:(NSNotification *)notification
+{
+    if ([[notification object] isKindOfClass:[IDEWorkspaceWindow class]]) {
+        NSWindow *workspaceWindow = (NSWindow *)[notification object];
+        NSWindowController *workspaceWindowController = (NSWindowController *)workspaceWindow.windowController;
+        
+        IDEWorkspace *workspace = (IDEWorkspace *)[workspaceWindowController valueForKey:@"_workspace"];
+        DVTFilePath *representingFilePath = workspace.representingFilePath;
+        NSString *pathString = representingFilePath.pathString;
+        
+        self.currentWorkspaceFilePath = pathString;
+        NSLog(@"currentWorkspaceFilePath: %@", self.currentWorkspaceFilePath);
+    }
+}
+
+#pragma mark - Actions
+
 - (void)showSettings:(id)sender
 {
-
     NSLog(@"%s", __PRETTY_FUNCTION__);
     if (!self.pluginWindow) {
         self.pluginWindow = [[PluginWindowController alloc] initWithWindowNibName:@"PluginWindowController"];
+        self.pluginWindow.currentWorkspaceDirectoryPath = [self.currentWorkspaceFilePath stringByDeletingLastPathComponent];
     }
     [self.pluginWindow showWindow:self.pluginWindow];
 }
 
 - (void)generate:(id)sender
 {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Generate" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.informativeText = @"Generate";
     [alert runModal];
-}
-
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - NSWindowDelegate
-- (void)windowWillClose:(NSNotification *)notification
-{
-    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 @end
