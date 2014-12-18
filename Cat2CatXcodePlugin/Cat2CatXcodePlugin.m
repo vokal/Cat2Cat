@@ -15,7 +15,8 @@
 #import "IDEWorkspace.h"
 #import "DVTFilePath.h"
 #import "IDEWorkspaceWindow.h"
-
+#import "IDEIndexCollection.h"
+#import "IDEIndex.h"
 
 static Cat2CatXcodePlugin *sharedPlugin;
 typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
@@ -33,6 +34,8 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
 @property(nonatomic, assign) VICatalogWalkerOutputType outputType;
 
 @property(nonatomic, copy) NSString* currentWorkspaceFilePath;
+
+@property(nonatomic, strong)NSMenuItem* generateItem;
 @end
 
 @implementation Cat2CatXcodePlugin
@@ -77,6 +80,7 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
             NSMenuItem *generateItem = [[NSMenuItem alloc] initWithTitle:@"Generate" action:@selector(generate:) keyEquivalent:@""];
             [generateItem setTarget:self];
             [pluginMenu addItem:generateItem];
+            self.generateItem = generateItem;
         }
     }
     return self;
@@ -99,6 +103,19 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
         NSWindowController *workspaceWindowController = (NSWindowController *)workspaceWindow.windowController;
         
         IDEWorkspace *workspace = (IDEWorkspace *)[workspaceWindowController valueForKey:@"_workspace"];
+        IDEIndexCollection *indexCollection = [workspace.index filesContaining:VICatalogWalkerSettingsFilename anchorStart:NO anchorEnd:NO subsequence:NO ignoreCase:NO cancelWhen:nil];
+        DVTFilePath *settingsFilePath = nil;
+        for (DVTFilePath *filePath in indexCollection) {
+            settingsFilePath = filePath;
+            break;
+        }
+        if (settingsFilePath) {
+            [self loadParams];
+            self.generateItem.enabled = YES;
+        }else{
+            self.generateItem.enabled = NO;
+        }
+
         DVTFilePath *representingFilePath = workspace.representingFilePath;
         NSString *pathString = representingFilePath.pathString;
         
@@ -124,6 +141,18 @@ typedef NS_ENUM(NSUInteger, Cat2CatTypes) {
     NSAlert *alert = [[NSAlert alloc] init];
     alert.informativeText = @"Generate";
     [alert runModal];
+}
+
+#pragma mark -
+
+- (void)loadParams
+{
+    
+}
+
+- (void)saveParams
+{
+    
 }
 
 @end

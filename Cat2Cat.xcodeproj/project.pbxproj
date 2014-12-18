@@ -45,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		011744281A40EA3600CDE276 /* Cat2CatXcodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Cat2CatXcodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		0118B4741A42FBFF0092AB5C /* IDEIndexCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDEIndexCollection.h; sourceTree = "<group>"; };
+		0118B4751A42FC970092AB5C /* IDEIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEIndex.h; sourceTree = "<group>"; };
 		013DB4891A40EDA6005578F8 /* PluginWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PluginWindowController.xib; sourceTree = "<group>"; };
 		0140EB601A42E5DF00A96BEE /* IDEWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDEWorkspace.h; sourceTree = "<group>"; };
 		0140EB611A42E60D00A96BEE /* IDEWorkspaceWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDEWorkspaceWindow.h; sourceTree = "<group>"; };
@@ -112,9 +114,11 @@
 			isa = PBXGroup;
 			children = (
 				0140EB601A42E5DF00A96BEE /* IDEWorkspace.h */,
+				0118B4751A42FC970092AB5C /* IDEIndex.h */,
 				0140EB611A42E60D00A96BEE /* IDEWorkspaceWindow.h */,
 				0140EB621A42E67B00A96BEE /* DVTFilePath.h */,
 				0140EB631A42EAF900A96BEE /* DVTDualProxyWindow.h */,
+				0118B4741A42FBFF0092AB5C /* IDEIndexCollection.h */,
 			);
 			name = Xcode;
 			sourceTree = "<group>";

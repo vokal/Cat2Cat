@@ -69,6 +69,23 @@
     }
 }
 
+- (IBAction)saveSettingsAction:(id)sender
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    self.params.assetCatalogPaths = self.catalogPaths;
+    
+    if (NO) {
+        NSAlert* alert = [[NSAlert alloc] init];
+        alert.informativeText = @"ERROR CREATING YOUR FILES";
+        [alert runModal];
+    } else {
+        NSAlert* alert = [[NSAlert alloc] init];
+        alert.informativeText = @"Your category was successfully created!";
+        [alert runModal];
+    }
+}
+
 - (IBAction)removeCatalogPathAction:(id)sender
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
@@ -94,7 +111,7 @@
         NSLog(@"%s: clicked", __PRETTY_FUNCTION__);
         for (NSURL *url in [panel URLs]) {
             NSLog(@"%s: url: %@", __PRETTY_FUNCTION__, url);
-            [self.catalogPaths addObject:url.path];
+            [self.catalogPaths addObject:url.relativePath];
         }
         [self.tableView reloadData];
     }
@@ -112,7 +129,7 @@
     
     if (clicked == NSFileHandlingPanelOKButton) {
         NSURL *url = [panel URL];
-        [self.categoryTextField setStringValue:url.path];
+        [self.categoryTextField setStringValue:url.relativePath];
         self.params.outputDirectory = url.path;
     }
 }
