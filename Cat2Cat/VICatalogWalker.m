@@ -12,6 +12,8 @@
 #import "VOKAssetCatalogImageModel.h"
 #import "VOKTemplateModel.h"
 
+NSString *const VICatalogWalkerSettingsFilename = @"Cat2Cat.plist";
+
 @interface VICatalogWalker()
 @property (nonatomic, strong) NSString *categoryOutputPath;
 @property (nonatomic, strong) NSFileManager *fileManager;
@@ -23,6 +25,25 @@ static NSString *const ExtensionLaunchImage = @".launchimage";
 static NSString *const ExtensionStandardImageset = @".imageset";
 
 @implementation VICatalogWalkerParameters
+
+- (id)propertyListRepresentation
+{
+    NSMutableDictionary* plist = [NSMutableDictionary dictionary];
+    plist[@"assetCatalogPaths"] = self.assetCatalogPaths;
+    plist[@"outputDirectory"] = self.outputDirectory;
+    plist[@"outputType"] = @(self.outputTypes);
+    return plist;
+}
+
++ (instancetype)parametersWithPropertyListRepresentation:(id)plist
+{
+    VICatalogWalkerParameters* parameters = [[self alloc] init];
+    parameters.assetCatalogPaths = plist[@"assetCatalogPaths"];
+    parameters.outputDirectory = plist[@"outputDirectory"];
+    parameters.outputTypes = [plist[@"outputType"] unsignedLongLongValue];
+    return parameters;
+}
+
 @end
 
 @implementation VICatalogWalker

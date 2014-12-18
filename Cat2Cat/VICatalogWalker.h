@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const VICatalogWalkerSettingsFilename;
+
 typedef NS_ENUM(NSInteger, VICatalogWalkerLegacyOutputType) {
     VICatalogWalkerOutputTypeiOSAndMac = 0,
     VICatalogWalkerOutputTypeiOSOnly = 1,
@@ -28,6 +30,10 @@ typedef NS_OPTIONS(NSUInteger, VICatalogWalkerOutputType) {
 @property (nonatomic, strong) NSArray *assetCatalogPaths;
 @property (nonatomic, strong) NSString *outputDirectory;
 @property (nonatomic, assign) VICatalogWalkerOutputType outputTypes;
+
+- (id)propertyListRepresentation;
++ (instancetype)parametersWithPropertyListRepresentation:(id)plist;
+
 @end
 
 @interface VICatalogWalker : NSObject
