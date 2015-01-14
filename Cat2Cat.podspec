@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Cat2Cat"
-  s.version      = '1.3.2'
+  s.version      = '1.3.3'
   s.summary      = "Cat2Cat - Asset Catalog -> Image Category"
   s.description  = <<-DESC
                     A utility to take AssetCatalogs and turn them into UIImage or NSImage categories.
@@ -9,10 +9,10 @@ Pod::Spec.new do |s|
                     * Can create categories for UIImage, NSImage, or both.
                     * Pod includes the compiled binary and a sample build script.
                    DESC
-  s.homepage     = "https://github.com/vokalinteractive/Cat2Cat"
+  s.homepage     = "https://github.com/vokal/Cat2Cat"
   s.license      = 'MIT'
   s.authors 	 = { 'Ellen Shapiro' => 'http://www.vokalinteractive.com', 'Bryan Luby' => 'http://www.vokalinteractive.com' }
-  s.source       = { :git => "https://github.com/vokalinteractive/Cat2Cat.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/vokal/Cat2Cat.git", :tag => s.version.to_s }
 
 
   s.ios.deployment_target = '6.0'
