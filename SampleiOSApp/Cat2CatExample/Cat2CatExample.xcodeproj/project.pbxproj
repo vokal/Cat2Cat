@@ -269,7 +269,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = INE;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Vokal;
 				TargetAttributes = {
 					33B0A4D218805C480058939D = {

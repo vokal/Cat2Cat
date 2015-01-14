@@ -4,7 +4,7 @@
 // Generated Automatically Using Cat2Cat
 // NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.
 //
-// For more information, go to http://github.com/VokalInteractive/Cat2Cat
+// For more information, go to http://github.com/vokal/Cat2Cat
 //
 
 #import <UIKit/UIKit.h>
