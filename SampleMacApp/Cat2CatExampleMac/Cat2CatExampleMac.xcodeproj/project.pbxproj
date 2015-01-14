@@ -264,7 +264,7 @@
 			attributes = {
 				CLASSPREFIX = CTC;
 				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = "Vokal Interactive";
+				ORGANIZATIONNAME = "Vokal";
 				TargetAttributes = {
 					33B50DBC1891BABF00307D66 = {
 						TestTargetID = 33B50D9B1891BABE00307D66;
