@@ -103,7 +103,7 @@ After you've added your launch arguments, build and run the application. Your ne
 
 * If you have more than one image with the same name, either in the same asset catalog or in different asset catalogs, you will get a "Duplicate Declaration of Method" warning from the compiler when you attempt to compile the project which is using `UIImage+AssetCatalog` or `NSImage+AssetCatalog`. 
 
-* [XcodeAutoBasher](https://github.com/vokalinteractive/XcodeAutoBasher) can be used to automatically run a script to use Cat2Cat whenever you change anything within an asset catalog.
+* [XcodeAutoBasher](https://github.com/vokal/XcodeAutoBasher) can be used to automatically run a script to use Cat2Cat whenever you change anything within an asset catalog.
 
 ##Limitations
 ----

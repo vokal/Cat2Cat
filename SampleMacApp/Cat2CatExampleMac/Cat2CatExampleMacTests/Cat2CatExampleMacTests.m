@@ -3,7 +3,7 @@
 //  Cat2CatExampleMacTests
 //
 //  Created by Ellen Shapiro (Vokal) on 1/23/14.
-//  Copyright (c) 2014 Vokal Interactive. All rights reserved.
+//  Copyright (c) 2014 Vokal. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
