@@ -14,47 +14,63 @@ extension NSImage {
     // MARK: - ICONS
     
     class func ac_AppIcon() -> NSImage? {
-        return NSImage(named:"AppIcon")
+        return NSImage(named:Cat2CatImageNames.AppIcon)
     }
     
     class func ac_Icon() -> NSImage? {
-        return NSImage(named:"Icon")
+        return NSImage(named:Cat2CatImageNames.Icon)
     }
     
     // MARK: - Public Domain Icons
     
     class func ac_No_C() -> NSImage? {
-        return NSImage(named:"No@C")
+        return NSImage(named:Cat2CatImageNames.No_C)
     }
     
     class func ac_PD_in_circle() -> NSImage? {
-        return NSImage(named:"PD in circle")
+        return NSImage(named:Cat2CatImageNames.PD_in_circle)
     }
     
     class func ac_PDe_Darka_Circle() -> NSImage? {
-        return NSImage(named:"PDéDarkåCircle")
+        return NSImage(named:Cat2CatImageNames.PDe_Darka_Circle)
     }
     
     class func ac_SidewaysC() -> NSImage? {
-        return NSImage(named:"SidewaysC")
+        return NSImage(named:Cat2CatImageNames.SidewaysC)
     }
     
     // MARK: - PHOTOS
     
     class func ac_Golden_Gate_Bridge() -> NSImage? {
-        return NSImage(named:"Golden Gate Bridge")
+        return NSImage(named:Cat2CatImageNames.Golden_Gate_Bridge)
     }
     
     class func ac_US_Capitol() -> NSImage? {
-        return NSImage(named:"US Capitol")
+        return NSImage(named:Cat2CatImageNames.US_Capitol)
     }
     
     class func ac_Venice_Beach() -> NSImage? {
-        return NSImage(named:"Venice Beach")
+        return NSImage(named:Cat2CatImageNames.Venice_Beach)
     }
     
     class func ac_Wrigley_Field() -> NSImage? {
-        return NSImage(named:"Wrigley Field")
+        return NSImage(named:Cat2CatImageNames.Wrigley_Field)
     }
     
+}
+
+struct Cat2CatImageNames {
+    // ICONS
+    static let AppIcon = "AppIcon"
+    static let Icon = "Icon"
+    // Public Domain Icons
+    static let No_C = "No@C"
+    static let PD_in_circle = "PD in circle"
+    static let PDe_Darka_Circle = "PDéDarkåCircle"
+    static let SidewaysC = "SidewaysC"
+    // PHOTOS
+    static let Golden_Gate_Bridge = "Golden Gate Bridge"
+    static let US_Capitol = "US Capitol"
+    static let Venice_Beach = "Venice Beach"
+    static let Wrigley_Field = "Wrigley Field"
 }

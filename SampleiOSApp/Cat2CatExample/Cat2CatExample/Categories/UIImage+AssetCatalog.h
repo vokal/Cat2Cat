@@ -34,3 +34,17 @@
 + (UIImage *)ac_Wrigley_Field;
 
 @end
+
+FOUNDATION_EXPORT const struct Cat2CatImageNames {
+    // ICONS
+    // Public Domain Icons
+    __unsafe_unretained NSString *const No_C;
+    __unsafe_unretained NSString *const PD_in_circle;
+    __unsafe_unretained NSString *const PDe_Darka_Circle;
+    __unsafe_unretained NSString *const SidewaysC;
+    // PHOTOS
+    __unsafe_unretained NSString *const Golden_Gate_Bridge;
+    __unsafe_unretained NSString *const US_Capitol;
+    __unsafe_unretained NSString *const Venice_Beach;
+    __unsafe_unretained NSString *const Wrigley_Field;
+} Cat2CatImageNames;
