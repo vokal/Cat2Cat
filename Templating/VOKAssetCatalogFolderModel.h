@@ -18,7 +18,10 @@
 @property (nonatomic, strong) NSArray *subfolders;
 
 @property (nonatomic, readonly) GRMustacheTemplate *h_content;
+@property (nonatomic, readonly) GRMustacheTemplate *h_struct_content;
 @property (nonatomic, readonly) GRMustacheTemplate *m_content;
+@property (nonatomic, readonly) GRMustacheTemplate *m_struct_content;
 @property (nonatomic, readonly) GRMustacheTemplate *swift_content;
+@property (nonatomic, readonly) GRMustacheTemplate *swift_struct_content;
 
 @end

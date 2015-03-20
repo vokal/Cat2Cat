@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentHMustache;
+FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentHStructMustache;
 FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentMMustache;
+FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentMStructMustache;
 FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentSwiftMustache;
+FOUNDATION_EXPORT NSString *const VOKTemplatingFolderContentSwiftStructMustache;
 FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameIOS;
 FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameMac;
 
