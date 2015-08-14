@@ -1,0 +1,6 @@
+{{% CONTENT_TYPE:TEXT }}    // {{ name }}
+{{# isMac }}{{# icons }}    __unsafe_unretained NSString *const {{ method }};
+{{/ icons }}{{/ isMac }}{{!
+}}{{# images }}    __unsafe_unretained NSString *const {{ method }};
+{{/ images }}{{!
+}}{{# subfolders }}{{> ObjC.h.struct }}{{/ subfolders }}

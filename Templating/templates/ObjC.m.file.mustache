@@ -1,0 +1,11 @@
+{{% CONTENT_TYPE:TEXT }}{{> heading }}
+#import "{{ imageClass }}+AssetCatalog.h"
+
+@implementation {{ imageClass }} (AssetCatalog)
+
+{{# folders }}{{> ObjC.m.methods }}{{/ folders }}{{!
+}}@end
+
+const struct {{ constantStructName }} {{ constantStructName }} = {
+{{# folders }}{{> ObjC.m.struct }}{{/ folders }}{{!
+}}};

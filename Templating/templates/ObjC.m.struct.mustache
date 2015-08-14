@@ -1,0 +1,6 @@
+{{% CONTENT_TYPE:TEXT }}    // {{ name }}
+{{# isMac }}{{# icons }}    .{{ method }} = @"{{ name }}",
+{{/ icons }}{{/ isMac }}{{!
+}}{{# images }}    .{{ method }} = @"{{ name }}",
+{{/ images }}{{!
+}}{{# subfolders }}{{> ObjC.m.struct }}{{/ subfolders }}

@@ -1,0 +1,13 @@
+{{% CONTENT_TYPE:TEXT }}    // MARK: - {{ name }}
+    
+{{# isMac }}{{# icons }}    class func {{ frameworkPrefix }}{{ method }}() -> {{ imageClass }}? {
+        return {{ imageClass }}(named:{{ constantStructName }}.{{ method }})
+    }
+    
+{{/ icons }}{{/ isMac }}{{!
+}}{{# images }}    class func {{ frameworkPrefix }}{{ method }}() -> {{ imageClass }}? {
+        return {{ imageClass }}(named:{{ constantStructName }}.{{ method }})
+    }
+    
+{{/ images }}{{!
+}}{{# subfolders }}{{> swift.methods }}{{/ subfolders }}

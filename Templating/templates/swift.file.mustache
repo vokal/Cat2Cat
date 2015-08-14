@@ -1,0 +1,11 @@
+{{% CONTENT_TYPE:TEXT }}{{> heading }}
+import {{ kitName }}
+
+extension {{ imageClass }} {
+
+{{# folders }}{{> swift.methods }}{{/ folders }}{{!
+}}}
+
+struct {{ constantStructName }} {
+{{# folders }}{{> swift.struct }}{{/ folders }}{{!
+}}}

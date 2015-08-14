@@ -1,0 +1,11 @@
+{{% CONTENT_TYPE:TEXT }}{{> heading }}
+#import <{{ kitName }}/{{ kitName }}.h>
+
+@interface {{ imageClass }} (AssetCatalog)
+
+{{# folders }}{{> ObjC.h.methods }}{{/ folders }}{{!
+}}@end
+
+FOUNDATION_EXPORT const struct {{ constantStructName }} {
+{{# folders }}{{> ObjC.h.struct }}{{/ folders }}{{!
+}}} {{ constantStructName }};
