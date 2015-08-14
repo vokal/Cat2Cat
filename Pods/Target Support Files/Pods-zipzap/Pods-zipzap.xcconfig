@@ -1,0 +1,1 @@
+PODS_ZIPZAP_OTHER_LDFLAGS = -l"z" -framework "ApplicationServices" -framework "Foundation"
