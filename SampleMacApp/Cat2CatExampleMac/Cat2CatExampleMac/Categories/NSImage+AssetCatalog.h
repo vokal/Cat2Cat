@@ -2,7 +2,7 @@
 // NSImage+AssetCatalog.h
 //
 // Generated Automatically Using Cat2Cat
-// NOTE: If you edit this file manually, your changes will be overrwritten the next time this app runs.
+// NOTE: This file is wholly regenerated whenever that utility is run, so any changes made manually will be lost.
 //
 // For more information, go to http://github.com/vokal/Cat2Cat
 //
