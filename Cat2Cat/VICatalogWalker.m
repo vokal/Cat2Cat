@@ -219,16 +219,20 @@ static NSString *const ExtensionStandardImageset = @".imageset";
     
     //Write new files
     NSError *hWritingError = nil;
-    [[model renderObjCHWithClassName:className] writeToFile:hPath
-                                                 atomically:YES
-                                                   encoding:NSUTF8StringEncoding
-                                                      error:&hWritingError];
+    [[model renderObjCHWithClassName:className
+                            fileName:hPath.lastPathComponent]
+     writeToFile:hPath
+     atomically:YES
+     encoding:NSUTF8StringEncoding
+     error:&hWritingError];
     
     NSError *mWritingError = nil;
-    [[model renderObjCMWithClassName:className] writeToFile:mPath
-                                                 atomically:YES
-                                                   encoding:NSUTF8StringEncoding
-                                                      error:&mWritingError];
+    [[model renderObjCMWithClassName:className
+                            fileName:mPath.lastPathComponent]
+     writeToFile:mPath
+     atomically:YES
+     encoding:NSUTF8StringEncoding
+     error:&mWritingError];
     
     if (hWritingError || mWritingError) {
         NSLog(@"WRITING ERROR! \n\nH: %@, \n\nM: %@", hWritingError, mWritingError);
@@ -242,10 +246,12 @@ static NSString *const ExtensionStandardImageset = @".imageset";
 {
     NSString *swiftPath = [self.categoryOutputPath stringByAppendingPathComponent:[self extensionFileNameForClass:className]];
     NSError *swiftWritingError = nil;
-    [[model renderSwiftWithClassName:className] writeToFile:swiftPath
-                                                 atomically:YES
-                                                   encoding:NSUTF8StringEncoding
-                                                      error:&swiftWritingError];
+    [[model renderSwiftWithClassName:className
+                            fileName:swiftPath.lastPathComponent]
+     writeToFile:swiftPath
+     atomically:YES
+     encoding:NSUTF8StringEncoding
+     error:&swiftWritingError];
     if (swiftWritingError) {
         NSLog(@"WRITING ERROR: %@", swiftWritingError);
         return NO;
