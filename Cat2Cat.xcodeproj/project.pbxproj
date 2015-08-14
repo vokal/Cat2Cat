@@ -38,6 +38,7 @@
 		338287BA18773EC500070BE8 /* Cat2Cat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cat2Cat; sourceTree = BUILT_PRODUCTS_DIR; };
 		338287BD18773EC500070BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33B0A501188089A20058939D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		71FBF78E1B7E9E4C00AF04D8 /* templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = templates; sourceTree = "<group>"; };
 		71FF00DF1A003B3E00B3F38D /* VOKTemplateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VOKTemplateModel.h; sourceTree = "<group>"; };
 		71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VOKTemplateModel.m; sourceTree = "<group>"; };
 		71FF00E21A003B5600B3F38D /* VOKAssetCatalogFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKAssetCatalogFolderModel.h; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		71FF00DE1A003B3E00B3F38D /* Templating */ = {
 			isa = PBXGroup;
 			children = (
+				71FBF78E1B7E9E4C00AF04D8 /* templates */,
 				71FF00E21A003B5600B3F38D /* VOKAssetCatalogFolderModel.h */,
 				71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */,
 				71FF00E51A003B6000B3F38D /* VOKAssetCatalogImageModel.h */,
@@ -140,6 +142,7 @@
 			buildConfigurationList = 338287C818773EC500070BE8 /* Build configuration list for PBXNativeTarget "Cat2Cat" */;
 			buildPhases = (
 				6F5AE2AA5307198823F4D6CC /* Check Pods Manifest.lock */,
+				71FBF78D1B7E9D0200AF04D8 /* Make Template Zip */,
 				338287B618773EC500070BE8 /* Sources */,
 				338287B718773EC500070BE8 /* Frameworks */,
 				338287B818773EC500070BE8 /* CopyFiles */,
@@ -210,6 +213,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		71FBF78D1B7E9D0200AF04D8 /* Make Template Zip */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Make Template Zip";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto -ck \"${SRCROOT}/Templating/templates\" \"${TARGET_BUILD_DIR}/template.zip\" || exit 1";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -303,6 +320,23 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-BRLOptionParser\"",
+					"-l\"Pods-GRMustache\"",
+					"-l\"Pods-JRSwizzle\"",
+					"-l\"Pods-zipzap\"",
+					"-l\"z\"",
+					"-framework",
+					"\"ApplicationServices\"",
+					"-framework",
+					"\"Foundation\"",
+					"-sectcreate",
+					__TEXT,
+					__c2c_tmplt_zip,
+					"\"${TARGET_BUILD_DIR}/template.zip\"",
+				);
 				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Debug;
@@ -313,6 +347,23 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-BRLOptionParser\"",
+					"-l\"Pods-GRMustache\"",
+					"-l\"Pods-JRSwizzle\"",
+					"-l\"Pods-zipzap\"",
+					"-l\"z\"",
+					"-framework",
+					"\"ApplicationServices\"",
+					"-framework",
+					"\"Foundation\"",
+					"-sectcreate",
+					__TEXT,
+					__c2c_tmplt_zip,
+					"\"${TARGET_BUILD_DIR}/template.zip\"",
+				);
 				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Release;
