@@ -8,11 +8,9 @@
 
 #import "VOKTemplateModel.h"
 
-#import <mach-o/getsect.h>
-#import <mach-o/ldsyms.h>
-
 #import <GRMustache.h>
-#import <ZipZap.h>
+
+#import "VOKEmbeddedTemplateExtraction.h"
 
 @interface VOKTemplateModel ()
 
@@ -44,7 +42,10 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
 {
     self = [super init];
     if (self) {
-        [self extractTemplatesToTemporaryDirectory];
+        _templateDirectoryURL = VOKExtractEmbeddedTemplatesToTemporaryDirectory();
+        if (!_templateDirectoryURL) {
+            return nil;
+        }
     }
     return self;
 }
@@ -113,79 +114,6 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
     return [self renderWithClassName:className
                             fileName:fileName
                             template:[self templateWithFileName:@"swift.file.mustache"]];
-}
-
-#pragma mark - Embedded Template Handling
-
-- (NSData *)getEmbeddedTemplateData
-{
-    unsigned long size;
-    void *ptr = getsectiondata(&_mh_execute_header, "__TEXT",
-                               "__c2c_tmplt_zip", &size);
-    return [NSData dataWithBytesNoCopy:ptr
-                                length:size
-                          freeWhenDone:NO];
-}
-
-- (void)extractTemplatesToTemporaryDirectory
-{
-    NSError *error;
-    ZZArchive *archive = [ZZArchive archiveWithData:[self getEmbeddedTemplateData]
-                                              error:&error];
-    if (!archive) {
-        // TODO: handle error
-        return;
-    }
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    for (ZZArchiveEntry *entry in archive.entries) {
-        NSURL *targetPath = [self.templateDirectoryURL URLByAppendingPathComponent:entry.fileName];
-        
-        if (entry.fileMode & S_IFDIR) {
-            // check if directory bit is set
-            [fileManager createDirectoryAtURL:targetPath
-                  withIntermediateDirectories:YES
-                                   attributes:nil
-                                        error:NULL];
-        } else {
-            // Some archives don't have a separate entry for each directory
-            // and just include the directory's name in the filename.
-            // Make sure that directory exists before writing a file into it.
-            [fileManager createDirectoryAtURL:[targetPath URLByDeletingLastPathComponent]
-                  withIntermediateDirectories:YES
-                                   attributes:nil
-                                        error:NULL];
-            
-            [[entry newDataWithError:NULL] writeToURL:targetPath
-                                           atomically:NO];
-        }
-    }
-}
-
-#pragma mark - Helpers
-
-- (NSURL *)templateDirectoryURL
-{
-    if (!_templateDirectoryURL) {
-        NSString *tempDirectoryTemplate = [NSTemporaryDirectory() stringByAppendingPathComponent:@"Cat2Cat-Template.XXXXXX"];
-        const char *tempDirectoryTemplateCString = [tempDirectoryTemplate fileSystemRepresentation];
-        char *tempDirectoryNameCString = (char *)malloc(strlen(tempDirectoryTemplateCString) + 1);
-        strcpy(tempDirectoryNameCString, tempDirectoryTemplateCString);
-        
-        char *result = mkdtemp(tempDirectoryNameCString);
-        if (!result) {
-            // TODO: handle directory creation failure better than this?
-            return nil;
-        }
-        
-        NSString *tempDirectoryPath = [[NSFileManager defaultManager]
-                                       stringWithFileSystemRepresentation:tempDirectoryNameCString
-                                       length:strlen(result)];
-        free(tempDirectoryNameCString);
-        _templateDirectoryURL = [NSURL fileURLWithPath:tempDirectoryPath];
-    }
-    return _templateDirectoryURL;
 }
 
 @end
