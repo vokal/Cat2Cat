@@ -3,18 +3,27 @@ PODS:
   - GRMustache (7.3.0):
     - JRSwizzle (~> 1.0)
   - JRSwizzle (1.0)
+  - zipzap (8.0.3):
+    - zipzap/c++ (= 8.0.3)
+    - zipzap/objc (= 8.0.3)
+    - zipzap/objc++ (= 8.0.3)
+  - zipzap/c++ (8.0.3)
+  - zipzap/objc (8.0.3)
+  - zipzap/objc++ (8.0.3)
 
 DEPENDENCIES:
   - BRLOptionParser (from `https://github.com/vokal-isaac/BRLOptionParser.git`)
   - GRMustache (~> 7.3.0)
+  - zipzap (= 8.0.3)
 
 EXTERNAL SOURCES:
   BRLOptionParser:
     :git: https://github.com/vokal-isaac/BRLOptionParser.git
 
 SPEC CHECKSUMS:
-  BRLOptionParser: e1980e471df24a8cc50700d8156a60cc81ef5712
-  GRMustache: efecd3b603f0a7a99cf6bdf3998782ee0c465726
-  JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
+  BRLOptionParser: d956f601ab144beb27c4fcb3f8436bacf719c7fe
+  GRMustache: 6baee020c5644416c034f5afb1607f6219e7f753
+  JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
+  zipzap: 888667fa52eb1799a32fa3ef8e77001356e796e4
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.37.2
