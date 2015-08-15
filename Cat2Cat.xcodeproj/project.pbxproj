@@ -322,16 +322,6 @@
 				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
-					"-l\"Pods-BRLOptionParser\"",
-					"-l\"Pods-GRMustache\"",
-					"-l\"Pods-JRSwizzle\"",
-					"-l\"Pods-zipzap\"",
-					"-l\"z\"",
-					"-framework",
-					"\"ApplicationServices\"",
-					"-framework",
-					"\"Foundation\"",
 					"-sectcreate",
 					__TEXT,
 					__c2c_tmplt_zip,
@@ -349,16 +339,6 @@
 				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
-					"-l\"Pods-BRLOptionParser\"",
-					"-l\"Pods-GRMustache\"",
-					"-l\"Pods-JRSwizzle\"",
-					"-l\"Pods-zipzap\"",
-					"-l\"z\"",
-					"-framework",
-					"\"ApplicationServices\"",
-					"-framework",
-					"\"Foundation\"",
 					"-sectcreate",
 					__TEXT,
 					__c2c_tmplt_zip,
