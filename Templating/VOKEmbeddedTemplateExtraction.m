@@ -34,6 +34,8 @@ static NSData *GetEmbeddedTemplateData(void)
 
 /**
  *  Safely (relatively securely) create a temporary directory.
+ * 
+ *  Based on http://www.cocoawithlove.com/2009/07/temporary-files-and-folders-in-cocoa.html
  *
  *  @return The URL of the created temporary directory.
  */
