@@ -40,16 +40,16 @@ static NSString *const ExtensionStandardImageset = @".imageset";
     VOKTemplateModel *model = [self modelForFullCatalogPaths:parameters.assetCatalogPaths];
     
     if (parameters.outputTypes & VICatalogWalkerOutputObjCIOS) {
-        success = success && [self writeHandMFilesForClass:VOKTemplatingClassNameIOS model:model];
+        success = success && [self writeHandMFilesForPlatform:VOKTemplatePlatformIOS model:model];
     }
     if (parameters.outputTypes & VICatalogWalkerOutputObjCOSX) {
-        success = success && [self writeHandMFilesForClass:VOKTemplatingClassNameMac model:model];
+        success = success && [self writeHandMFilesForPlatform:VOKTemplatePlatformMac model:model];
     }
     if (parameters.outputTypes & VICatalogWalkerOutputSwiftIOS) {
-        success = success && [self writeSwiftFileForClass:VOKTemplatingClassNameIOS model:model];
+        success = success && [self writeSwiftFileForPlatform:VOKTemplatePlatformIOS model:model];
     }
     if (parameters.outputTypes & VICatalogWalkerOutputSwiftOSX) {
-        success = success && [self writeSwiftFileForClass:VOKTemplatingClassNameMac model:model];
+        success = success && [self writeSwiftFileForPlatform:VOKTemplatePlatformMac model:model];
     }
 
     return success;
@@ -199,61 +199,46 @@ static NSString *const ExtensionStandardImageset = @".imageset";
 
 #pragma mark - Writing the headers of files
 
-- (NSString *)categoryNameForClass:(NSString *)className
+- (NSString *)categoryNameForPlatform:(VOKTemplatePlatform)platform
 {
-    return [NSString stringWithFormat:@"%@+AssetCatalog", className];
+    return [NSString stringWithFormat:@"%@+AssetCatalog", [VOKTemplateModel classNameForPlatform:platform]];
 }
 
-- (NSString *)extensionFileNameForClass:(NSString *)className
+- (NSString *)extensionFileNameForPlatform:(VOKTemplatePlatform)platform
 {
-    return [NSString stringWithFormat:@"Cat2Cat%@.swift", className];
+    return [NSString stringWithFormat:@"Cat2Cat%@.swift", [VOKTemplateModel classNameForPlatform:platform]];
 }
 
 #pragma mark - Finishing the files and writing to file system.
 
-- (BOOL)writeHandMFilesForClass:(NSString *)className model:(VOKTemplateModel *)model
+- (BOOL)writeHandMFilesForPlatform:(VOKTemplatePlatform)platform model:(VOKTemplateModel *)model
 {
-    NSString *baseFilePath = [self.categoryOutputPath stringByAppendingPathComponent:[self categoryNameForClass:className]];
+    NSString *baseFilePath = [self.categoryOutputPath stringByAppendingPathComponent:[self categoryNameForPlatform:platform]];
     NSString *hPath = [baseFilePath stringByAppendingPathExtension:@"h"];
     NSString *mPath = [baseFilePath stringByAppendingPathExtension:@"m"];
     
-    //Write new files
-    NSError *hWritingError = nil;
-    [[model renderObjCHWithClassName:className
-                            fileName:hPath.lastPathComponent]
-     writeToFile:hPath
-     atomically:YES
-     encoding:NSUTF8StringEncoding
-     error:&hWritingError];
-    
-    NSError *mWritingError = nil;
-    [[model renderObjCMWithClassName:className
-                            fileName:mPath.lastPathComponent]
-     writeToFile:mPath
-     atomically:YES
-     encoding:NSUTF8StringEncoding
-     error:&mWritingError];
-    
-    if (hWritingError || mWritingError) {
-        NSLog(@"WRITING ERROR! \n\nH: %@, \n\nM: %@", hWritingError, mWritingError);
+    NSError *error = nil;
+    if (![model renderObjCHForPlatform:platform
+                                toPath:hPath
+                                 error:&error]
+        || ![model renderObjCMForPlatform:platform
+                                   toPath:mPath
+                                    error:&error]) {
+        NSLog(@"WRITING ERROR! %@", error);
         return NO;
     }
     
     return YES;
 }
 
-- (BOOL)writeSwiftFileForClass:(NSString *)className model:(VOKTemplateModel *)model
+- (BOOL)writeSwiftFileForPlatform:(VOKTemplatePlatform)platform model:(VOKTemplateModel *)model
 {
-    NSString *swiftPath = [self.categoryOutputPath stringByAppendingPathComponent:[self extensionFileNameForClass:className]];
-    NSError *swiftWritingError = nil;
-    [[model renderSwiftWithClassName:className
-                            fileName:swiftPath.lastPathComponent]
-     writeToFile:swiftPath
-     atomically:YES
-     encoding:NSUTF8StringEncoding
-     error:&swiftWritingError];
-    if (swiftWritingError) {
-        NSLog(@"WRITING ERROR: %@", swiftWritingError);
+    NSString *swiftPath = [self.categoryOutputPath stringByAppendingPathComponent:[self extensionFileNameForPlatform:platform]];
+    NSError *error = nil;
+    if (![model renderSwiftForPlatform:platform
+                                toPath:swiftPath
+                                 error:&error]) {
+        NSLog(@"WRITING ERROR: %@", error);
         return NO;
     }
     

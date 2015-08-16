@@ -19,8 +19,8 @@
 
 @end
 
-NSString *const VOKTemplatingClassNameIOS = @"UIImage";
-NSString *const VOKTemplatingClassNameMac = @"NSImage";
+static NSString *const ClassNameIOS = @"UIImage";
+static NSString *const ClassNameMac = @"NSImage";
 
 static NSString *const KitNameIOS = @"UIKit";
 static NSString *const KitNameMac = @"AppKit";
@@ -29,6 +29,17 @@ static NSString *const FrameworkPrefix = @"ac_";
 static NSString *const ConstantStructName = @"Cat2CatImageNames";
 
 @implementation VOKTemplateModel
+
++ (NSString *)classNameForPlatform:(VOKTemplatePlatform)platform
+{
+    switch (platform) {
+        case VOKTemplatePlatformIOS:
+            return ClassNameIOS;
+            
+        case VOKTemplatePlatformMac:
+            return ClassNameMac;
+    }
+}
 
 + (instancetype)templateModelWithFolders:(NSArray *)folders
 {
@@ -61,32 +72,50 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
     return self;
 }
 
-- (NSString *)renderWithClassName:(NSString *)className
-                         fileName:(NSString *)fileName
-                         template:(GRMustacheTemplate *)template
+- (BOOL)renderTemplateNamed:(NSString *)templateName
+                forPlatform:(VOKTemplatePlatform)platform
+                     toPath:(NSString *)path
+                      error:(NSError **)error
 {
-    NSString *kitName;
-    BOOL isMac;
-    if ([className isEqualToString:VOKTemplatingClassNameIOS]) {
-        kitName = KitNameIOS;
-        isMac = NO;
-    } else if ([className isEqualToString:VOKTemplatingClassNameMac]) {
-        kitName = KitNameMac;
-        isMac = YES;
-    } else {
-        return @"";
+    // Get the named template.
+    GRMustacheTemplate *template = [self.templateRepo templateNamed:templateName
+                                                              error:error];
+    if (!template) {
+        return NO;
     }
-    [template extendBaseContextWithObject:@{
-                                            @"frameworkPrefix": FrameworkPrefix,
-                                            @"constantStructName": ConstantStructName,
-                                            @"isMac": @(isMac),
-                                            @"kitName": kitName,
-                                            @"imageClass": className,
-                                            @"fileName": fileName,
-                                            }];
+    
+    // Construct the additional context.
+    NSMutableDictionary *context = [@{
+                                      @"frameworkPrefix": FrameworkPrefix,
+                                      @"constantStructName": ConstantStructName,
+                                      @"fileName": path.lastPathComponent,
+                                      @"imageClass": [[self class] classNameForPlatform:platform],
+                                      } mutableCopy];
+    switch (platform) {
+        case VOKTemplatePlatformIOS:
+            context[@"isMac"] = @NO;
+            context[@"kitName"] = KitNameIOS;
+            break;
+            
+        case VOKTemplatePlatformMac:
+            context[@"isMac"] = @YES;
+            context[@"kitName"] = KitNameMac;
+            break;
+    }
+    [template extendBaseContextWithObject:context];
+    
+    // Render the template.
     NSString *result = [template renderObject:self
-                                        error:NULL];
-    return result;
+                                        error:error];
+    if (!result) {
+        return NO;
+    }
+    
+    // Write the result to the given path.
+    return [result writeToFile:path
+                    atomically:YES
+                      encoding:NSUTF8StringEncoding
+                         error:error];
 }
 
 - (GRMustacheTemplate *)templateWithName:(NSString *)name
@@ -99,28 +128,34 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
     return template;
 }
 
-- (NSString *)renderObjCHWithClassName:(NSString *)className
-                              fileName:(NSString *)fileName
+- (BOOL)renderObjCHForPlatform:(VOKTemplatePlatform)platform
+                        toPath:(NSString *)path
+                         error:(NSError **)error
 {
-    return [self renderWithClassName:className
-                            fileName:fileName
-                            template:[self templateWithName:@"ObjC.h.file"]];
+    return [self renderTemplateNamed:@"ObjC.h.file"
+                         forPlatform:platform
+                              toPath:path
+                               error:error];
 }
 
-- (NSString *)renderObjCMWithClassName:(NSString *)className
-                              fileName:(NSString *)fileName
+- (BOOL)renderObjCMForPlatform:(VOKTemplatePlatform)platform
+                        toPath:(NSString *)path
+                         error:(NSError **)error
 {
-    return [self renderWithClassName:className
-                            fileName:fileName
-                            template:[self templateWithName:@"ObjC.m.file"]];
+    return [self renderTemplateNamed:@"ObjC.m.file"
+                         forPlatform:platform
+                              toPath:path
+                               error:error];
 }
 
-- (NSString *)renderSwiftWithClassName:(NSString *)className
-                              fileName:(NSString *)fileName
+- (BOOL)renderSwiftForPlatform:(VOKTemplatePlatform)platform
+                        toPath:(NSString *)path
+                         error:(NSError **)error
 {
-    return [self renderWithClassName:className
-                            fileName:fileName
-                            template:[self templateWithName:@"swift.file"]];
+    return [self renderTemplateNamed:@"swift.file"
+                         forPlatform:platform
+                              toPath:path
+                               error:error];
 }
 
 @end
