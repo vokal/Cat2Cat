@@ -58,6 +58,7 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
             return nil;
         }
         _templateRepo = [VOKZZArchiveTemplateRepository templateRepositoryWithArchive:archive];
+        _templateRepo.configuration.contentType = GRMustacheContentTypeText;
     }
     return self;
 }
