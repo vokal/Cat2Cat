@@ -10,12 +10,13 @@
 
 #import <GRMustache.h>
 
-#import "VOKEmbeddedTemplateExtraction.h"
+#import "VOKZZArchiveTemplateRepository.h"
+#import "ZZArchive+VOKMachOEmbedded.h"
 
 @interface VOKTemplateModel ()
 
 @property (nonatomic, strong) NSArray *folders;
-@property (nonatomic, strong) NSURL *templateDirectoryURL;
+@property (nonatomic, strong) GRMustacheTemplateRepository *templateRepo;
 
 @end
 
@@ -42,19 +43,23 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
 {
     self = [super init];
     if (self) {
-        _templateDirectoryURL = VOKExtractEmbeddedTemplatesToTemporaryDirectory();
-        if (!_templateDirectoryURL) {
+        NSError *error;
+        /*
+         *  Load the zip archive that's been embedded into the running mach-o binary (in the __c2c_tmplt_zip section
+         *  of the __TEXT segment, by adding the flags:
+         *      -sectcreate __TEXT __c2c_tmplt_zip "${TARGET_BUILD_DIR}/template.zip"
+         *  to the "Other Linker Flags" build setting) to a temporary directory.  (The template.zip file is created by 
+         *  a run script build phase.)
+         */
+        ZZArchive *archive = [ZZArchive vok_archiveFromMachOSection:@"__c2c_tmplt_zip"
+                                                              error:&error];
+        if (!archive) {
+            NSLog(@"error loading embedded templates: %@", error);
             return nil;
         }
+        _templateRepo = [VOKZZArchiveTemplateRepository templateRepositoryWithArchive:archive];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    // Remove the temporary extracted-templates directory.
-    [[NSFileManager defaultManager] removeItemAtURL:self.templateDirectoryURL
-                                              error:NULL];
 }
 
 - (NSString *)renderWithClassName:(NSString *)className
@@ -85,11 +90,14 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
     return result;
 }
 
-- (GRMustacheTemplate *)templateWithFileName:(NSString *)fileName
+- (GRMustacheTemplate *)templateWithName:(NSString *)name
 {
-    return [GRMustacheTemplate templateFromContentsOfURL:[self.templateDirectoryURL
-                                                          URLByAppendingPathComponent:fileName]
-                                                   error:NULL];
+    NSError *error;
+    GRMustacheTemplate *template = [self.templateRepo templateNamed:name error:&error];
+    if (!template) {
+        NSLog(@"error loading template %@: %@", name, error);
+    }
+    return template;
 }
 
 - (NSString *)renderObjCHWithClassName:(NSString *)className
@@ -97,7 +105,7 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
 {
     return [self renderWithClassName:className
                             fileName:fileName
-                            template:[self templateWithFileName:@"ObjC.h.file.mustache"]];
+                            template:[self templateWithName:@"ObjC.h.file"]];
 }
 
 - (NSString *)renderObjCMWithClassName:(NSString *)className
@@ -105,7 +113,7 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
 {
     return [self renderWithClassName:className
                             fileName:fileName
-                            template:[self templateWithFileName:@"ObjC.m.file.mustache"]];
+                            template:[self templateWithName:@"ObjC.m.file"]];
 }
 
 - (NSString *)renderSwiftWithClassName:(NSString *)className
@@ -113,7 +121,7 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
 {
     return [self renderWithClassName:className
                             fileName:fileName
-                            template:[self templateWithFileName:@"swift.file.mustache"]];
+                            template:[self templateWithName:@"swift.file"]];
 }
 
 @end
