@@ -1,0 +1,15 @@
+#pragma mark - {{ name }}
+
+{{# isMac }}{{# icons }}+ ({{ imageClass }} *){{ frameworkPrefix }}{{ method }}
+{
+    return [{{ imageClass }} imageNamed:{{ constantStructName }}.{{ method }}];
+}
+
+{{/ icons }}{{/ isMac }}{{!
+}}{{# images }}+ ({{ imageClass }} *){{ frameworkPrefix }}{{ method }}
+{
+    return [{{ imageClass }} imageNamed:{{ constantStructName }}.{{ method }}];
+}
+
+{{/ images }}{{!
+}}{{# subfolders }}{{> ObjC.m.methods }}{{/ subfolders }}

@@ -10,6 +10,8 @@
 		337C73DF188472F90078E5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DC188472F90078E5F8 /* main.m */; };
 		337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
+		71FBF7991B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FBF7981B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m */; };
+		71FBF79C1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FBF79B1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.m */; };
 		71FF00E11A003B4200B3F38D /* VOKTemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */; };
 		71FF00E41A003B5600B3F38D /* VOKAssetCatalogFolderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */; };
 		71FF00E71A003B6000B3F38D /* VOKAssetCatalogImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E61A003B6000B3F38D /* VOKAssetCatalogImageModel.m */; };
@@ -38,6 +40,11 @@
 		338287BA18773EC500070BE8 /* Cat2Cat */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cat2Cat; sourceTree = BUILT_PRODUCTS_DIR; };
 		338287BD18773EC500070BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33B0A501188089A20058939D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		71FBF78E1B7E9E4C00AF04D8 /* templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = templates; sourceTree = "<group>"; };
+		71FBF7971B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKZZArchiveTemplateRepository.h; sourceTree = "<group>"; };
+		71FBF7981B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKZZArchiveTemplateRepository.m; sourceTree = "<group>"; };
+		71FBF79A1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZZArchive+VOKMachOEmbedded.h"; sourceTree = "<group>"; };
+		71FBF79B1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZZArchive+VOKMachOEmbedded.m"; sourceTree = "<group>"; };
 		71FF00DF1A003B3E00B3F38D /* VOKTemplateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VOKTemplateModel.h; sourceTree = "<group>"; };
 		71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VOKTemplateModel.m; sourceTree = "<group>"; };
 		71FF00E21A003B5600B3F38D /* VOKAssetCatalogFolderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKAssetCatalogFolderModel.h; sourceTree = "<group>"; };
@@ -113,12 +120,17 @@
 		71FF00DE1A003B3E00B3F38D /* Templating */ = {
 			isa = PBXGroup;
 			children = (
+				71FBF78E1B7E9E4C00AF04D8 /* templates */,
 				71FF00E21A003B5600B3F38D /* VOKAssetCatalogFolderModel.h */,
 				71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */,
 				71FF00E51A003B6000B3F38D /* VOKAssetCatalogImageModel.h */,
 				71FF00E61A003B6000B3F38D /* VOKAssetCatalogImageModel.m */,
 				71FF00DF1A003B3E00B3F38D /* VOKTemplateModel.h */,
 				71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */,
+				71FBF7971B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.h */,
+				71FBF7981B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m */,
+				71FBF79A1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.h */,
+				71FBF79B1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.m */,
 			);
 			path = Templating;
 			sourceTree = SOURCE_ROOT;
@@ -140,6 +152,7 @@
 			buildConfigurationList = 338287C818773EC500070BE8 /* Build configuration list for PBXNativeTarget "Cat2Cat" */;
 			buildPhases = (
 				6F5AE2AA5307198823F4D6CC /* Check Pods Manifest.lock */,
+				71FBF78D1B7E9D0200AF04D8 /* Make Template Zip */,
 				338287B618773EC500070BE8 /* Sources */,
 				338287B718773EC500070BE8 /* Frameworks */,
 				338287B818773EC500070BE8 /* CopyFiles */,
@@ -211,6 +224,20 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		71FBF78D1B7E9D0200AF04D8 /* Make Template Zip */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Make Template Zip";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ditto -ck \"${SRCROOT}/Templating/templates\" \"${TARGET_BUILD_DIR}/template.zip\" || exit 1";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -218,7 +245,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71FBF79C1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.m in Sources */,
 				71FF00E71A003B6000B3F38D /* VOKAssetCatalogImageModel.m in Sources */,
+				71FBF7991B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m in Sources */,
 				337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */,
 				337C73DF188472F90078E5F8 /* main.m in Sources */,
 				71FF00E11A003B4200B3F38D /* VOKTemplateModel.m in Sources */,
@@ -303,6 +332,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-sectcreate",
+					__TEXT,
+					__c2c_tmplt_zip,
+					"\"${TARGET_BUILD_DIR}/template.zip\"",
+				);
 				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Debug;
@@ -313,6 +349,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cat2Cat/Cat2Cat-Prefix.pch";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-sectcreate",
+					__TEXT,
+					__c2c_tmplt_zip,
+					"\"${TARGET_BUILD_DIR}/template.zip\"",
+				);
 				PRODUCT_NAME = Cat2Cat;
 			};
 			name = Release;
