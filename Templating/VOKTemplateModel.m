@@ -48,8 +48,7 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
          *  Load the zip archive that's been embedded into the running mach-o binary (in the __c2c_tmplt_zip section
          *  of the __TEXT segment, by adding the flags:
          *      -sectcreate __TEXT __c2c_tmplt_zip "${TARGET_BUILD_DIR}/template.zip"
-         *  to the "Other Linker Flags" build setting) to a temporary directory.  (The template.zip file is created by 
-         *  a run script build phase.)
+         *  to the "Other Linker Flags" build setting).  That zip archive is created by a run script build phase.
          */
         ZZArchive *archive = [ZZArchive vok_archiveFromMachOSection:@"__c2c_tmplt_zip"
                                                               error:&error];
