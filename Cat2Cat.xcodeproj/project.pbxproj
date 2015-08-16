@@ -10,7 +10,6 @@
 		337C73DF188472F90078E5F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DC188472F90078E5F8 /* main.m */; };
 		337C73E0188472F90078E5F8 /* VICatalogWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C73DE188472F90078E5F8 /* VICatalogWalker.m */; };
 		338287BE18773EC500070BE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 338287BD18773EC500070BE8 /* Foundation.framework */; };
-		71FBF7931B7FD45A00AF04D8 /* VOKEmbeddedTemplateExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FBF7921B7FD45A00AF04D8 /* VOKEmbeddedTemplateExtraction.m */; };
 		71FBF7991B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FBF7981B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m */; };
 		71FBF79C1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FBF79B1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.m */; };
 		71FF00E11A003B4200B3F38D /* VOKTemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */; };
@@ -42,8 +41,6 @@
 		338287BD18773EC500070BE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		33B0A501188089A20058939D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		71FBF78E1B7E9E4C00AF04D8 /* templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = templates; sourceTree = "<group>"; };
-		71FBF7911B7FD45A00AF04D8 /* VOKEmbeddedTemplateExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKEmbeddedTemplateExtraction.h; sourceTree = "<group>"; };
-		71FBF7921B7FD45A00AF04D8 /* VOKEmbeddedTemplateExtraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKEmbeddedTemplateExtraction.m; sourceTree = "<group>"; };
 		71FBF7971B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKZZArchiveTemplateRepository.h; sourceTree = "<group>"; };
 		71FBF7981B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKZZArchiveTemplateRepository.m; sourceTree = "<group>"; };
 		71FBF79A1B80608900AF04D8 /* ZZArchive+VOKMachOEmbedded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZZArchive+VOKMachOEmbedded.h"; sourceTree = "<group>"; };
@@ -128,8 +125,6 @@
 				71FF00E31A003B5600B3F38D /* VOKAssetCatalogFolderModel.m */,
 				71FF00E51A003B6000B3F38D /* VOKAssetCatalogImageModel.h */,
 				71FF00E61A003B6000B3F38D /* VOKAssetCatalogImageModel.m */,
-				71FBF7911B7FD45A00AF04D8 /* VOKEmbeddedTemplateExtraction.h */,
-				71FBF7921B7FD45A00AF04D8 /* VOKEmbeddedTemplateExtraction.m */,
 				71FF00DF1A003B3E00B3F38D /* VOKTemplateModel.h */,
 				71FF00E01A003B3E00B3F38D /* VOKTemplateModel.m */,
 				71FBF7971B805EEB00AF04D8 /* VOKZZArchiveTemplateRepository.h */,
@@ -257,7 +252,6 @@
 				337C73DF188472F90078E5F8 /* main.m in Sources */,
 				71FF00E11A003B4200B3F38D /* VOKTemplateModel.m in Sources */,
 				71FF00E41A003B5600B3F38D /* VOKAssetCatalogFolderModel.m in Sources */,
-				71FBF7931B7FD45A00AF04D8 /* VOKEmbeddedTemplateExtraction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
