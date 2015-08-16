@@ -93,7 +93,7 @@ static NSString *const ExtensionStandardImageset = @".imageset";
     //Get the last path component for each NSURL returned. 
     folderContents = [folderContents valueForKey:@"lastPathComponent"];
     
-    if (!folderError) {
+    if (!folderContents) {
         return folderContents;
     } else {
         NSLog(@"Error getting contents of folder %@: %@", path, folderError);
