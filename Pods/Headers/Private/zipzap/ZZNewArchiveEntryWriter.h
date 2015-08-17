@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZNewArchiveEntryWriter.h
+../../../zipzap/ZipZap/ZZNewArchiveEntryWriter.h

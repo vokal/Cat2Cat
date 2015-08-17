@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZInflateInputStream.h
+../../../zipzap/ZipZap/ZZInflateInputStream.h

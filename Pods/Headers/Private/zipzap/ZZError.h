@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZError.h
+../../../zipzap/ZipZap/ZZError.h

@@ -1,6 +1,6 @@
 //
 //  ZZArchive+VOKMachOEmbedded.h
-//  Cat2Cat
+//  VOKEmbeddedTemplateTools
 //
 //  Created by Isaac Greenspan on 8/16/15.
 //  Copyright (c) 2015 Vokal. All rights reserved.

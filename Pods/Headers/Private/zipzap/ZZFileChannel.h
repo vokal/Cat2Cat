@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZFileChannel.h
+../../../zipzap/ZipZap/ZZFileChannel.h
