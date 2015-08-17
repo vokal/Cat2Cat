@@ -8,18 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameIOS;
-FOUNDATION_EXPORT NSString *const VOKTemplatingClassNameMac;
+typedef NS_ENUM(NSUInteger, VOKTemplatePlatform) {
+    VOKTemplatePlatformMac,
+    VOKTemplatePlatformIOS,
+};
 
 @interface VOKTemplateModel : NSObject
 
 + (instancetype)templateModelWithFolders:(NSArray *)folders;
 
-- (NSString *)renderObjCHWithClassName:(NSString *)className
-                              fileName:(NSString *)fileName;
-- (NSString *)renderObjCMWithClassName:(NSString *)className
-                              fileName:(NSString *)fileName;
-- (NSString *)renderSwiftWithClassName:(NSString *)className
-                              fileName:(NSString *)fileName;
++ (NSString *)classNameForPlatform:(VOKTemplatePlatform)platform;
+
+- (BOOL)renderObjCHForPlatform:(VOKTemplatePlatform)platform
+                        toPath:(NSString *)path
+                         error:(NSError **)error;
+- (BOOL)renderObjCMForPlatform:(VOKTemplatePlatform)platform
+                        toPath:(NSString *)path
+                         error:(NSError **)error;
+- (BOOL)renderSwiftForPlatform:(VOKTemplatePlatform)platform
+                        toPath:(NSString *)path
+                         error:(NSError **)error;
 
 @end
