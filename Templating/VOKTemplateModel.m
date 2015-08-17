@@ -9,9 +9,8 @@
 #import "VOKTemplateModel.h"
 
 #import <GRMustache.h>
-
-#import "VOKZZArchiveTemplateRepository.h"
-#import "ZZArchive+VOKMachOEmbedded.h"
+#import <VOKZZArchiveTemplateRepository.h>
+#import <ZZArchive+VOKMachOEmbedded.h>
 
 @interface VOKTemplateModel ()
 
