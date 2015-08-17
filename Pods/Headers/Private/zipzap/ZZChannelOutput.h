@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZChannelOutput.h
+../../../zipzap/ZipZap/ZZChannelOutput.h

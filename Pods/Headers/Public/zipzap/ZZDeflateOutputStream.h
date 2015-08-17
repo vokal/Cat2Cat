@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZDeflateOutputStream.h
+../../../zipzap/ZipZap/ZZDeflateOutputStream.h

@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BRLOptionParser" "${PODS_ROOT}/Headers/Public/GRMustache" "${PODS_ROOT}/Headers/Public/JRSwizzle" "${PODS_ROOT}/Headers/Public/zipzap"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/BRLOptionParser" -isystem "${PODS_ROOT}/Headers/Public/GRMustache" -isystem "${PODS_ROOT}/Headers/Public/JRSwizzle" -isystem "${PODS_ROOT}/Headers/Public/zipzap"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-BRLOptionParser" -l"Pods-GRMustache" -l"Pods-JRSwizzle" -l"Pods-zipzap" -l"z" -framework "ApplicationServices" -framework "Foundation"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BRLOptionParser" "${PODS_ROOT}/Headers/Public/GRMustache" "${PODS_ROOT}/Headers/Public/JRSwizzle" "${PODS_ROOT}/Headers/Public/VOKEmbeddedTemplateTools" "${PODS_ROOT}/Headers/Public/zipzap"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/BRLOptionParser" -isystem "${PODS_ROOT}/Headers/Public/GRMustache" -isystem "${PODS_ROOT}/Headers/Public/JRSwizzle" -isystem "${PODS_ROOT}/Headers/Public/VOKEmbeddedTemplateTools" -isystem "${PODS_ROOT}/Headers/Public/zipzap"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-BRLOptionParser" -l"Pods-GRMustache" -l"Pods-JRSwizzle" -l"Pods-VOKEmbeddedTemplateTools" -l"Pods-zipzap" -l"z" -framework "ApplicationServices" -framework "Foundation"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

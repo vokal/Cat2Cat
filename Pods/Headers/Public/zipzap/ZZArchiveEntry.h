@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZArchiveEntry.h
+../../../zipzap/ZipZap/ZZArchiveEntry.h

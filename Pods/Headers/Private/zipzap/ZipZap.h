@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/zipzap.h
+../../../zipzap/ZipZap/ZipZap.h

@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZStoreOutputStream.h
+../../../zipzap/ZipZap/ZZStoreOutputStream.h

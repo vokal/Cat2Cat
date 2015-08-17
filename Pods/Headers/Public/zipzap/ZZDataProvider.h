@@ -1,1 +1,1 @@
-../../../zipzap/zipzap/ZZDataProvider.h
+../../../zipzap/ZipZap/ZZDataProvider.h
