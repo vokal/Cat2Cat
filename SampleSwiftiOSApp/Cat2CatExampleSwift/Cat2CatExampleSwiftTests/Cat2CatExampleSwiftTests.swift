@@ -23,7 +23,11 @@ class Cat2CatExampleSwiftTests: XCTestCase {
     
     /// Tests that the image data retrieved from the two different methods is identical.
     func testMethodImageAndImageNamedAreEqual() {
-        let imageNamed = UIImage(named:"US Capitol")
+        guard let imageNamed = UIImage(named:"US Capitol") else {
+            XCTFail("Named image did not unwrap!")
+            return
+        }
+        
         let methodRetreived = UIImage.ac_US_Capitol()
         
         let imageNamedData = UIImagePNGRepresentation(imageNamed)

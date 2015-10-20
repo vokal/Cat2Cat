@@ -6,12 +6,25 @@ extension {{ imageClass }} {
 {{# folders }}{{> swift.methods }}{{/ folders }}{{!
 }}}
 
-private extension {{ imageClass }} {
-convenience init(c2cName: {{ swiftEnumName }}) {
-    self.init(named: c2cName.rawValue)!
+extension {{ imageClass }} {
+    /**
+    Initializes using the specified {{ swiftEnumName }}.
+    */
+    convenience init(c2cName: {{ swiftEnumName }}) {
+        self.init(named: c2cName.rawValue)!
+    }
+
+    /**
+    Initializes for use where the bundle and trait collection must also
+    be passed in. For use with IBDesignables and IBInspectables.
+    */
+    convenience init(c2cName: {{ swiftEnumName }}, bundle: NSBundle, compatibleWithTraitCollection: UITraitCollection?) {
+        self.init(named: c2cName.rawValue, inBundle: bundle, compatibleWithTraitCollection: compatibleWithTraitCollection)!
+    }
 }
 
-enum {{ swiftEnumName }} {
+enum {{ swiftEnumName }}: String {
     case
-{{# folders }}{{> swift.enum }}{{/ folders }}{{!
+{{# each(folders) }}{{> swift.enum }}{{^ @last }},{{/}}
+{{/}}{{!
 }}}

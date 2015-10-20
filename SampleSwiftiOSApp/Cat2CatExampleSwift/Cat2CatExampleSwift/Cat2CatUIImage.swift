@@ -15,52 +15,70 @@ extension UIImage {
     
     // MARK: - Public Domain Icons
     
-    class func ac_No_C() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.No_C)
+    class func ac_No_C() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.No_C)
     }
     
-    class func ac_PD_in_circle() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.PD_in_circle)
+    class func ac_PD_in_circle() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.PD_in_circle)
     }
     
-    class func ac_PDe_Darka_Circle() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.PDe_Darka_Circle)
+    class func ac_PDe_Darka_Circle() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.PDe_Darka_Circle)
     }
     
-    class func ac_SidewaysC() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.SidewaysC)
+    class func ac_SidewaysC() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.SidewaysC)
     }
     
     // MARK: - PHOTOS
     
-    class func ac_Golden_Gate_Bridge() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.Golden_Gate_Bridge)
+    class func ac_Golden_Gate_Bridge() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.Golden_Gate_Bridge)
     }
     
-    class func ac_US_Capitol() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.US_Capitol)
+    class func ac_US_Capitol() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.US_Capitol)
     }
     
-    class func ac_Venice_Beach() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.Venice_Beach)
+    class func ac_Venice_Beach() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.Venice_Beach)
     }
     
-    class func ac_Wrigley_Field() -> UIImage? {
-        return UIImage(named:Cat2CatImageNames.Wrigley_Field)
+    class func ac_Wrigley_Field() -> UIImage {
+        return UIImage(c2cName: Cat2CatImageName.Wrigley_Field)
     }
     
 }
 
-struct Cat2CatImageNames {
+extension UIImage {
+    /**
+    Initializes using the specified Cat2CatImageName.
+    */
+    convenience init(c2cName: Cat2CatImageName) {
+        self.init(named: c2cName.rawValue)!
+    }
+
+    /**
+    Initializes for use where the bundle and trait collection must also
+    be passed in. For use with IBDesignables and IBInspectables.
+    */
+    convenience init(c2cName: Cat2CatImageName, bundle: NSBundle, compatibleWithTraitCollection: UITraitCollection?) {
+        self.init(named: c2cName.rawValue, inBundle: bundle, compatibleWithTraitCollection: compatibleWithTraitCollection)!
+    }
+}
+
+enum Cat2CatImageName: String {
+    case
     // ICONS
     // Public Domain Icons
-    static let No_C = "No@C"
-    static let PD_in_circle = "PD in circle"
-    static let PDe_Darka_Circle = "PDéDarkåCircle"
-    static let SidewaysC = "SidewaysC"
+    No_C = "No@C",
+    PD_in_circle = "PD in circle",
+    PDe_Darka_Circle = "PDéDarkåCircle",
+    SidewaysC = "SidewaysC",
     // PHOTOS
-    static let Golden_Gate_Bridge = "Golden Gate Bridge"
-    static let US_Capitol = "US Capitol"
-    static let Venice_Beach = "Venice Beach"
-    static let Wrigley_Field = "Wrigley Field"
+    Golden_Gate_Bridge = "Golden Gate Bridge",
+    US_Capitol = "US Capitol",
+    Venice_Beach = "Venice Beach",
+    Wrigley_Field = "Wrigley Field"
 }
