@@ -12,7 +12,7 @@ extension {{ imageClass }} {
     */
     convenience init(c2cName: {{ swiftEnumName }}) {
         self.init(named: c2cName.rawValue)!
-    }
+    }{{# !isMac }}
 
     /**
     Initializes for use where the bundle and trait collection must also
@@ -20,7 +20,7 @@ extension {{ imageClass }} {
     */
     convenience init(c2cName: {{ swiftEnumName }}, bundle: NSBundle, compatibleWithTraitCollection: UITraitCollection?) {
         self.init(named: c2cName.rawValue, inBundle: bundle, compatibleWithTraitCollection: compatibleWithTraitCollection)!
-    }
+    }{{/ !isMac }}
 }
 
 enum {{ swiftEnumName }}: String {
