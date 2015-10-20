@@ -28,6 +28,8 @@ static NSString *const KitNameMac = @"AppKit";
 static NSString *const FrameworkPrefix = @"ac_";
 static NSString *const ConstantStructName = @"Cat2CatImageNames";
 
+static NSString *const SwiftEnumName = @"Cat2CatImageName";
+
 @implementation VOKTemplateModel
 
 + (NSString *)classNameForPlatform:(VOKTemplatePlatform)platform
@@ -88,6 +90,7 @@ static NSString *const ConstantStructName = @"Cat2CatImageNames";
     NSMutableDictionary *context = [@{
                                       @"frameworkPrefix": FrameworkPrefix,
                                       @"constantStructName": ConstantStructName,
+                                      @"swiftEnumName": SwiftEnumName,
                                       @"fileName": path.lastPathComponent,
                                       @"imageClass": [[self class] classNameForPlatform:platform],
                                       } mutableCopy];

@@ -6,6 +6,12 @@ extension {{ imageClass }} {
 {{# folders }}{{> swift.methods }}{{/ folders }}{{!
 }}}
 
-struct {{ constantStructName }} {
-{{# folders }}{{> swift.struct }}{{/ folders }}{{!
+private extension {{ imageClass }} {
+convenience init(c2cName: {{ swiftEnumName }}) {
+    self.init(named: c2cName.rawValue)!
+}
+
+enum {{ swiftEnumName }} {
+    case
+{{# folders }}{{> swift.enum }}{{/ folders }}{{!
 }}}
