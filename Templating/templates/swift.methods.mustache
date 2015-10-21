@@ -1,11 +1,11 @@
     // MARK: - {{ name }}
     
-{{# isMac }}{{# icons }}    class func {{ frameworkPrefix }}{{ method }}() -> {{ imageClass }} {
+{{# isMac }}{{# icons }}    static func {{ frameworkPrefix }}{{ method }}() -> {{ imageClass }} {
         return {{ imageClass }}(c2cName: {{ swiftEnumName }}.{{ method }})
     }
     
 {{/ icons }}{{/ isMac }}{{!
-}}{{# images }}    class func {{ frameworkPrefix }}{{ method }}() -> {{ imageClass }} {
+}}{{# images }}    static func {{ frameworkPrefix }}{{ method }}() -> {{ imageClass }} {
         return {{ imageClass }}(c2cName: {{ swiftEnumName }}.{{ method }})
     }
     
