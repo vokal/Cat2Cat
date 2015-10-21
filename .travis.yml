@@ -4,7 +4,7 @@ before_install:
     - brew update >/dev/null
     - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 before_script:
-    - xctool -configuration Release -workspace Cat2Cat.xcworkspace -scheme Cat2Cat -sdk macosx10.9 CONFIGURATION_BUILD_DIR='~/build/'
+    - xctool -configuration Release -workspace Cat2Cat.xcworkspace -scheme Cat2Cat -sdk macosx10.11 CONFIGURATION_BUILD_DIR='~/build/'
     - cp ~/build/Cat2Cat CocoaPod/
     - rm SampleiOSApp/Cat2CatExample/Cat2CatExample/Categories/UIImage+AssetCatalog.?
     - rm SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac/Categories/NSImage+AssetCatalog.?
