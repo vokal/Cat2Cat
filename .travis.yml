@@ -1,10 +1,10 @@
 language: objective-c
-osx_image: xcode61
+osx_image: xcode7
 before_install:
     - brew update >/dev/null
     - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 before_script:
-    - xctool -configuration Release -workspace Cat2Cat.xcworkspace -scheme Cat2Cat -sdk macosx10.9 CONFIGURATION_BUILD_DIR='~/build/'
+    - xctool -configuration Release -workspace Cat2Cat.xcworkspace -scheme Cat2Cat -sdk macosx10.11 CONFIGURATION_BUILD_DIR='~/build/'
     - cp ~/build/Cat2Cat CocoaPod/
     - rm SampleiOSApp/Cat2CatExample/Cat2CatExample/Categories/UIImage+AssetCatalog.?
     - rm SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac/Categories/NSImage+AssetCatalog.?
@@ -15,13 +15,13 @@ matrix:
     include:
         - xcode_project: SampleiOSApp/Cat2CatExample/Cat2CatExample.xcodeproj
           xcode_scheme: Cat2CatExample
-          xcode_sdk: iphonesimulator8.1
+          xcode_sdk: iphonesimulator9.0
         - xcode_project: SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac.xcodeproj
           xcode_scheme: Cat2CatExampleMac
-          xcode_sdk: macosx10.9
+          xcode_sdk: macosx10.11
         - xcode_project: SampleSwiftiOSApp/Cat2CatExampleSwift/Cat2CatExampleSwift.xcodeproj
           xcode_scheme: Cat2CatExampleSwift
-          xcode_sdk: iphonesimulator8.1
+          xcode_sdk: iphonesimulator9.0
         - xcode_project: SampleSwiftMacApp/Cat2CatExampleSwiftMac/Cat2CatExampleSwiftMac.xcodeproj
           xcode_scheme: Cat2CatExampleSwiftMac
-          xcode_sdk: macosx10.10
+          xcode_sdk: macosx10.11

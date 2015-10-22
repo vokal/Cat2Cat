@@ -33,19 +33,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3355E0981BD7069E003FDD1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7154C7E81A08024F00862522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7154C8181A08039E00862522;
+			remoteInfo = Cat2Cat;
+		};
 		7154C8011A08024F00862522 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7154C7E81A08024F00862522 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 7154C7EF1A08024F00862522;
 			remoteInfo = Cat2CatExampleSwiftMac;
-		};
-		7154C81F1A0803EB00862522 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7154C7E81A08024F00862522 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7154C8181A08039E00862522;
-			remoteInfo = Cat2Cat;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -185,7 +185,8 @@
 		7154C7E81A08024F00862522 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Vokal;
 				TargetAttributes = {
 					7154C7EF1A08024F00862522 = {
@@ -288,7 +289,7 @@
 		7154C8201A0803EB00862522 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7154C8181A08039E00862522 /* Cat2Cat */;
-			targetProxy = 7154C81F1A0803EB00862522 /* PBXContainerItemProxy */;
+			targetProxy = 3355E0981BD7069E003FDD1C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -324,6 +325,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -388,6 +390,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Cat2CatExampleSwiftMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -399,6 +402,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Cat2CatExampleSwiftMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -418,6 +422,7 @@
 				);
 				INFOPLIST_FILE = Cat2CatExampleSwiftMacTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cat2CatExampleSwiftMac.app/Contents/MacOS/Cat2CatExampleSwiftMac";
 			};
@@ -434,6 +439,7 @@
 				);
 				INFOPLIST_FILE = Cat2CatExampleSwiftMacTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cat2CatExampleSwiftMac.app/Contents/MacOS/Cat2CatExampleSwiftMac";
 			};
@@ -472,6 +478,7 @@
 				7154C80C1A08024F00862522 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7154C80D1A08024F00862522 /* Build configuration list for PBXNativeTarget "Cat2CatExampleSwiftMacTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +487,7 @@
 				7154C80F1A08024F00862522 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7154C8191A08039E00862522 /* Build configuration list for PBXAggregateTarget "Cat2Cat" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +496,7 @@
 				7154C81B1A08039E00862522 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

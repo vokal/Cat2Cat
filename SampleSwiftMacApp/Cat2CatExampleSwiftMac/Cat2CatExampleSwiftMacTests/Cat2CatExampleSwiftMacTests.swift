@@ -23,11 +23,15 @@ class Cat2CatExampleSwiftMacTests: XCTestCase {
     
     /// Tests that the image data retrieved from the two different methods is identical.
     func testMethodImageAndImageNamedAreEqual() {
-        let imageNamed = NSImage(named:"US Capitol")
+        guard let imageNamed = NSImage(named:"US Capitol") else {
+            XCTFail("Named image did not unwrap!")
+            return
+        }
+        
         let methodRetreived = NSImage.ac_US_Capitol()
         
-        let imageNamedData = imageNamed!.TIFFRepresentation
-        let methodReterivedData = methodRetreived!.TIFFRepresentation
+        let imageNamedData = imageNamed.TIFFRepresentation
+        let methodReterivedData = methodRetreived.TIFFRepresentation
         
         // Compare the data of the two images. Note that comparing the images directly doesn't work since that tests whether they're the same instance, not whether they have identical data.
         XCTAssertTrue(imageNamedData == methodReterivedData, "Capitol images are not equal!")

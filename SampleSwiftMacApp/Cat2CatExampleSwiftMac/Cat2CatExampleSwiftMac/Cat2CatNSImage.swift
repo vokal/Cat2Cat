@@ -13,64 +13,74 @@ extension NSImage {
 
     // MARK: - ICONS
     
-    class func ac_AppIcon() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.AppIcon)
+    static func ac_AppIcon() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.AppIcon)
     }
     
-    class func ac_Icon() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.Icon)
+    static func ac_Icon() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.Icon)
     }
     
     // MARK: - Public Domain Icons
     
-    class func ac_No_C() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.No_C)
+    static func ac_No_C() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.No_C)
     }
     
-    class func ac_PD_in_circle() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.PD_in_circle)
+    static func ac_PD_in_circle() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.PD_in_circle)
     }
     
-    class func ac_PDe_Darka_Circle() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.PDe_Darka_Circle)
+    static func ac_PDe_Darka_Circle() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.PDe_Darka_Circle)
     }
     
-    class func ac_SidewaysC() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.SidewaysC)
+    static func ac_SidewaysC() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.SidewaysC)
     }
     
     // MARK: - PHOTOS
     
-    class func ac_Golden_Gate_Bridge() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.Golden_Gate_Bridge)
+    static func ac_Golden_Gate_Bridge() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.Golden_Gate_Bridge)
     }
     
-    class func ac_US_Capitol() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.US_Capitol)
+    static func ac_US_Capitol() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.US_Capitol)
     }
     
-    class func ac_Venice_Beach() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.Venice_Beach)
+    static func ac_Venice_Beach() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.Venice_Beach)
     }
     
-    class func ac_Wrigley_Field() -> NSImage? {
-        return NSImage(named:Cat2CatImageNames.Wrigley_Field)
+    static func ac_Wrigley_Field() -> NSImage {
+        return NSImage(c2cName: Cat2CatImageName.Wrigley_Field)
     }
     
 }
 
-struct Cat2CatImageNames {
+extension NSImage {
+    /**
+    Initializes using the specified Cat2CatImageName.
+    */
+    convenience init(c2cName: Cat2CatImageName) {
+        self.init(named: c2cName.rawValue)!
+    }
+}
+
+enum Cat2CatImageName: String {
+    case
     // ICONS
-    static let AppIcon = "AppIcon"
-    static let Icon = "Icon"
+    AppIcon = "AppIcon",
+    Icon = "Icon",
     // Public Domain Icons
-    static let No_C = "No@C"
-    static let PD_in_circle = "PD in circle"
-    static let PDe_Darka_Circle = "PDéDarkåCircle"
-    static let SidewaysC = "SidewaysC"
+    No_C = "No@C",
+    PD_in_circle = "PD in circle",
+    PDe_Darka_Circle = "PDéDarkåCircle",
+    SidewaysC = "SidewaysC",
     // PHOTOS
-    static let Golden_Gate_Bridge = "Golden Gate Bridge"
-    static let US_Capitol = "US Capitol"
-    static let Venice_Beach = "Venice Beach"
-    static let Wrigley_Field = "Wrigley Field"
+    Golden_Gate_Bridge = "Golden Gate Bridge",
+    US_Capitol = "US Capitol",
+    Venice_Beach = "Venice Beach",
+    Wrigley_Field = "Wrigley Field"
 }

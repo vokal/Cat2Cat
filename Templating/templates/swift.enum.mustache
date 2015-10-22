@@ -1,0 +1,7 @@
+    // {{ name }}
+{{# isMac }}{{# icons }}    {{ method }} = "{{ name }}",
+{{/ icons }}{{/ isMac }}{{!
+}}{{# each(images) }}    {{ method }} = "{{ name }}"{{^ @last }},
+{{/}}{{/}}{{!
+}}{{# each(subfolders) }}{{> swift.enum }}{{^ @last }},
+{{/}}{{/}}
