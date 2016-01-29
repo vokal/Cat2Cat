@@ -26,6 +26,7 @@ typedef NS_OPTIONS(NSUInteger, VICatalogWalkerOutputType) {
 
 @interface VICatalogWalkerParameters : NSObject
 @property (nonatomic, strong) NSArray *assetCatalogPaths;
+@property (nonatomic, strong) NSString *methodNamePrefix;
 @property (nonatomic, strong) NSString *outputDirectory;
 @property (nonatomic, assign) VICatalogWalkerOutputType outputTypes;
 @end
