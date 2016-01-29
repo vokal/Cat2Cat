@@ -25,7 +25,7 @@ static NSString *const ClassNameMac = @"NSImage";
 static NSString *const KitNameIOS = @"UIKit";
 static NSString *const KitNameMac = @"AppKit";
 
-static NSString *const FrameworkPrefix = @"ac_";
+static NSString *const MethodNamePrefix = @"ac";
 static NSString *const ConstantStructName = @"Cat2CatImageNames";
 
 static NSString *const SwiftEnumName = @"Cat2CatImageName";
@@ -88,7 +88,7 @@ static NSString *const SwiftEnumName = @"Cat2CatImageName";
     
     // Construct the additional context.
     NSMutableDictionary *context = [@{
-                                      @"frameworkPrefix": FrameworkPrefix,
+                                      @"methodNamePrefix": self.methodNamePrefix ?: MethodNamePrefix,
                                       @"constantStructName": ConstantStructName,
                                       @"swiftEnumName": SwiftEnumName,
                                       @"fileName": path.lastPathComponent,
