@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, VOKTemplatePlatform) {
 
 @interface VOKTemplateModel : NSObject
 
+@property (nonatomic, strong) NSString *methodNamePrefix;
+
 + (instancetype)templateModelWithFolders:(NSArray *)folders;
 
 + (NSString *)classNameForPlatform:(VOKTemplatePlatform)platform;

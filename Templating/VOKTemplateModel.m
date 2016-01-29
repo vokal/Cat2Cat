@@ -88,7 +88,7 @@ static NSString *const SwiftEnumName = @"Cat2CatImageName";
     
     // Construct the additional context.
     NSMutableDictionary *context = [@{
-                                      @"methodNamePrefix": MethodNamePrefix,
+                                      @"methodNamePrefix": self.methodNamePrefix ?: MethodNamePrefix,
                                       @"constantStructName": ConstantStructName,
                                       @"swiftEnumName": SwiftEnumName,
                                       @"fileName": path.lastPathComponent,
