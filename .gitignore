@@ -170,3 +170,8 @@ xcuserdata
 
 # Also, ignore .xccheckout files, as they contain data about specific paths and remotes that doesn't feel right in the repo. -igreensp 20131230
 *.xccheckout
+
+####
+# AppCode
+.idea
+
