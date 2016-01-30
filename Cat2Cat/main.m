@@ -15,8 +15,8 @@
 
 static VICatalogWalkerParameters *parametersFromLegacyArguments(int argc, const char * argv[]);
 static VICatalogWalkerParameters *parametersFromArguments(int argc, const char * argv[]);
-BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error);
-void exitWithLaunchArgAndError(const char *launchArg, NSError *error);
+static BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error);
+static void exitWithLaunchArgAndError(const char *launchArg, NSError *error);
 
 int main(int argc, const char * argv[])
 {
@@ -228,7 +228,7 @@ static VICatalogWalkerParameters *parametersFromArguments(int argc, const char *
     return parameters;
 }
 
-BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error)
+static BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error)
 {
     if ([methodNamePrefix length] < 2) {
         *error = [NSError errorWithDomain:@"Cat2Cat" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"Method name prefix must be at least 2 characters." }];
@@ -243,7 +243,7 @@ BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error)
     return *error == nil;
 }
 
-void exitWithLaunchArgAndError(const char *launchArg, NSError *error)
+static void exitWithLaunchArgAndError(const char *launchArg, NSError *error)
 {
     const char * message = [[error localizedDescription] UTF8String];
     fprintf(stderr, "%s: %s\n", launchArg, message);
