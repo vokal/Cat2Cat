@@ -144,7 +144,7 @@ static VICatalogWalkerParameters *parametersFromArguments(int argc, const char *
            description:@"Asset catalog(s)"
      blockWithArgument:^(NSString *value) {
          [rawAssetCatalogs addObject:value];
-     }];
+    }];
     [options addOption:"method-name-prefix"
                   flag:'m'
            description:@"Prefix for method names (defaults to ac)"
