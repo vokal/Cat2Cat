@@ -1,17 +1,17 @@
 Cat2Cat (Catalog to Category)
 =========
 ----
-`Cat2Cat` exists to help solve the typo problem with UIImage's `imageNamed:` method. 
+`Cat2Cat` exists to help solve the typo problem with UIImage's `imageNamed:` method.
 
-Without `Cat2Cat`, you can be left wondering where your background image named `backgroundImage` is, only to discover that you've set up a `[UIImage imageNamed:@"backrgoundImage"];` call by accident. 
+Without `Cat2Cat`, you can be left wondering where your background image named `backgroundImage` is, only to discover that you've set up a `[UIImage imageNamed:@"backrgoundImage"];` call by accident.
 
 With the advent of the Asset Catalog in Xcode 5, there was a huge step in the right direction - images ceased to be tied to their filenames, and it became straightforward to centralize your image assets.
 
-That nasty typo problem, however, still persisted. Until now. 
+That nasty typo problem, however, still persisted. Until now.
 
-`Cat2Cat` goes through provided Asset Catalog files and writes out their contents to a **UIImage+AssetCatalog** or **NSImage+AssetCatalog** category - each `.imageset` within an asset catalog will get its own method to call it, prefixed by `ac_` to indicate the method is from the asset catalog and to help prevent any namespace collisions. 
+`Cat2Cat` goes through provided Asset Catalog files and writes out their contents to a **UIImage+AssetCatalog** or **NSImage+AssetCatalog** category - each `.imageset` within an asset catalog will get its own method to call it, prefixed by `ac_` to indicate the method is from the asset catalog and to help prevent any namespace collisions.
 
-After running `Cat2Cat` and adding the category or categories it produces, instead of calling `[UIImage imageNamed:@"backgroundImage"]`, you can now call `[UIImage ac_backgroundImage]` ensuring that you're always going to get the image you think you're getting, and giving you the benefit of autocomplete when you're trying to remember what in the hell you named that icon.  
+After running `Cat2Cat` and adding the category or categories it produces, instead of calling `[UIImage imageNamed:@"backgroundImage"]`, you can now call `[UIImage ac_backgroundImage]` ensuring that you're always going to get the image you think you're getting, and giving you the benefit of autocomplete when you're trying to remember what in the hell you named that icon.
 
 `Cat2Cat` is compatible with Xcode 5 projects which can leverage Asset Catalogs (i.e., iOS 6 and above).
 
@@ -25,17 +25,18 @@ The current compiled binary can be downloaded from [the releases page](../../rel
 
 ```
 usage: Cat2Cat [options]
-    -p, --base-path        Base path used for interpreting the asset catalogs and output directory
-    -a, --asset-catalog    Asset catalog(s)
-    -o, --output-dir       Output directory
+    -p, --base-path             Base path used for interpreting the asset catalogs and output directory
+    -a, --asset-catalog         Asset catalog(s)
+    -m, --method-name-prefix    Prefix for category method names. Optional; default is "ac".
+    -o, --output-dir            Output directory
 
-        --objc             Output Objective-C category or categories
-        --swift            Output Swift class extension(s)
+        --objc                  Output Objective-C category or categories
+        --swift                 Output Swift class extension(s)
 
-        --ios              Output for iOS (UIImage)
-        --osx              Output for OS X (NSImage)
+        --ios                   Output for iOS (UIImage)
+        --osx                   Output for OS X (NSImage)
 
-    -h, --help             Show this message
+    -h, --help                  Show this message
 ```
 
 Examples:
@@ -48,6 +49,7 @@ Cat2Cat --base-path="/Users/YourName/Desktop/YourProjectFolder" --asset-catalog=
 Cat2Cat --swift --ios \
 	--base-path="/Users/YourName/Desktop/YourProjectFolder" \
 	--asset-catalog="Resources/*.xcassets" \
+    --method-name-prefix="xyz" \
 	--output-dir="Categories"
 ```
 
@@ -63,12 +65,16 @@ In the Arguments section, add five (or more) Arguments Passed On Launch to the b
   ```
   --base-path="/Users/YourName/Desktop/YourProjectFolder"
   ```
-- The path within your project to your asset catalog, without a preceding slash (add multiple times if you have multiple asset catalogs:  
+- The path within your project to your asset catalog, without a preceding slash (add multiple times if you have multiple asset catalogs):  
   ```
   --asset-catalog="Resources/Images.xcassets"
   ```  
   ```
   --asset-catalog="Resources/Media.xcassets"
+  ```
+- The prefix for the category method names. If not specified, the default is `ac`. Must be at least 2 characters, and conform to valid method naming rules:
+  ```
+  --method-name-prefix="xyz"
   ```
 - The path within your project where you wish to have your Category written out to, without a preceding slash:  
   ```
