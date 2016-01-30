@@ -47,10 +47,10 @@ Cat2Cat --base-path="/Users/YourName/Desktop/YourProjectFolder" --asset-catalog=
 
 ```
 Cat2Cat --swift --ios \
-	--base-path="/Users/YourName/Desktop/YourProjectFolder" \
-	--asset-catalog="Resources/*.xcassets" \
+    --base-path="/Users/YourName/Desktop/YourProjectFolder" \
+    --asset-catalog="Resources/*.xcassets" \
     --method-name-prefix="xyz" \
-	--output-dir="Categories"
+    --output-dir="Categories"
 ```
 
 Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build target for the appropriate run script for iOS only, and the [Mac Example App](SampleMacApp)'s `Cat2Cat` aggregate build target for the appropriate run script for Mac only. 
