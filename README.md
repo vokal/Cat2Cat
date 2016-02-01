@@ -1,17 +1,17 @@
 Cat2Cat (Catalog to Category)
 =========
 ----
-`Cat2Cat` exists to help solve the typo problem with UIImage's `imageNamed:` method.
+`Cat2Cat` exists to help solve the typo problem with UIImage's `imageNamed:` method. 
 
-Without `Cat2Cat`, you can be left wondering where your background image named `backgroundImage` is, only to discover that you've set up a `[UIImage imageNamed:@"backrgoundImage"];` call by accident.
+Without `Cat2Cat`, you can be left wondering where your background image named `backgroundImage` is, only to discover that you've set up a `[UIImage imageNamed:@"backrgoundImage"];` call by accident. 
 
 With the advent of the Asset Catalog in Xcode 5, there was a huge step in the right direction - images ceased to be tied to their filenames, and it became straightforward to centralize your image assets.
 
-That nasty typo problem, however, still persisted. Until now.
+That nasty typo problem, however, still persisted. Until now. 
 
-`Cat2Cat` goes through provided Asset Catalog files and writes out their contents to a **UIImage+AssetCatalog** or **NSImage+AssetCatalog** category - each `.imageset` within an asset catalog will get its own method to call it, prefixed by `ac_` to indicate the method is from the asset catalog and to help prevent any namespace collisions.
+`Cat2Cat` goes through provided Asset Catalog files and writes out their contents to a **UIImage+AssetCatalog** or **NSImage+AssetCatalog** category - each `.imageset` within an asset catalog will get its own method to call it, prefixed by `ac_` to indicate the method is from the asset catalog and to help prevent any namespace collisions. 
 
-After running `Cat2Cat` and adding the category or categories it produces, instead of calling `[UIImage imageNamed:@"backgroundImage"]`, you can now call `[UIImage ac_backgroundImage]` ensuring that you're always going to get the image you think you're getting, and giving you the benefit of autocomplete when you're trying to remember what in the hell you named that icon.
+After running `Cat2Cat` and adding the category or categories it produces, instead of calling `[UIImage imageNamed:@"backgroundImage"]`, you can now call `[UIImage ac_backgroundImage]` ensuring that you're always going to get the image you think you're getting, and giving you the benefit of autocomplete when you're trying to remember what in the hell you named that icon.  
 
 `Cat2Cat` is compatible with Xcode 5 projects which can leverage Asset Catalogs (i.e., iOS 6 and above).
 
@@ -47,10 +47,10 @@ Cat2Cat --base-path="/Users/YourName/Desktop/YourProjectFolder" --asset-catalog=
 
 ```
 Cat2Cat --swift --ios \
-    --base-path="/Users/YourName/Desktop/YourProjectFolder" \
-    --asset-catalog="Resources/*.xcassets" \
-    --method-name-prefix="xyz" \
-    --output-dir="Categories"
+	--base-path="/Users/YourName/Desktop/YourProjectFolder" \
+	--asset-catalog="Resources/*.xcassets" \
+	--method-name-prefix="xyz" \
+	--output-dir="Categories"
 ```
 
 Please see the [iOS Example App](SampleiOSApp)'s `Cat2Cat` aggregate build target for the appropriate run script for iOS only, and the [Mac Example App](SampleMacApp)'s `Cat2Cat` aggregate build target for the appropriate run script for Mac only. 
