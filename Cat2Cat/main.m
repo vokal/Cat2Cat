@@ -16,7 +16,7 @@
 static VICatalogWalkerParameters *parametersFromLegacyArguments(int argc, const char * argv[]);
 static VICatalogWalkerParameters *parametersFromArguments(int argc, const char * argv[]);
 static BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error);
-static void exitWithLaunchArgAndError(const char *launchArg, NSError *error);
+static void exitWithCommandNameAndError(const char *launchArg, NSError *error);
 
 int main(int argc, const char * argv[])
 {
@@ -188,11 +188,11 @@ static VICatalogWalkerParameters *parametersFromArguments(int argc, const char *
     
     NSError *error = nil;
     if (![options parseArgc:argc argv:argv error:&error]) {
-        exitWithLaunchArgAndError(argv[0], error);
+        exitWithCommandNameAndError(argv[0], error);
     }
 
     if (methodNamePrefix && !validateMethodNamePrefix(methodNamePrefix, &error)) {
-        exitWithLaunchArgAndError(argv[0], error);
+        exitWithCommandNameAndError(argv[0], error);
     }
     
     VICatalogWalkerParameters *parameters = [[VICatalogWalkerParameters alloc] init];
@@ -243,7 +243,7 @@ static BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error
     return *error == nil;
 }
 
-static void exitWithLaunchArgAndError(const char *launchArg, NSError *error)
+static void exitWithCommandNameAndError(const char *launchArg, NSError *error)
 {
     const char * message = [[error localizedDescription] UTF8String];
     fprintf(stderr, "%s: %s\n", launchArg, message);
