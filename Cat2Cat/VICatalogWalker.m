@@ -38,7 +38,8 @@ static NSString *const ExtensionStandardImageset = @".imageset";
     BOOL success = YES;
     
     VOKTemplateModel *model = [self modelForFullCatalogPaths:parameters.assetCatalogPaths];
-    
+    model.methodNamePrefix = parameters.methodNamePrefix;
+
     if (parameters.outputTypes & VICatalogWalkerOutputObjCIOS) {
         success = success && [self writeHandMFilesForPlatform:VOKTemplatePlatformIOS model:model];
     }

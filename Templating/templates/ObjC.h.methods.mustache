@@ -1,9 +1,9 @@
 #pragma mark - {{ name }}
 
-{{# isMac }}{{# icons }}+ ({{ imageClass }} *){{ frameworkPrefix }}{{ method }};
+{{# isMac }}{{# icons }}+ ({{ imageClass }} *){{ methodNamePrefix }}_{{ method }};
 
 {{/ icons }}{{/ isMac }}{{!
-}}{{# images }}+ ({{ imageClass }} *){{ frameworkPrefix }}{{ method }};
+}}{{# images }}+ ({{ imageClass }} *){{ methodNamePrefix }}_{{ method }};
 
 {{/ images }}{{!
 }}{{# subfolders }}{{> ObjC.h.methods }}{{/ subfolders }}

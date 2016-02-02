@@ -15,6 +15,8 @@
 
 static VICatalogWalkerParameters *parametersFromLegacyArguments(int argc, const char * argv[]);
 static VICatalogWalkerParameters *parametersFromArguments(int argc, const char * argv[]);
+static BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error);
+static void exitWithCommandNameAndError(const char *launchArg, NSError *error);
 
 int main(int argc, const char * argv[])
 {
@@ -128,10 +130,11 @@ static VICatalogWalkerParameters *parametersFromArguments(int argc, const char *
     
     NSString *basePath = [[NSFileManager defaultManager] currentDirectoryPath];
     NSMutableArray *rawAssetCatalogs = [NSMutableArray array];
+    NSString __block *methodNamePrefix = nil;
     NSString *outputDirectory = @"";
-    
+
     BRLOptionParser *options = [[BRLOptionParser alloc] init];
-    
+
     [options addOption:"base-path"
                   flag:'p'
            description:@"Base path used for interpreting the asset catalogs and output directory"
@@ -141,7 +144,13 @@ static VICatalogWalkerParameters *parametersFromArguments(int argc, const char *
            description:@"Asset catalog(s)"
      blockWithArgument:^(NSString *value) {
          [rawAssetCatalogs addObject:value];
-     }];
+    }];
+    [options addOption:"method-name-prefix"
+                  flag:'m'
+           description:@"Prefix for method names (defaults to ac)"
+     blockWithArgument:^(NSString *value) {
+        methodNamePrefix = [value copy];
+    }];
     [options addOption:"output-dir"
                   flag:'o'
            description:@"Output directory"
@@ -179,9 +188,11 @@ static VICatalogWalkerParameters *parametersFromArguments(int argc, const char *
     
     NSError *error = nil;
     if (![options parseArgc:argc argv:argv error:&error]) {
-        const char * message = [[error localizedDescription] UTF8String];
-        fprintf(stderr, "%s: %s\n", argv[0], message);
-        exit(EXIT_FAILURE);
+        exitWithCommandNameAndError(argv[0], error);
+    }
+
+    if (methodNamePrefix && !validateMethodNamePrefix(methodNamePrefix, &error)) {
+        exitWithCommandNameAndError(argv[0], error);
     }
     
     VICatalogWalkerParameters *parameters = [[VICatalogWalkerParameters alloc] init];
@@ -207,10 +218,34 @@ static VICatalogWalkerParameters *parametersFromArguments(int argc, const char *
         [assetCatalogPaths addObjectsFromArray:filesMatchingPattern(url.path)];
     }
     parameters.assetCatalogPaths = assetCatalogPaths;
-    
+
+    parameters.methodNamePrefix = methodNamePrefix;
+
     NSURL *outputUrl = [NSURL URLWithString:[outputDirectory stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
                               relativeToURL:basePathUrl];
     parameters.outputDirectory = outputUrl.path;
     
     return parameters;
+}
+
+static BOOL validateMethodNamePrefix(NSString *methodNamePrefix, NSError **error)
+{
+    if ([methodNamePrefix length] < 2) {
+        *error = [NSError errorWithDomain:@"Cat2Cat" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"Method name prefix must be at least 2 characters." }];
+    } else {
+        NSMutableCharacterSet *charSet = [[NSCharacterSet letterCharacterSet] mutableCopy];
+        [charSet addCharactersInString:@"_"];
+
+        if ([methodNamePrefix rangeOfCharacterFromSet:[charSet invertedSet]].location != NSNotFound) {
+            *error = [NSError errorWithDomain:@"Cat2Cat" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"Method name prefix contains invalid characters." }];
+        }
+    }
+    return *error == nil;
+}
+
+static void exitWithCommandNameAndError(const char *launchArg, NSError *error)
+{
+    const char * message = [[error localizedDescription] UTF8String];
+    fprintf(stderr, "%s: %s\n", launchArg, message);
+    exit(EXIT_FAILURE);
 }

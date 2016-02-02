@@ -25,17 +25,18 @@ The current compiled binary can be downloaded from [the releases page](../../rel
 
 ```
 usage: Cat2Cat [options]
-    -p, --base-path        Base path used for interpreting the asset catalogs and output directory
-    -a, --asset-catalog    Asset catalog(s)
-    -o, --output-dir       Output directory
+    -p, --base-path             Base path used for interpreting the asset catalogs and output directory
+    -a, --asset-catalog         Asset catalog(s)
+    -m, --method-name-prefix    Prefix for category method names. Optional; default is "ac".
+    -o, --output-dir            Output directory
 
-        --objc             Output Objective-C category or categories
-        --swift            Output Swift class extension(s)
+        --objc                  Output Objective-C category or categories
+        --swift                 Output Swift class extension(s)
 
-        --ios              Output for iOS (UIImage)
-        --osx              Output for OS X (NSImage)
+        --ios                   Output for iOS (UIImage)
+        --osx                   Output for OS X (NSImage)
 
-    -h, --help             Show this message
+    -h, --help                  Show this message
 ```
 
 Examples:
@@ -48,6 +49,7 @@ Cat2Cat --base-path="/Users/YourName/Desktop/YourProjectFolder" --asset-catalog=
 Cat2Cat --swift --ios \
 	--base-path="/Users/YourName/Desktop/YourProjectFolder" \
 	--asset-catalog="Resources/*.xcassets" \
+	--method-name-prefix="xyz" \
 	--output-dir="Categories"
 ```
 
@@ -63,12 +65,16 @@ In the Arguments section, add five (or more) Arguments Passed On Launch to the b
   ```
   --base-path="/Users/YourName/Desktop/YourProjectFolder"
   ```
-- The path within your project to your asset catalog, without a preceding slash (add multiple times if you have multiple asset catalogs:  
+- The path within your project to your asset catalog, without a preceding slash (add multiple times if you have multiple asset catalogs):  
   ```
   --asset-catalog="Resources/Images.xcassets"
   ```  
   ```
   --asset-catalog="Resources/Media.xcassets"
+  ```
+- The prefix for the category method names. If not specified, the default is `ac`. Must be at least 2 characters, and conform to valid method naming rules:
+  ```
+  --method-name-prefix="xyz"
   ```
 - The path within your project where you wish to have your Category written out to, without a preceding slash:  
   ```
