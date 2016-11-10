@@ -39,6 +39,13 @@
 			remoteGlobalIDString = 71FF00F91A017C9400B3F38D;
 			remoteInfo = Cat2CatExampleSwift;
 		};
+		BAA5E5A81DD4DB01004BAC2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71FF00F21A017C9400B3F38D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 71FF011F1A017CA700B3F38D;
+			remoteInfo = Cat2Cat;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -181,9 +188,11 @@
 				TargetAttributes = {
 					71FF00F91A017C9400B3F38D = {
 						CreatedOnToolsVersion = 6.0.1;
+						LastSwiftMigration = 0810;
 					};
 					71FF010E1A017C9400B3F38D = {
 						CreatedOnToolsVersion = 6.0.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 71FF00F91A017C9400B3F38D;
 					};
 					71FF011F1A017CA700B3F38D = {
@@ -273,7 +282,7 @@
 		710C436B1A04394B003A0026 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 71FF011F1A017CA700B3F38D /* Cat2Cat */;
-			targetProxy = 710C436A1A04394B003A0026 /* PBXContainerItemProxy */;
+			targetProxy = BAA5E5A81DD4DB01004BAC2A /* PBXContainerItemProxy */;
 		};
 		71FF01111A017C9400B3F38D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -383,6 +392,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -395,6 +405,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -414,6 +425,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cat2CatExampleSwift.app/Cat2CatExampleSwift";
 			};
 			name = Debug;
@@ -430,6 +442,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vokalinteractive.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cat2CatExampleSwift.app/Cat2CatExampleSwift";
 			};
 			name = Release;

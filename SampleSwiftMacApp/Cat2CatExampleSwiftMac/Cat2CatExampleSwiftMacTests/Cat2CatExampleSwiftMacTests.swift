@@ -30,8 +30,8 @@ class Cat2CatExampleSwiftMacTests: XCTestCase {
         
         let methodRetreived = NSImage.ac_US_Capitol()
         
-        let imageNamedData = imageNamed.TIFFRepresentation
-        let methodReterivedData = methodRetreived.TIFFRepresentation
+        let imageNamedData = imageNamed.tiffRepresentation
+        let methodReterivedData = methodRetreived.tiffRepresentation
         
         // Compare the data of the two images. Note that comparing the images directly doesn't work since that tests whether they're the same instance, not whether they have identical data.
         XCTAssertTrue(imageNamedData == methodReterivedData, "Capitol images are not equal!")
