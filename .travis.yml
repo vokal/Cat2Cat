@@ -1,27 +1,23 @@
 language: objective-c
 osx_image: xcode8
-before_install:
-    - brew update >/dev/null
-    - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 before_script:
+    # Build the Cat2Cat binary for 
     - xctool -configuration Release -workspace Cat2Cat.xcworkspace -scheme Cat2Cat -sdk macosx10.12 CONFIGURATION_BUILD_DIR='~/build/'
     - cp ~/build/Cat2Cat CocoaPod/
     - rm SampleiOSApp/Cat2CatExample/Cat2CatExample/Categories/UIImage+AssetCatalog.?
     - rm SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac/Categories/NSImage+AssetCatalog.?
     - rm SampleSwiftiOSApp/Cat2CatExampleSwift/Cat2CatExampleSwift/Cat2CatUIImage.swift
     - rm SampleSwiftMacApp/Cat2CatExampleSwiftMac/Cat2CatExampleSwiftMac/Cat2CatNSImage.swift
-
-matrix:
-    include:
-        - xcode_project: SampleiOSApp/Cat2CatExample/Cat2CatExample.xcodeproj
-          xcode_scheme: Cat2CatExample
-          xcode_sdk: iphonesimulator10.0
-        - xcode_project: SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac.xcodeproj
-          xcode_scheme: Cat2CatExampleMac
-          xcode_sdk: macosx10.12
-        - xcode_project: SampleSwiftiOSApp/Cat2CatExampleSwift/Cat2CatExampleSwift.xcodeproj
-          xcode_scheme: Cat2CatExampleSwift
-          xcode_sdk: iphonesimulator10.0
-        - xcode_project: SampleSwiftMacApp/Cat2CatExampleSwiftMac/Cat2CatExampleSwiftMac.xcodeproj
-          xcode_scheme: Cat2CatExampleSwiftMac
-          xcode_sdk: macosx10.12
+env:
+  global:
+    - SCAN_SKIP_BUILD=1
+    - SCAN_CONFIGURATION="Release"
+  matrix:
+    # Define the details for each test suite that should be run
+    - SCAN_PROJECT="SampleiOSApp/Cat2CatExample/Cat2CatExample.xcodeproj"                        SCAN_SCHEME="Cat2CatExample"         SCAN_SDK="iphonesimulator"
+    - SCAN_PROJECT="SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac.xcodeproj"                  SCAN_SCHEME="Cat2CatExampleMac"      SCAN_SDK="macosx"
+    - SCAN_PROJECT="SampleSwiftiOSApp/Cat2CatExampleSwift/Cat2CatExampleSwift.xcodeproj"         SCAN_SCHEME="Cat2CatExampleSwift"    SCAN_SDK="iphonesimulator"
+    - SCAN_PROJECT="SampleSwiftMacApp/Cat2CatExampleSwiftMac/Cat2CatExampleSwiftMac.xcodeproj"   SCAN_SCHEME="Cat2CatExampleSwiftMac" SCAN_SDK="macosx"
+script: bundle exec scan
+cache:
+  - bundler  # After main-repo builds, save the "bundler" (local Ruby gems) stuff to cache for future builds.
