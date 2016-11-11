@@ -1,8 +1,8 @@
 language: objective-c
 osx_image: xcode8
 before_script:
-    # Build the Cat2Cat binary for 
-    - bundle exec gym --workspace "Cat2Cat.xcworkspace" --scheme "Cat2Cat" --sdk "macosx10.12" --output_directory "~/build/"
+    # Build the Cat2Cat binary for use in the test projects
+    - xcodebuild -configuration Release -workspace Cat2Cat.xcworkspace -scheme Cat2Cat -sdk macosx CONFIGURATION_BUILD_DIR='~/build/'
     - cp ~/build/Cat2Cat CocoaPod/
     - rm SampleiOSApp/Cat2CatExample/Cat2CatExample/Categories/UIImage+AssetCatalog.?
     - rm SampleMacApp/Cat2CatExampleMac/Cat2CatExampleMac/Categories/NSImage+AssetCatalog.?
