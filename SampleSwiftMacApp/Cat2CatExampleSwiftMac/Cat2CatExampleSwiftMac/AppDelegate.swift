@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var windowController: WindowController?
 
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         windowController = WindowController(windowNibName: "WindowController")
         window = windowController?.window
     }

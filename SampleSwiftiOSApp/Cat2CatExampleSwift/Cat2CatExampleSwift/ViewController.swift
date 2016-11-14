@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         setRandomImage(nil)
     }
 
-    @IBAction func setRandomImage(sender: UIButton?) {
+    @IBAction func setRandomImage(_ sender: UIButton?) {
         let randomIndex = Int(arc4random_uniform(UInt32(images.count)))
         imageView?.image = images[randomIndex]
     }

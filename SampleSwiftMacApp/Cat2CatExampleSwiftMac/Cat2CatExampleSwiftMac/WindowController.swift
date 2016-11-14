@@ -30,7 +30,7 @@ class WindowController: NSWindowController {
         setRandomImage(nil)
     }
     
-    @IBAction func setRandomImage(sender: NSButton?) {
+    @IBAction func setRandomImage(_ sender: NSButton?) {
         let randomIndex = Int(arc4random_uniform(UInt32(images.count)))
         imageView?.image = images[randomIndex]
     }
