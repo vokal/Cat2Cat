@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://github.com/vokal/Cat2Cat"
   s.license      = 'MIT'
-  s.authors 	 = { 'Ellen Shapiro' => 'http://www.vokalinteractive.com', 'Bryan Luby' => 'http://www.vokalinteractive.com' }
+  s.authors 	 = { 'Ellen Shapiro' => 'http://designatednerd.com', 'Bryan Luby' => 'http://www.vokal.io' }
   s.source       = { :git => "https://github.com/vokal/Cat2Cat.git", :tag => s.version.to_s }
 
 
